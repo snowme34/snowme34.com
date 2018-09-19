@@ -1,0 +1,3 @@
+[submodule "blog/themes/symphony"]
+	path = blog/themes/symphony
+	url = https://github.com/snowme34/hexo-theme-symphony.git

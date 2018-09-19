@@ -1,0 +1,283 @@
+# menu
+menu:
+  Home: .
+  Archives: archives  # 归档
+  Categories: categories  # 分类
+  Tags: tags  # 标签
+  Repository: repository  # github repositories
+  # Books: books  # 豆瓣书单
+  # Links: links  # 友链
+  About: about  # 关于
+
+# http://blog.cofess.com/hexo-theme-pure/iconfont/demo_fontclass.html
+# Enable/Disable menu icons
+menu_icons:
+  enable: true  # 是否启用导航菜单图标
+  home: icon-home-fill
+  archives: icon-archives-fill
+  categories: icon-folder
+  tags: icon-tags
+  repository: icon-project
+  # books: icon-book-fill
+  # links: icon-friendship
+  about: icon-profile
+
+# rss
+rss: /atom.xml
+
+# Site
+site:
+  logo:
+    enabled: true
+    width: 40
+    height: 40
+    url: ../images/logo.png
+  title: Hexo # 页面title
+  favicon: /favicon.png
+  board: <p>Life's but a walking shadow, a poor player that struts and frets his hour upon the stage, and then is heard no more. <strong>This is a site</strong> told by an idiot, full of sound and fury, signifying nothing.<br>― William Shakespeare, Macbeth</p><br><p>Nothing fancy. Simple and stupid.</p> # 站点公告
+  copyright: true # 底部版权信息
+
+# config
+config:
+  skin: # 主题颜色 theme-black theme-blue theme-green theme-purple
+  layout: main-center # 布局方式 main-left main-center main-right
+  toc: true # 是否开启文章章节目录导航
+  menu_highlight: false # 是否开启当前菜单高亮显示
+  thumbnail: false # enable posts thumbnail, options: true, false
+  excerpt_link: Read More
+
+# Pagination
+pagination:
+  number: true
+  prev:
+    alwayShow: true
+  next:
+    alwayShow: true
+
+# Sidebar
+sidebar: right
+widgets:
+  - board
+  - category
+  - tag
+  - tagcloud
+  - archive
+  - recent_posts
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+ - category
+ - tagcloud
+ - archive
+
+# widget behavior
+archive_type: 'year' #'monthly'
+show_count: true
+
+# Search
+search:
+  insight: true # you need to install `hexo-generator-json-content` before using Insight Search
+  swiftype:  # enter swiftype install key here
+  baidu: false # you need to disable other search engines to use Baidu search
+
+# Donate
+donate:
+  enable: false
+  # 微信打赏
+  wechatpay:
+    qrcode: images/donate/wechatpayimg.jpg
+    title: 微信支付
+  # 支付宝打赏
+  alipay:
+    qrcode: images/donate/alipayimg.jpg
+    title: 支付宝
+
+# Share
+# weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
+share:
+  enable: true  # 是否启用分享
+  # sites: weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin  # PC端显示的分享图标
+  sites: facebook,twitter,google,linkedin,tencent,weibo,qq,qzone,wechat # PC端显示的分享图标
+  # mobile_sites: weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin  # 移动端显示的分享图标
+  mobile_sites: facebook,twitter,google,linkedin,tencent,weibo,qq,qzone,wechat # 移动端显示的分享图标
+
+# Github
+github:
+  username: snowme34  # github username
+
+# Comment
+# Gitment
+# Introduction: https://imsun.net/posts/gitment-introduction/
+comment:
+  type: disqus  # 启用哪种评论系统
+  disqus: blog-snowme34 # enter disqus shortname here
+  youyan:
+    uid: # enter youyan uid
+  livere:
+    uid: # enter youyan uid
+  gitment:
+    githubID: 
+    repo: 
+    ClientID: 
+    ClientSecret: 
+    lazy: 
+
+# douban 豆瓣书单
+Api:
+  - https://developers.douban.com/wiki/?title=book_v2 # 图书
+  - https://developers.douban.com/wiki/?title=movie_v2 # 电影
+books:
+  - https://api.douban.com/v2/book/user/:name/collections?start=0&count=100 # 个人书单列表
+movies:
+  - https://api.douban.com/v2/movie/in_theaters # 正在上映的电影
+  - https://api.douban.com/v2/movie/coming_soon # 即将上映的电影
+  - https://api.douban.com/v2/movie/subject/:id # 单个电影信息
+  - https://api.douban.com/v2/movie/search?q={text} # 电影搜索
+
+douban:
+  user:  # 豆瓣用户名
+  start: 0 # 从哪一条记录开始
+  count: 100 # 获取豆瓣书单数据条数
+
+# PV
+pv:
+  busuanzi:
+    enable: 0  # 不蒜子统计
+  cnzz:
+    enable: 0  # cnzz统计
+    web_id:  # cnzz id
+  leancloud:
+    enable: false  # leancloud统计,网站需备案
+    app_id:  # leancloud <AppID>
+    app_key:  # leancloud <AppKey>
+
+# wordcount
+postCount:
+  enable: true
+  wordcount: false  # 文章字数统计
+  min2read: true  # 阅读时长预计
+
+# Plugins
+plugins:
+  google_analytics: UA-125850394-1 # enter the tracking ID for your Google Analytics
+  google_site_verification:  # enter Google site verification code
+  baidu_analytics: # enter Baidu Analytics hash key
+  tencent_analytics:
+
+# Miscellaneous
+twitter: snowme34
+google_plus:
+fb_admins:
+fb_app_id:
+
+# profile
+profile:
+  enabled: true # Whether to show profile bar
+  avatar: # https://s.gravatar.com/avatar/964f79ac3eef7d0d073e6b42793810f8?s=80
+  gravatar: snowme34@gmail.com # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
+  author: snowme34
+  author_title: Deveoloper
+  author_description: 
+  location: CA, US
+  follow: https://github.com/snowme34
+  # Social Links
+  social:
+    links:
+      github: https://github.com/snowme34
+      # weibo: http://weibo.com/lossingdawnn
+      twitter: https://twitter.com/snowme34
+      instagram: https://www.instagram.com/snowme34/
+      # facebook: /
+      # dribbble: /
+      # behance: https://www.behance.net/cofess
+      rss: atom.xml
+    link_tooltip: true # enable the social link tooltip, options: true, false
+  # My Skills
+  skills:
+    Data Structures: ★★★★☆
+    Algorithms: ★★★☆☆
+    C: ★★★☆☆
+    C++: ★★★★☆
+    JAVA: ★★★★☆
+    Python: ★★☆☆☆
+    Bash: ★★☆☆☆
+    Git: ★★★☆☆
+    Javascript: ★☆☆☆☆
+    HTML+CSS: ★★☆☆☆
+    MySQL: ★☆☆☆☆
+    Nginx: ★☆☆☆☆
+    Spring Cloud Framework: ★☆☆☆☆
+    MATLAB: ★★☆☆☆
+    Machine Learning: ★☆☆☆☆
+    Small Digital Design: ★★☆☆☆
+    Verilog: ★☆☆☆☆
+    Photoshop: ★★★☆☆
+    Premier: ★★★★☆
+  languages:
+    English: Working Proficiency
+    Chinese: Native Speaker
+    Japanese: Elementary Proficiency
+  # My Personal Links
+  links:
+    # Github: https://github.com/Ruffianjiang
+    # Blog: http://www.cnblogs.com/lossingdawn/
+    # 微博: http://weibo.com/cofess
+    # 花瓣: http://huaban.com/cofess
+    # Behance: https://www.behance.net/cofess
+  # My Personal Labels
+  labels:
+    - Algorithm
+    - C++
+    - Java
+    - Linux
+  # My Personal Works
+  # works:
+    # name:
+      # link: http://www.cnblogs.com/lossingdawn/
+      # date: 2016
+  # My Personal Projects
+  # projects:
+    # Ruffianjiang/hexo-theme-pure: https://github.com/Ruffianjiang/hexo-theme-pure
+
+# hexo-neat
+neat_enable: true
+neat_html:
+  enable: true
+  exclude:
+neat_css:
+  enable: true
+  exclude:
+    - '*.min.css'
+neat_js:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '*.min.js'
+
+
+translate_title:
+  translate_way: google    #google | baidu | youdao
+  youdao_api_key: XXX
+  youdao_keyfrom: XXX
+  is_need_proxy: false     #true | false
+  proxy_url:
+
+
+markdown_it_plus:
+  highlight: true
+  html: true
+  xhtmlOut: true
+  breaks: true
+  langPrefix:
+  linkify: true
+  typographer:
+  quotes: “”‘’
+  plugins:
+    - plugin:
+        name: markdown-it-katex
+        enable: true
+    - plugin:
+        name: markdown-it-mark
+        enable: true
