@@ -5,6 +5,7 @@ categories:
 - Literature
 - Translations
 tags: [Shakespeare, zh-CN, Literature, Original]
+copyright: true
 sidebar: none
 ---
 
