@@ -19,3 +19,9 @@ A wiki based on readthedoc
 ## Demo
 
 Small demos for my project
+
+## Todo
+
+* Create all misssing sites
+* Add SEO support
+  * [Hexo SEO (Chinese)](https://www.jianshu.com/p/86557c34b671)
