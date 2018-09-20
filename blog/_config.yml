@@ -90,7 +90,7 @@ markdown_it_plus:
     highlight: true
     html: true
     xhtmlOut: true
-    breaks: true
+    breaks: false
     langPrefix:
     linkify: true
     typographer:
