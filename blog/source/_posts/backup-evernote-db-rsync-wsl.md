@@ -62,6 +62,12 @@ little write + upload to work.
 
 # Procedure
 
+## About the Database File
+
+There is an [official guide](https://help.evernote.com/hc/en-us/articles/208313528-How-to-back-up-and-restore-your-data-in-Evernote-for-Windows) for it.
+It explains how to find the location, how to export the note from a database file and so on.
+Please take a look at it.
+
 ## Preparation
 
 If not installed yet, install cloud storage sync clients, WSL for Windows,
