@@ -1,3 +1,5 @@
+.vscode/
+
 # Logs
 logs
 *.log
@@ -59,3 +61,20 @@ typings/
 
 # next.js build output
 .next
+
+# Read the doc
+docs/build/
+_build/
+env/
+extensions/__pycache__/
+__pycache__
+*.pyc
+*~
+.directory
+*.mo
+
+# Finder (MacOS) makes these automatically.
+.DS_Store
+
+# And Windows keeps creating these.
+Thumbs.db
