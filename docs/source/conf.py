@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'docs.snowme34.com'
+project = 'Docsnt'
 copyright = '2018, Snowme34'
 author = 'Snowme34'
 
@@ -52,10 +52,10 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-#source_suffix = '.rst'
 source_suffix = ['.rst', '.md']
+#source_suffix = '.rst'
 
-# Parser for md
+# parser for md files
 source_parsers = {
     '.md': 'recommonmark.parser.CommonMarkParser',
 }
@@ -84,7 +84,8 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+#html_theme = 'alabaster'
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -111,7 +112,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'docssnowme34comdoc'
+htmlhelp_basename = 'Docsntdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -138,7 +139,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'docssnowme34com.tex', 'docs.snowme34.com Documentation',
+    (master_doc, 'Docsnt.tex', 'Docsnt Documentation',
      'Snowme34', 'manual'),
 ]
 
@@ -148,7 +149,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'docssnowme34com', 'docs.snowme34.com Documentation',
+    (master_doc, 'Docsnt', 'Docsnt Documentation',
      [author], 1)
 ]
 
@@ -159,8 +160,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'docssnowme34com', 'docs.snowme34.com Documentation',
-     author, 'docssnowme34com', 'One line description of project.',
+    (master_doc, 'Docsnt', 'Docsnt Documentation',
+     author, 'Docsnt', 'One line description of project.',
      'Miscellaneous'),
 ]
 
