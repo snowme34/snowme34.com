@@ -38,10 +38,6 @@ The organization of this site is as following:
 
    links/cuddly_links_collection
 
-.. toctree::
-   :maxdepth: 1
-   :caption: 
-
 .. Indices and tables
 .. ==================
 .. 
