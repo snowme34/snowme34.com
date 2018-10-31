@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 10/28/2018.*
+*Last update date: 10/30/2018.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -48,14 +48,17 @@ Note: still in progress.
       - [DS - Machine Learning](#ds---machine-learning)
     - [Human Languages](#human-languages)
       - [HL - Japanese](#hl---japanese)
+    - [Literature](#literature)
     - [Miscellaneous Informative Resources](#miscellaneous-informative-resources)
   - [Reference and Documents](#reference-and-documents)
-    - [Computer Science Reference](#computer-science-reference)
+    - [Reference for Biology](#reference-for-biology)
+    - [Reference for Computer Science](#reference-for-computer-science)
       - [CSR - Algorithms and Data Structures](#csr---algorithms-and-data-structures)
       - [CSR - Style](#csr---style)
       - [CSR - Developing Tools](#csr---developing-tools)
       - [CSR - Misc](#csr---misc)
     - [Reference for Graphic Design](#reference-for-graphic-design)
+    - [Reference for Mathmatics](#reference-for-mathmatics)
     - [Reference for Privacy](#reference-for-privacy)
     - [Other References](#other-references)
   - [Career](#career)
@@ -79,7 +82,6 @@ Note: still in progress.
     - [News from Companies and Organizations](#news-from-companies-and-organizations)
     - [News for Developers](#news-for-developers)
     - [News for Japanese Learning](#news-for-japanese-learning)
-    - [News Miscellaneous](#news-miscellaneous)
   - [Other Collections](#other-collections)
     - [Collections involving Programming](#collections-involving-programming)
       - [CP - General](#cp---general)
@@ -309,13 +311,27 @@ Some competitions:
 
   Learn meanings of names of manga.
 
+### Literature
+
+* [Free ebooks - Project Gutenberg](http://www.gutenberg.org/)
+
+  In case you don't know, this site has almost all the great books whose copyrights have expired.
+
 ### Miscellaneous Informative Resources
 
 * [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html)
 
 ## Reference and Documents
 
-### Computer Science Reference
+### Reference for Biology
+
+* [UCSC Genome Browser](http://genome.ucsc.edu/index.html)
+* [Bold Systems - DNA barcoding](http://www.boldsystems.org/)
+* [xeno-canto - Sharing bird sounds from around the world](http://www.xeno-canto.org/)
+
+### Reference for Computer Science
+
+Use CSR for abbreviation.
 
 #### CSR - Algorithms and Data Structures
 
@@ -375,6 +391,13 @@ For C/C++:
 I'm not a professional here, see the other collections listed later for more.
 
 * [日本の伝統色 The Traditional Colors of Japan](http://nipponcolors.com/)
+
+### Reference for Mathmatics
+
+* [Paul's Math Notes](http://tutorial.math.lamar.edu/)
+* [OEIS The On-Line Encyclopedia of Integer Sequences](http://oeis.org/)
+
+  If you want to use guess-and-check to calculate run time of an algorithm.
 
 ### Reference for Privacy
 
@@ -466,6 +489,10 @@ I'm not a professional here, see the other collections listed later for more.
 
   Check security of an URL.
 
+* [visualping - Website Change Detection](https://visualping.io/)
+
+  Monitor a website.
+
 ### Security Tools
 
 * [VirSCAN](http://v.virscan.org/)
@@ -479,6 +506,7 @@ I'm not a professional here, see the other collections listed later for more.
 ### Online Shells
 
 * [ideone](https://ideone.com/)
+* [codepa d](http://codepad.org/)
 * [Compiler Explorer](https://godbolt.org/)
 
   Show the machine codes compiled by each compiler.
@@ -524,6 +552,10 @@ I'm not a professional here, see the other collections listed later for more.
 
   A visualization of global weather
 
+* [Pixivision](https://www.pixivision.net/en/)
+
+  "pixivision is a creative medium for people who prefer that daily life not be dull. It allows you to 'set aside content born from ingenuity'" - [What is pixivision?](https://www.pixiv.help/hc/en-us/articles/235646167-What-is-pixivision-)
+
 ## Miscellaneous
 
 https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots
@@ -559,6 +591,8 @@ Just a few...
 * [Twitter](https://blog.twitter.com/official/en_us.html)
 * [Yelp](https://engineeringblog.yelp.com/)
 
+Organizations:
+
 * [Apache](https://blogs.apache.org/)
 * [Debian](https://bits.debian.org/)
 * [Maria](https://mariadb.com/resources/blog/)
@@ -589,13 +623,13 @@ and so on.
 * [News Picks](https://newspicks.com/)
 * [ITMedia](http://www.itmedia.co.jp/)
 
-### News Miscellaneous
-
-* [Pixivision](https://www.pixivision.net/en/)
-
-  "pixivision is a creative medium for people who prefer that daily life not be dull. It allows you to 'set aside content born from ingenuity'" - [What is pixivision?](https://www.pixiv.help/hc/en-us/articles/235646167-What-is-pixivision-)
-
 ## Other Collections
+
+* [cheat-sheets](http://www.cheat-sheets.org/)
+
+  There are also "Other Collectors and Publishers" at the bottom of the home page.
+
+* [Awesome Cheatsheet](https://github.com/detailyang/awesome-cheatsheet)
 
 ### Collections involving Programming
 
