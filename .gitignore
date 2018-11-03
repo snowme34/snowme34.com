@@ -63,7 +63,7 @@ typings/
 .next
 
 # Read the doc
-docs/build/
+docs/build/*
 _build/
 env/
 extensions/__pycache__/
