@@ -33,6 +33,14 @@ The organization of this site is as following:
 
 .. toctree::
    :maxdepth: 1
+   :caption: Reference
+   :name: sec-reference
+
+   reference/commands/unix-and-linux-commands
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Links
    :name: sec-links
 
