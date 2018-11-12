@@ -1,4 +1,11 @@
+# Editor
 .vscode/
+
+# Finder (MacOS) makes these automatically.
+.DS_Store
+
+# And Windows keeps creating these.
+Thumbs.db
 
 # Logs
 logs
@@ -6,6 +13,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+firebase-debug.log*
 
 # Runtime data
 pids
@@ -73,8 +81,11 @@ __pycache__
 .directory
 *.mo
 
-# Finder (MacOS) makes these automatically.
-.DS_Store
+# Firebase cache
+.firebase/
 
-# And Windows keeps creating these.
-Thumbs.db
+# Firebase config
+# Uncomment this if you'd like others to create their own Firebase project.
+# For a team working on the same Firebase project(s), it is recommended to leave
+# it commented so all members can deploy to the same project(s) in .firebaserc.
+# .firebaserc
