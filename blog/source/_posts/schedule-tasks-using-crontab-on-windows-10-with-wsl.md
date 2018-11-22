@@ -1,5 +1,5 @@
 ---
-title: Backup Evernote Database File using Cloud Application and rsync of WSL (Windows Subsystem for Linux) with Minimum I/O Write
+title: Schedule Tasks Using Crontab on Windows 10 with WSL
 mathjax: false
 sidebar: toc
 copyright: true
@@ -9,6 +9,15 @@ categories:
 - Notes
 tags: ["Trick", "Tutorial"]
 ---
+
+This is a short tutorial about how to use WSL(Windows Subsystem for Linux) to schedule cron jobs,
+with a specific example of backing up Evernote's database, to show how versatile this method is
+and potential benefits. In this example, the strategy is optimized for large files that have frequent
+small changes regarding I/O writes.
+
+[Jump directly to procedure](#procedure)
+
+## Motivation
 
 It was the second time for me to [lose a note in Evernote](https://news.ycombinator.com/item?id=9090135).
 The first one was due to a sync error. It was nothing serious but unnerving.
@@ -23,16 +32,12 @@ support for most platforms, bots for different apps etc.) and
 there is no 100% secure data storage in this world, I need to
 backup the database file on my own.
 
-# Why Backup
+Side note: I saw a lot of discussion about switching applications to have more secure database.
+Unfortunately, that is not the case. Evernote is mature enough that the official client gives users
+the option to backup the database directly and [access with ease](https://discussion.evernote.com/topic/115648-looking-for-evernote-documentation-diagnosing-and-fixing-evernote-performance-problems/) later on.
+To prevent data loss, the ultimate solution is to have multiple backups.
 
-To prevent data loss, the ultimate solution is backup, not switching application.
-
-# Why Backup .exb File When Evernote Syncs it automatically
-
-A note can be lost during and after synchronization. And if the damaged note or database
-were synchronized, data loss is unavoidable.
-
-# Why rsync and WSL
+## Why rsync and WSL
 
 It is tedious to manually copy and paste the database files to other
 locations (and track the version history). Storing the db directly inside
@@ -42,10 +47,9 @@ need to scan my 3.14 GB .exb file each time when I make any tiny changes to my n
 I need a scheduled job with minimum disk usage (reading and writing).
 The reading part is hard to get rid of. So the focus is I/O write usage.
 I need a **binary** incremental backup. `rsync` is the best candidate
-I know so far but it does not have native support
-for Windows.
+I know so far but it does not have native support for Windows.
 
-# My Solution
+## My Solution
 
 Since I need my cloud storage application to run in the background all the time, it
 is not viable for me to schedule that application to sync. The workaround is to
@@ -60,34 +64,33 @@ little write + upload to work.
 
 (I know `rclone` but it [does not support binary incremental upload](https://rclone.org/faq/#why-doesn-t-rclone-support-partial-transfers-binary-diffs-like-rsync))
 
-# Procedure
+## Procedure
 
 ## About the Database File
 
 There is an [official guide](https://help.evernote.com/hc/en-us/articles/208313528-How-to-back-up-and-restore-your-data-in-Evernote-for-Windows) for it.
 It explains how to find the location, how to export the note from a database file and so on.
-Please take a look at it.
 
-## Preparation
+### Preparation
 
 If not installed yet, install cloud storage sync clients, WSL for Windows,
 `cron` and `rsync` based on the Linux distro installed.
 
-## Decide the `rsync` Command
+### Decide the `rsync` Command
 
 To learn more about cron, use `man cron` and `man crontab` or search online.
 
 Please at least read the `rsync --help` and decide which options are preferred.
-The following command is the one I use.
+The following command is the one I am using.
 
 ```bash
 rsync -u -t -av -n /mnt/c/Evernote/Databases/myName.exb /mnt/c/Dropbox/EvernoteDB/myName.exb
 ```
 
-The `-n` flag enables **dry-run**. **Remove it** after everything is confirmed to be correct by running this command
-directly (and see the result).
+The `-n` flag enables **dry-run**. **Remove it** after everything is confirmed
+to be correct by running this command directly (and see the result).
 
-## Create crontab Job
+### Create crontab Job
 
 Log in as the user you want to run the job (note the privileges) and edit their crontab:
 
@@ -108,9 +111,9 @@ If you want to learn more about crontab job, feel free to search on your own.
 If you want, you can use the snapshot feature of rsync. But since Dropbox has pretty good version history, I did not include that.
 
 (Since a note might be found missing after a long time, I highly recommend
-manually adding backups for longer period, Like a full backup for each half year)
+manually adding backups for longer period, Like a full backup for each half year using another cron job)
 
-## Make the Daemon start at Windows Boot
+### Make the Daemon start at Windows Boot
 
 The last step is to make sure the cron daemon runs in background when Windows boots.
 It can be achieved by making bash.exe/wsl.exe a service and so on.
@@ -147,7 +150,7 @@ C:\Windows\System32\wsl.exe sudo /etc/init.d/cron start
 
 And it should work unless the developers change how wsl works in the future.
 
-## Check If cron Service Started Properly
+### Check If cron Service Started Properly
 
 If you are worrying about cron service, here is a way to test it.
 
@@ -173,12 +176,12 @@ Wait for the to run second time and check the result.
 
 The command above is only an example. You can change it however you like.
 
-# Conclusion
+## Conclusion
 
 Until now, it should be clear that what I did is only a little trick.
 But it shows how Unix commands can make Windows easier to use with WSL.
 
-# Reference
+## Reference
 
 * [wsl-autostart](https://github.com/troytse/wsl-autostart)
 * [How to run Ubuntu service on Windows (at startup)?](https://superuser.com/questions/1112007/how-to-run-ubuntu-service-on-windows-at-startup)
@@ -187,3 +190,7 @@ But it shows how Unix commands can make Windows easier to use with WSL.
 * [Linux Start Restart and Stop The Cron or Crond Service](https://www.cyberciti.biz/faq/howto-linux-unix-start-restart-cron/)
 * [How to auto start service](https://github.com/Microsoft/WSL/issues/511)
 * man page of each command
+
+## Updates
+
+* 11/16/2018: changed the original title and added abstract summary

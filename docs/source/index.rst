@@ -33,6 +33,14 @@ The organization of this site is as following:
 
 .. toctree::
    :maxdepth: 1
+   :caption: Algorithms and Data Structures
+   :name: sec-algorithms-and-data-structures
+
+   algorithms-and-data-structures/red-black-tree/red-black-tree
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Reference
    :name: sec-reference
 
