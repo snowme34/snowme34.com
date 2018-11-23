@@ -49,7 +49,7 @@ u = (p == g->lc) ? g->rc : g->lc;
 r = bst_remove(x) // the remove function from bst
 ```
 
-## Crash Course on Remove of BST (optional)
+## Crash Course on Remove of BST (Optional)
 
 children = {lc, rc}
 
@@ -68,8 +68,8 @@ And we say the new node in the original position is the replacement of the node 
 Note that x and r means the x and r in the last step.
 We can only remove x when any least one of its children is null.
 
-And r is the replacement (one of x's child) at the last step. Not the successor that
-replace the node x at the step 2.
+And r is the replacement (one of x's children) at the last step. Not the successor that
+replaces the node x at the step 2.
 
 ## Node
 
@@ -106,7 +106,8 @@ that attempted to fix imbalance.
 For all rotations, we can use one identical sub-procedure where we remember the pointers
 to the sub-trees and pointers of a,b,c to each other. And we simply reconstruct this local
 structure by reassigning the pointers. So that we don't need to write a procedure for each
-case and debug each one separately and thus "**don't repeat yourself**".
+case and debug each one separately and thus
+"**[don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)**".
 
 ## Insertion
 
@@ -137,7 +138,7 @@ Pseudocode for inserting:
 ```pseudocode
 // depends on the implementation, may or may not be able to insert duplicates
 function rb-insert(data e)
-  create node x from e
+  create node x from e with black height -1
 
   Insert node x using insertion of binary search tree
   
@@ -150,6 +151,8 @@ function rb-insert(data e)
   color x red
   
   check and solve double-red problem
+
+  return x
 ```
 
 Pseudocode for solving double-red problem:
@@ -172,15 +175,17 @@ function solve-double-red(node x)
     if x and p is same side of g
       rotate left or right
       color p black
-      link the nodes properly
 
     if x and p not same side of g
       rotate leftRight or rightLeft
       color x black
-      link the nodes properly
+
+    link the nodes properly, like pointers to grand-grand-parent etc.
 
   else
     color parent and uncle black
+    increment p's black height
+    increment u's black height
     color grandparent red if not root
     solve-double-red(g)
 ```
