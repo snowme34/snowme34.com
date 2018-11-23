@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 11/04/2018.*
+*Last Update: 11/22/2018.*
 
 ## Prologue
 
@@ -270,10 +270,11 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     touch
     ```
 
-2. See file type
+2. See file type and char-set and other information
 
     ```bash
     file
+    file -i [file]
     ```
 
 3. See file disk usage
@@ -284,6 +285,8 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     ```bash
     du
     du -sh
+    du -s *
+    du -hs .[^.]*
     ```
 
 4. Copy
@@ -318,6 +321,21 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     rm
     ```
 
+7. Quota
+
+    ```bash
+    quota -v
+    ```
+
+8. File system disk space usage
+
+    ```bash
+    df
+    df .
+    ```
+
+Pay heed to the difference between `du` and `df`
+
 ## Directory
 
 1. Create new dir
@@ -337,6 +355,123 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     ```bash
     rmdir
     rmdir -pv
+    ```
+
+## Links
+
+1. Crate a soft links
+
+    ```bash
+    ln -s [source file] [link]
+    ```
+
+## Find
+
+1. Find file by name using prebuilt databases
+
+    * Like pre-processing the files
+    * the database is updated per day by default
+    * cannot lookup the file changes after the last update
+
+    ```bash
+    locate [pattern-to-find]
+    updatedb # update the database, may be slow
+    ```
+
+2. Find
+
+    * Advanced find
+    * Specify the path
+    * More options
+    * Real-time scan
+    * path
+        * . current directory
+        * / root directory (all files)
+    * arguments
+        * -name [name]
+        * -perm [permissions]
+            * can only use octal representation
+        * -type
+            * d directory
+            * l link
+        * -user
+        * -group
+        * -ctime change time
+        * -size
+    * use the result to execute commands
+        * -exec
+
+    ```bash
+    find [path] [arguments]
+
+    # call ls -l on all files in current directory whose names start with 'a'
+    find . -name "a*" -exec ls -l {} \;
+
+    # search all files in current directory for pattern
+    # and print the pathes of those files
+    find . -type f -print0 | xargs -0 grep "pattern"
+    # only files, no pathes
+    find . -type f -print0 | xargs -0 grep -l "pattern"
+    ```
+
+3. Where is this command/program I'm executing?
+
+    ```bash
+    which
+    which which
+    ```
+
+## Archive and Compress
+
+[How are zlib, gzip and zip related? What do they have in common and how are they different?](https://stackoverflow.com/questions/20762094/how-are-zlib-gzip-and-zip-related-what-do-they-have-in-common-and-how-are-they)
+
+1. Zip and Unzip
+
+    ```bash
+    zip [archive-file-name] [files-to-archive]
+    zip a.zip a
+
+    unzip file[.zip]
+    ```
+
+2. gzip and gunzip
+
+    * compress
+
+    ```bash
+    gzip
+    gunzip
+    ```
+
+3. tar
+
+    * archive only, no compress
+    * -c create
+    * -x extract
+    * -v verbose, can (should?) omit when there is a number of files
+    * -z gzip
+    * -f use archive file or device ARCHIVE
+
+    ```bash
+    # archive a file
+    tar -cvf [archive-file-name] [files-to-archive]
+    tar -cvf a.tar a.b b.c
+
+    # archive and compress
+    tar -cvzf [archive-file-name] [files-to-archive-and-compress]
+    tar a.tar.gz a.b b.c
+
+    # extract a archive
+    tar -xvf [archive-file]
+    tar -xvf a.tar
+
+    # extract and uncompress
+    tar -xvzf [compressed-archive-file name]
+    tar -xvzf a.tar.gz
+
+    # extract to different directory
+    # the target director must exist
+    tar -xvzf a.tar.gz -C [/target/directory]
     ```
 
 ## Help
@@ -387,6 +522,18 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
 
     * txt, html, pdf
     * stored at /usr/share/doc
+
+5. What is this command (one-line description)
+
+    ```bash
+    whatis
+    ```
+
+6. Forget how to spell a command
+
+    ```bash
+    apropos
+    ```
 
 ## Previous Commands
 
@@ -518,6 +665,14 @@ The event reference (!) is mainly used in scripts?
     echo "$var_1"
     ```
 
+8. Watch a command, namely keep printing the output of a command
+
+    * -n interval
+
+    ```bash
+    watch -n 1 command
+    ```
+
 ## Filters and Text Manipulation
 
 1. Search for specific pattern
@@ -525,9 +680,11 @@ The event reference (!) is mainly used in scripts?
     * -i ignore case
     * -n precede line numbers
     * -v lines with no specific patterns
+    * [What is the difference between `grep`, `egrep`, and `fgrep`?](https://unix.stackexchange.com/questions/17949/what-is-the-difference-between-grep-egrep-and-fgrep)
 
     ```bash
     grep [file] [string]
+    pdfgrep # grep in pdf files
     ```
 
 2. sort
@@ -556,6 +713,13 @@ The event reference (!) is mainly used in scripts?
 
 5. diff
 
+    * output means the edits that is required to make file1 identical to file2
+      * append
+      * delete
+      * change
+    * '<' means line from file1
+    * '>' means line from file2
+
     ```bash
     diff file1 file2
     vimdiff
@@ -565,12 +729,19 @@ The event reference (!) is mainly used in scripts?
 
     ```bash
     cut
+    cut -b [bytes] # select only specified bytes
+    cut -c 1-2, 3, 6 # characters
+    cut -d ' ' # use ' ' as delimiter
     ```
 
 7. Paste
 
+    * Merge lines of files
+    * like reverse of `cut`
+
     ```bash
     paste
+    paste -d ' ' file1 file2 file3 > output
     ```
 
 ## Date and Time
@@ -807,10 +978,18 @@ The event reference (!) is mainly used in scripts?
 
     * See IDs of processes
     * Read help of `ps` for details
+    * -e all processes
+    * -a all processes except session leader and processes not associated with a terminal
+    * -x display session leader and processes not associated with a terminal (?)
+        * e = a + x ?
+    * -u userlist
+    * -w wide, use twice for unlimited width
 
     ```bash
     ps
-    ps -axuf
+    ps axuf
+    ps aux | grep -v grep | grep -i -e VSZ -e
+    ps -e -o pid,vsz,comm= | sort -n -k 2
     ```
 
 7. Monitor processes
@@ -853,6 +1032,7 @@ The event reference (!) is mainly used in scripts?
 
     * Usually the processes have parents. As parents die, they die
     * Sometimes we do not want so
+    * [Linux: Prevent a background process from being stopped after closing SSH client](https://stackoverflow.com/questions/285015/linux-prevent-a-background-process-from-being-stopped-after-closing-ssh-client)
 
     ```bash
     nohup [command] > /dev/null 2>&1 &
@@ -863,6 +1043,72 @@ The event reference (!) is mainly used in scripts?
     ```bash
     free
     free -h
+    free -mt
+    ```
+
+12. Read syslog
+
+    ```bash
+    sudo tail -f /var/log/syslog
+    ```
+
+## Network
+
+1. List listening ports
+
+    ```bash
+    sudo netstat -lnp
+    ```
+
+2. Investigate sockets
+
+    ```bash
+    sudo ss -lnp
+    ```
+
+3. List activating ports
+
+    ```bash
+    lsof
+    ```
+
+## Free Cache
+
+[How to Clear RAM Memory Cache, Buffer and Swap Space on Linux](https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/)
+
+[How do you empty the buffers and cache on a Linux system?](https://unix.stackexchange.com/questions/87908/how-do-you-empty-the-buffers-and-cache-on-a-linux-system)
+
+1. Use slabtop display kernel slab cache information:
+
+    ```bash
+    slabtop
+    vmstat -m
+    cat /proc/slabinfo
+    ```
+
+2. Drop buffer to free memory
+
+    ```bash
+    sync
+    ```
+
+3. Drop cache
+
+    ```bash
+    # as root usuer
+    ## To free pagecache:
+    echo 1 > /proc/sys/vm/drop_caches
+    ## To free dentries and inodes
+    echo 2 > /proc/sys/vm/drop_caches
+    ## To free pagecache, dentries and inodes
+    echo 3 > /proc/sys/vm/drop_caches
+
+    # using sudo
+    sudo sh -c 'echo 1 >/proc/sys/vm/drop_caches'
+    sudo sh -c 'echo 2 >/proc/sys/vm/drop_caches'
+    sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches'
+    ## or
+    echo "echo 1 > /proc/sys/vm/drop_caches" | sudo sh
     ```
 
 ## Git
@@ -923,6 +1169,84 @@ git reset [commit] # undo, locally
 git reset --hard [commit] # discard all and jump back
 ```
 
+Apply .gitignore 
+
+* [Apply gitignore on an existing repository already tracking large number of files](https://stackoverflow.com/questions/19663093/apply-gitignore-on-an-existing-repository-already-tracking-large-number-of-files)
+
+```bash
+## commit *ALL* changes first
+git rm -r --cached .
+git add .
+git commit -m ".gitignore is now working"
+# git push origin
+```
+
+[Set CRLF of git to LF on Windows](https://stackoverflow.com/questions/2517190/how-do-i-force-git-to-use-lf-instead-of-crlf-under-windows)
+
+Other git commands
+
+```bash
+git config --global user.name "na"
+git config --global user.email "a@b.co"
+
+# line ending preference
+git config --global core.autocrlf input
+git config --global core.safecrlf true
+
+# log
+git log --pretty=oneline
+git log --pretty=oneline --all
+git log --pretty=oneline --max-count=2 --since='1024 minutes ago' --until='256 minutes ago' --author=<Mike>
+git log --all --pretty=format:'%h %cd %s (%an)' --since='1 days ago'
+git log --pretty=format:'%h %ad - %s%d [%an]' --graph --date=short
+# in .gitconfig, under [alias], add "history = log --pretty=format:'%h %ad - %s%d [%an]' --graph --date=short"
+git log --graph --date=short master --all
+
+# look at an old state without affecting current working directory
+git checkout [hash-of-previous-commits]
+git checkout master # go back to master
+
+# tag
+git tag # list tags
+git tag v0 # tag current version as v0
+# checkout to the first ancestor of a tag
+git checkout v0^
+git checkout v0~1
+
+# discard unstaged changes
+## make changes to a.b
+## start to undo
+git checkout a.b
+
+# undo uncommitted changes
+## make changes to a.b
+git add a.b
+## start to undo
+git reset HEAD a.b # reset the staging area to be the version in HEAD
+# reset does not change working directory
+git checkout a.b # checkout the file
+
+# undo committed changes with writing to history
+## make changes to a.b
+git add a.b
+git commit -m "Bad Commit!"
+## start to undo
+git revert HEAD # or the hash of other previous commits
+## git revert HEAD --no-edit
+
+# undo committed changes without writing to history
+## git reset [reference-of-commit] # Rewrite the current branch to point to that commit
+# ... (making mistakes and committing mistakes)
+git tag to-remove
+git reset --hard to-remove^ # can use other reference
+## -hard: working directory should be updated to be consistent with the new branch head
+## the bad commits are still in history
+## https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit
+git tag -d to-remove # delete the tag
+
+# ...
+```
+
 ## Environment and Global Variables
 
 [Special Parameters](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html)
@@ -933,8 +1257,12 @@ git reset --hard [commit] # discard all and jump back
 
     ```bash
     printenv
+    printenv | less
     set
+    set | less
     getconf ARG_MAX
+
+    set path = ($path ~/exe/bin)
     ```
 
 2. Directly print current variables
@@ -951,6 +1279,15 @@ git reset --hard [commit] # discard all and jump back
     echo "$BASHPID" # process ID of the current instance of bash
     echo "$BASH_SUBSHELL" # "subshell level", it's a variable
     echo "$!" # the process ID of the most recently executed background pipeline
+
+    echo "$OSTYPE"
+    echo "$USER" # your login name
+    echo "$HOME" # the path name of your home directory
+    echo "$HOST" # the name of the computer you are using
+    echo "$ARCH" # the architecture of the computers processor
+    echo "$DISPLAY" # the name of the computer screen to display X windows
+    echo "$PRINTER" # the default printer to send print jobs
+    echo "PATH" # the directories the shell should search to find a command
     ```
 
 ## Scripting
@@ -1139,6 +1476,41 @@ git reset --hard [commit] # discard all and jump back
     bash script.sh
     ```
 
+## Build and Install
+
+1. `make` ritual
+
+    ```bash
+    ./configure
+    make && make check
+    sudo make install
+
+    # or
+    ./configure && make -j2
+    sudo make install
+
+    ./configure --prefix=$HOME/abcdefg
+    make
+    make check
+    make install
+    ```
+
+2. Libraries
+
+    ```bash
+    sudo ldconfig
+
+    # as root
+    echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
+    ldconfig
+    ```
+
+3. Strip debug codes
+
+    ```bash
+    strip xxx
+    ```
+
 ## Debugging
 
 1. Debugging Shell Scripts
@@ -1234,10 +1606,9 @@ See [What is the exact difference between a 'terminal', a 'shell', a 'tty' and a
 
 3. USB devices
 
-    * -v
-
     ```bash
-    lsusb
+    lsusb -v
+    lsinput
     ```
 
 4. Models loaded in the Linux Kernel
@@ -1287,7 +1658,111 @@ See [What is the exact difference between a 'terminal', a 'shell', a 'tty' and a
     fdisk
     ```
 
+4. Remount root partition
+
+    ```bash
+    mount -o remount,rw /
+    ```
+
 ## Run levels
 
 1. runlevel
 2. init
+
+## Power
+
+1. Shutdown and reboot
+
+    * -h hold/poweroff the machine
+    * -r Reboot
+    * time can be
+        * now
+        * +10
+        * 23:10
+
+    ```bash
+    shutdown [-h/-r] [time]
+    shutdown -h
+    shutdown -r
+
+    poweroff # shutdown right now
+    reboot # reboot right now
+    ```
+
+    * Fun fact: `-h` is to display help usually, but if you want help from `shutdown`, it's shutdown right now!
+
+## Printers
+
+[Command-Line Printing and Options](https://www.cups.org/doc/options.html#PRINTER)
+
+```bash
+lpr -P [printer] file1 file2 file3 ...
+lpr -P [printer] < file1
+
+lpq -P [printer]
+
+lprm -P [printer] [Jobs-id\username]
+```
+
+## Distrubution Specific
+
+### Debian
+
+* Install build essentials
+
+  ```bash
+  sudo apt install build-essential
+  sudo aptitude install build-essential
+  ```
+
+* Reconfig timezone
+
+  ```bash
+  sudo dpkg-reconfigure tzdata
+  ```
+
+## Miscellaneous
+
+* Trick to run redirect using sudo
+
+  ```bash
+  sudo sh -c 'echo xxx >/xxx/xxx'
+  ```
+
+* Convert all tab to spaces
+
+  ```bash
+  find . -name '*.java' ! -type d -exec bash -c 'expand -t 4 "$0" > /tmp/e && mv /tmp/e "$0"' {} \;
+  ```
+
+* Download all files from a website
+
+  * [How to download all files (but not HTML) from a website using wget?](https://stackoverflow.com/questions/8755229/how-to-download-all-files-but-not-html-from-a-website-using-wget)
+
+  ```bash
+  wget -A pdf,jpg -m -p -E -k -K -np http://site/path/
+  wget --accept pdf,jpg --mirror --page-requisites --adjust-extension --convert-links --backup-converted --no-parent http://site/path/
+  ```
+
+* Calculator
+
+  ```bash
+  echo "scale=6;(2/3)+(7/8)" | bc
+  ```
+
+* sass auto minify
+
+  * [sass --watch with automatic minify?](https://stackoverflow.com/questions/8980398/sass-watch-with-automatic-minify)
+
+  ```bash
+  sass --watch a.scss:a.css --style compressed
+  ```
+
+* Sort based on line length
+
+  * [Sort a text file by line length including spaces](https://stackoverflow.com/questions/5917576/sort-a-text-file-by-line-length-including-spaces)
+
+  ```bash
+  cat testfile | awk '{ print length, $0 }' | sort -n -s | cut -d" " -f2-
+  cat testfile | awk '{ print length, $0 }' | sort -n | cut -d" " -f2-
+  ```
