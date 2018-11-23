@@ -12,7 +12,8 @@ Persistent structure
 
 ## Rules for a Legal Red Black Tree
 
-Add null nodes as external nodes to make the tree a "full binary tree".
+First let's add null nodes as external nodes to make the tree a "full binary tree", a binary tree
+in which all nodes have either 0 or 2 children.
 
 Black height is the number of black nodes from an external node to a specific node.
 Namely, it's the height of a node when we don't consider red nodes.
@@ -346,3 +347,10 @@ function solve-double-black(node p, node r)  // p and r are black
 ```
 
 At most recoloring O(log n) times, 1 or 2 rotation (1 "3+4 reconstruction")
+
+## Reference
+
+* [Geek for Geeks Red Black Tree](https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/)
+* [DSACPP Source Code List](https://dsa.cs.tsinghua.edu.cn/~deng/ds/src_link/)
+* [Red/Black Tree Visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
+* My notes
