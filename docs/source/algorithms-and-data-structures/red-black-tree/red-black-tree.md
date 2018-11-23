@@ -188,10 +188,12 @@ function solve-double-red(node x)
 
 rotation = 2 means we do a double rotation (or a "3+4" reconstruction)
 
+```markdown
 | uncle color | rotations | recoloring | result                           |
 | ----------- | --------- | ---------- | -------------------------------- |
 | black       | 1 or 2    | 2          | done                             |
 | red         | 0         | 3          | propagate upwards to grandparent |
+```
 
 ## Deletion
 
@@ -334,11 +336,13 @@ function solve-double-black(node p, node r)  // p and r are black
 
 ### Complexity of solve-double-black
 
+```markdown
 | case    | sibling color | sibling has red child | parent color | rotations | recoloring | result                             |
 | ------- | ------------- | --------------------- | ------------ | --------- | ---------- | ---------------------------------- |
 | DB_BSRC | black         | 1                     | N/A          | 1 or 2    | 3          | done                               |
 | DB_BSRP | black         | 0                     | red          | 0         | 2          | done                               |
 | DB_BSBP | black         | 0                     | black        | 0         | 2          | propagate upwards one level        |
 | DB_RS   | red           | N/A                   | N/A          | 1         | 2          | become DB_BSRC or DB_BSRP and done |
+```
 
 At most recoloring O(log n) times, 1 or 2 rotation (1 "3+4 reconstruction")
