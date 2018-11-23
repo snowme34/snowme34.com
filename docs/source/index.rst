@@ -45,6 +45,7 @@ The organization of this site is as following:
    :name: sec-reference
 
    reference/commands/unix-and-linux-commands
+   reference/commands/windows-commands
 
 
 .. toctree::

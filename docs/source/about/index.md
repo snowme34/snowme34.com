@@ -30,4 +30,4 @@ most 2 or 3 web spiders will visit here monthly.
 
 And, it's not a good habit to write documents in Markdown!
 The articles here are mostly in markdown since they are easy
-to migrate to other platforms!
+to migrate to other places!
