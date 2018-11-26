@@ -1,6 +1,6 @@
 # snowme34.com
 
-The source code of snowme34.com
+The source code of snowme34.com.
 
 ## Home
 
@@ -12,13 +12,17 @@ A hexo blog.
 
 The theme is a submodule, [hexo-theme-symphony](https://github.com/snowme34/hexo-theme-symphony).
 
+## Docs
+
+A personal reference hosted on readthedoc.
+
 ## Wiki
 
-A wiki based on readthedoc
+A MediaWiki page, hosted on Digital Ocean.
 
 ## Demo
 
-Small demos for my project
+Small demos for my project.
 
 ## Todo
 

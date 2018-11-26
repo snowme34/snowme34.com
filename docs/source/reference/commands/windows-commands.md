@@ -1,9 +1,1 @@
-# Windows Commands
-
-*Last Update: 11/22/2018.*
-
-## Make Junctions
-
-```cmd
-mklink /J [link] [target]
-```
+C:/DF/Dropbox/DC/@sakubun/wiki/computer-science/commands/windows-commands.md

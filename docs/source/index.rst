@@ -41,11 +41,21 @@ The organization of this site is as following:
 
 .. toctree::
    :maxdepth: 1
-   :caption: Reference
-   :name: sec-reference
+   :caption: Command Reference
+   :name: sec-reference-command
 
    reference/commands/unix-and-linux-commands
    reference/commands/windows-commands
+   reference/commands/docker-commands
+   reference/commands/git-commands
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: DevOps Reference
+   :name: sec-reference-devops
+
+   reference/devops/set-up-debian-server-on-digital-ocean
 
 
 .. toctree::
