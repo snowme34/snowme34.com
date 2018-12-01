@@ -63,6 +63,15 @@ The organization of this site is as following:
 
 .. toctree::
    :maxdepth: 1
+   :caption: Natural Languages - Japanese
+   :name: sec-natural-lang-jp
+
+   natural-languages/nihongo/Japanese-Give-and-Receive
+   natural-languages/nihongo/Japanese-Verb-Forms-Short-Summary
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Links
    :name: sec-links
 
