@@ -282,6 +282,16 @@ sudo /etc/nftables.conf
 
 Note it's required to write the conf at that file to make it persistent.
 
+Also make sure the systemd unit, "nftables", is enabled and started as required.
+
+```bash
+sudo systemctl enable nftables
+sudo systemctl start nftables
+sudo systemctl status nftables
+```
+
+Hope Debian buster will make the it easier to use.
+
 Reference for nftables:
 
 * [ArchLinux Wiki nftables](https://wiki.archlinux.org/index.php/nftables)

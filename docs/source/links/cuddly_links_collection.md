@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 11/03/2018.*
+*Last update date: 12/4/2018.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -55,7 +55,7 @@ Note: still in progress.
       - [CSD - Collections](#csd---collections)
       - [CSD - Web](#csd---web)
     - [Reference for Biology](#reference-for-biology)
-    - [Reference for Computer Science](#reference-for-computer-science)
+    - [Reference for Computer Science and Information Technology](#reference-for-computer-science-and-information-technology)
       - [CSR - Algorithms and Data Structures](#csr---algorithms-and-data-structures)
       - [CSR - Style](#csr---style)
       - [CSR - Developing Tools](#csr---developing-tools)
@@ -274,6 +274,8 @@ Some competitions:
 
 * [Introductory Intel x86: Architecture, Assembly, Applications, & Alliteration](http://opensecuritytraining.info/IntroX86.html)
 
+* [How Does the Internet Work?](http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm)
+
 ### Data Science
 
 #### DS - Online Courses
@@ -328,6 +330,12 @@ Some competitions:
 
   * Learn meanings of names of manga.
 
+* [日本語教師のN1et](https://jn1et.com/)
+
+* [読み方は？](https://yomikatawa.com/)
+
+  * How to read this?
+
 ### Literature
 
 * [Free ebooks - Project Gutenberg](http://www.gutenberg.org/)
@@ -370,7 +378,7 @@ Use CSD for abbreviation.
 
 * [xeno-canto - Sharing bird sounds from around the world](http://www.xeno-canto.org/)
 
-### Reference for Computer Science
+### Reference for Computer Science and Information Technology
 
 Use CSR for abbreviation.
 
@@ -430,11 +438,15 @@ For C/C++:
 
 #### CSR - Misc
 
+* [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
+
 * [Online Unix Manpages](https://man.cx/)
 
   * By the way, do you know you can type `man ascii` instead of searching for little ascii table pictures online?
 
 * [The Unicode Standard, Version 11.0](https://www.unicode.org/charts/PDF/U2200.pdf)
+
+* [Http Statuses](https://httpstatuses.com/)
 
 ### Reference for Graphic Design
 
@@ -732,6 +744,12 @@ Searching Engines in Japanese:
 * [visualping - Website Change Detection](https://visualping.io/)
 
   * Monitor a website.
+
+* [Google Public DNS Flush Cache](https://developers.google.com/speed/public-dns/cache)
+
+* [1.1.1.1 Purge Cache](https://cloudflare-dns.com/purge-cache/)
+
+* [nginxconfig.io](https://nginxconfig.io/)
 
 ### Miscellaneous Tools
 
