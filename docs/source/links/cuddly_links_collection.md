@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 12/4/2018.*
+*Last update date: 12/8/2018.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -164,6 +164,10 @@ Python:
 * [A Byte of Python](https://python.swaroopch.com/)
 
   * A free book by Swaroop C.H.
+
+JavaScript:
+
+* [A re-introduction to JavaScript (JS tutorial)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 
 #### CS - General Online Schools
 

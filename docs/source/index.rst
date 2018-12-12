@@ -15,7 +15,7 @@ to share.
 Please refer to the table of contents below and in the sidebar for your topic
 of interest. You can also use the search function in the top left corner.
 
-Also this site supports https, you can add "https//" in front of the URL directly
+Also this site supports https, you can add "https://" in front of the URL directly
 if there is none.
 
 .. note:: This is a personal wiki-like place. There is no guarantee about anything.

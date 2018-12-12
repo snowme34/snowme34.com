@@ -1,6 +1,6 @@
 # Docker Commands
 
-*Last Update: 11/25/2018.*
+*Last Update: 12/12/2018.*
 
 * [Docker Docs Get Started](https://docs.docker.com/get-started)
 
@@ -43,6 +43,10 @@ docker container ls --all -aq
 ## Run
 
 * [Correct way to detach from a container without stopping it](https://stackoverflow.com/questions/25267372/correct-way-to-detach-from-a-container-without-stopping-it)
+
+```bash
+docker exec -it <some-container> <some-command>
+```
 
 ## Docker Compose
 
@@ -115,4 +119,10 @@ docker secret create some-secret -
 
 ```bash
 docker network create -d bridge <some-network>
+```
+
+## volume
+
+```bash
+docker volume inspect <some-volume>
 ```
