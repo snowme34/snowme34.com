@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 12/8/2018.*
+*Last update date: 12/24/2018.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -457,6 +457,8 @@ For C/C++:
 I'm not a professional here, see the other collections listed later for more.
 
 * [日本の伝統色 The Traditional Colors of Japan](http://nipponcolors.com/)
+* [Adobe Color CC Explore](https://color.adobe.com/explore/?filter=most-popular&time=month)
+* [uiGradients - Beautiful colored gradients](https://uigradients.com/#Disco)
 
 ### Reference for Mathematics
 
@@ -532,6 +534,11 @@ Online Photoshop (in flash):
 
 * [Pixlr](https://pixlr.com/editor/)
 * [Toolpic](https://www.toolpic.com/)
+
+Prototyping Tools:
+
+* [Figma](https://www.figma.com/)
+* [Moqups](https://moqups.com/)
 
 Others:
 
