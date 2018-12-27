@@ -51,6 +51,7 @@ The organization of this site is as following:
    reference/commands/windows-commands
    reference/commands/docker-commands
    reference/commands/git-commands
+   reference/commands/vim-commands
 
 
 .. toctree::
