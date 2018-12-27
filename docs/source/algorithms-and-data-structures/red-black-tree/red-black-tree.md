@@ -231,7 +231,7 @@ black height in the whole tree.
 If x and r are both red, we are removing a black height in the whole tree.
 This is very complicated.
 
-We have 4 cases baed on the colors of p (parent of x, and parent of r as well)
+We have 4 cases based on the colors of p (parent of x, and parent of r as well)
 and s (sibling of r) and t (red child of s if any).
 
 Since it's less clear than pseudocode, the text description of the algorithm is omitted here,
