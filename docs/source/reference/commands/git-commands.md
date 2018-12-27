@@ -121,7 +121,13 @@ git reset --hard to-remove^ # can use other reference
 ## https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit
 git tag -d to-remove # delete the tag
 
-# ...
+# How do I undo the most recent commits in Git?
+# https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-commits-in-git/34547846
+git reset --soft HEAD~1 # For a local commit
+git rm --cached <file> # don't know which commit it was
+# For a pushed commit
+git filter-branch --index-filter 'git rm --cached <file>' HEAD # use with care
+# see https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html
 ```
 
 ## Miscellaneous

@@ -15,8 +15,8 @@ to share.
 Please refer to the table of contents below and in the sidebar for your topic
 of interest. You can also use the search function in the top left corner.
 
-Also this site supports https, you can add "https://" in front of the URL directly
-if there is none.
+Also this site supports https, open "https://docs.snowme34.com" if you address bar
+shows an http.
 
 .. note:: This is a personal wiki-like place. There is no guarantee about anything.
           Please contact me if you spot any errors or you just want to talk.
@@ -59,6 +59,15 @@ The organization of this site is as following:
    :name: sec-reference-devops
 
    reference/devops/set-up-debian-server-on-digital-ocean
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Unix Reference
+   :name: sec-reference-unix
+
+   reference/unix/mount-and-unmount
+   reference/unix/unix-file-system
 
 
 .. toctree::
