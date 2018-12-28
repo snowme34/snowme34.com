@@ -38,6 +38,8 @@ docker rmi
 docker pull
 
 docker container ls --all -aq
+
+docker stat
 ```
 
 ## Run

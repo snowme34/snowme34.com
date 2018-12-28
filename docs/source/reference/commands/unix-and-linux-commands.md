@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 11/25/2018.*
+*Last Update: 12/27/2018.*
 
 ## Prologue
 
@@ -1141,6 +1141,75 @@ The event reference (!) is mainly used in scripts?
     # test
     sudo sysctl net.ipv4.tcp_available_congestion_control
     sudo sysctl net.ipv4.tcp_congestion_control
+    ```
+
+7. Curl
+
+    * [doc](https://curl.haxx.se/docs/httpscripting.html)
+
+    ```bash
+    curl --help
+    curl --manual
+
+    # GET
+    curl [URL]
+
+    # POST
+    curl -d data=data [URL]
+    curl --data data=data [URL]
+    curl --data-urlencode [data] [URL] # auto encode url for POST
+    curl --form upload=@[file_name] --form press=[some_value] [URL] # RFC1867-posting upload file
+
+    # HEAD
+    curl --head [URL]
+    curl -I [URL]
+
+    # PUT
+    curl --upload-file [some_file] [URL]
+
+    curl --verbose
+    curl -v
+
+    # record everything sends and receives
+    curl --trace [dump_file_name]
+    curl --trace-ascii [dump_file_name]
+    curl --trace-ascii [dump_file_name] --trace-time
+
+    # output
+    curl -o
+    curl -O
+
+    # multiple urls
+    curl [URL1] [URL2] # send same request to multiple urls
+    curl [URL1] --next -I [URL2] # send different requests to multiple urls
+
+    # referer
+    curl --referer [origin_url] [destination_url]
+
+    # user agent
+    curl --user-agent "user agent string" [URL]
+
+    # follow redirection
+    curl --location [URL]
+
+    # Cookie
+    curl -b # abbr for --cookie
+    curl --cookie "data=data" [URL] # send cookie for GET
+    curl --dump-header [cookie-dump-file] [URL] # record the cookies
+    curl --cookie [previous-dumped-cookie] [URL] # user previous stored cookies
+    # preferred way to store cookeis, use non-exist file as --cookie parameter to enable cookie engine only
+    curl --cookie [previous-cookie-file-name] --cookie-jar [new-cookie-file-name] [URL] # use old cookie and store new
+
+    # https
+    curl -k # abbr for --insecure
+    curl --insecure # not verifying server-side certificates
+    curl --cery some-cert-file.pem [https_URL] # use client-side certificate
+    curl --cacert ca-bundle.pem [https_URL] # use CA store to verify server-side certificates
+
+    # specify a ip address for a domain
+    curl --resolve [some_domain]:[some_port]:[some_address] [same_domain]
+
+    curl --proxy [some_proxy] [URL]
     ```
 
 ## Free Cache
