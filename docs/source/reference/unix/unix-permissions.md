@@ -62,7 +62,7 @@ drwxr-xr--
 # r-- : other permission
 ```
 
-## Modify Permission
+## Modify Permissions
 
 `chown`
 
@@ -98,7 +98,7 @@ chmod 775 ./a.out # rwxrwxr-x
 
 Change the permissions
 
-## Default Permission
+## Default Permissions
 
 There is something controlling the default permission for a new file created.
 

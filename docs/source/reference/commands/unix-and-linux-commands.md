@@ -935,6 +935,7 @@ The event reference (!) is mainly used in scripts?
 3. Default permission when creating a new file
 
     * It's negated (reversed)
+    * [details](http://docs.snowme34.com/en/latest/reference/unix/unix-permissions.html#default-permission)
 
     ```bash
     umask
@@ -1719,11 +1720,28 @@ gpg2 --keyserver [URL_to_key_server] --search-keys [sender]
 
 gpg --verify [sigfile] [file]
 
-gpg --full-generate-key # generate new key
+gpg --gen-key # generate new key
+gpg --full-generate-key # generate new key pair ("full featured")
 gpg --gen-revoke [KEYID] # generate revoke
 gpg --send-keys [KEYID] # publish your keys to internet
 
-gpg --list-secret-keys --keyid-format LONG
+gpg --fingerprint
+
+gpg --list-keys
+gpg --list-secret-keys --keyid-format LONG # list private keys
+
+gpg --export
+gpg --export -a "some user name" # -a for armored ascii
+gpg --export -a "some user name" > public.key # -a for armored ascii
+gpg --export-secret-key -a "some user Name" > private.key # export private key
+gpg --import private-or-public.key # import key
+
+gpg --delete-key "some user Name"
+gpg --delete-secret-key "some user Name"
+
+gpg -e -u "some user name, use this sender's key to encypt" -r "other user name, use this receiver's public key to decypt" <some-file>
+gpg -d <some-file.gpg> > <output-file-name>  # redirect to a file
+gpd -o <output-file-name> -d <some-file.gpg> # -o must proceed -d
 ```
 
 Use `gpg` with git
@@ -1738,6 +1756,13 @@ git config --global gpg.program "C:\GnuPG\bin\gpg.exe"
 
 git commit --amend --no-edit -n -S          # sign the last commit, maybe need to force push later
 git rebase --exec 'git commit --amend --no-edit -n -S' -i [tag,hash] # another way to go?
+```
+
+Also config file available
+
+```bash
+~/.gnupg/gpg.conf
+~/.gnupg/gpg-agent.conf
 ```
 
 ## Distrubution Specific
