@@ -39,7 +39,7 @@ docker pull
 
 docker container ls --all -aq
 
-docker stat
+docker stat # show real time stat
 ```
 
 ## Run

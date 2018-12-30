@@ -1167,9 +1167,10 @@ The event reference (!) is mainly used in scripts?
     # PUT
     curl --upload-file [some_file] [URL]
 
+    # Get more details
+    curl -i # include response headers
     curl --verbose
-    curl -v
-
+    curl -v # abbr for verbose
     # record everything sends and receives
     curl --trace [dump_file_name]
     curl --trace-ascii [dump_file_name]
@@ -1706,6 +1707,37 @@ lpr -P [printer] < file1
 lpq -P [printer]
 
 lprm -P [printer] [Jobs-id\username]
+```
+
+## Gpg Signature
+
+`gpg`
+
+```bash
+gpg --import [keyfile]
+gpg2 --keyserver [URL_to_key_server] --search-keys [sender]
+
+gpg --verify [sigfile] [file]
+
+gpg --full-generate-key # generate new key
+gpg --gen-revoke [KEYID] # generate revoke
+gpg --send-keys [KEYID] # publish your keys to internet
+
+gpg --list-secret-keys --keyid-format LONG
+```
+
+Use `gpg` with git
+
+```bash
+git config --global commit.gpgsign true     # turn on gpg sign
+git config --global user.signingkey [KEYID] # assign gpg key
+
+# windows gpg
+git config --global gpg.program "/c/GnuPG/bin/gpg.exe"
+git config --global gpg.program "C:\GnuPG\bin\gpg.exe"
+
+git commit --amend --no-edit -n -S          # sign the last commit, maybe need to force push later
+git rebase --exec 'git commit --amend --no-edit -n -S' -i [tag,hash] # another way to go?
 ```
 
 ## Distrubution Specific

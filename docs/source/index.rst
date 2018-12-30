@@ -69,6 +69,7 @@ The organization of this site is as following:
 
    reference/unix/mount-and-unmount
    reference/unix/unix-file-system
+   reference/unix/unix-permissions
 
 
 .. toctree::
