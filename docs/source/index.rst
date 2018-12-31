@@ -67,9 +67,18 @@ The organization of this site is as following:
    :caption: Unix Reference
    :name: sec-reference-unix
 
-   reference/unix/mount-and-unmount
-   reference/unix/unix-file-system
    reference/unix/unix-permissions
+   reference/unix/unix-file-system
+   reference/unix/mount-and-unmount
+   reference/unix/unix-network-config
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Network Reference
+   :name: sec-reference-network
+
+   reference/network/network-devops-basic
 
 
 .. toctree::
