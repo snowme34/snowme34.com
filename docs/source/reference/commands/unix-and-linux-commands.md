@@ -1,6 +1,11 @@
 # Unix and Linux Commands
 
-*Last Update: 12/27/2018.*
+*Last Update: 12/31/2018.*
+
+This is a detailed collection of general unix commands.
+
+For commands of specific task, see the unix reference section of this website.
+For example, the commands about managing "file systems" are introduced at [Unix File System — Docsnt documentation](https://docs.snowme34.com/en/latest/reference/unix/unix-file-system.html)
 
 ## Prologue
 
@@ -60,14 +65,24 @@ The exit values of commands:
     * order of redirection does not matter
 
     ```bash
-    echo "write this line into file a.txt" > a.txt # a.txt will be cleared and only consist of this line
-    echo "append this line into file a.txt" >> a.txt # the original content of a.txt would not be affected
-    ./a.out < test_input # feed a small c program that reads input from STDIN with test_input
-    ls -lha / | tail -n 10 # list all files in root directory and output only the last 10 lines
-    ./a.out 2>> err_log 1> /dev/null # store the errors and discard the standard output
-    ./a.out > afile 2>&1 # two streams go to the same destination (2 is tied with 1)
-    > count.txt 2> log.txt wc < shakespeare.txt # order does not matter
-    man cat | grep file # only output lines containing "file"
+    # a.txt will be cleared and only consist of this line
+    echo "write this line into file a.txt" > a.txt
+    # the original content of a.txt would not be affected
+    echo "append this line into file a.txt" >> a.txt
+
+    # feed a small c program that reads input from STDIN with test_input
+    ./a.out < test_input
+    # store the errors and discard the standard output
+    ./a.out 2>> err_log 1> /dev/null
+    # two streams go to the same destination (2 is tied with 1)
+    ./a.out > afile 2>&1
+    # order does not matter
+    > count.txt 2> log.txt wc < shakespeare.txt
+
+    # only output lines containing "file"
+    man cat | grep file
+    # list all files in root directory and output only the last 10 lines
+    ls -lha / | tail -n 10
 
     cat << TerminationSign
     > asdfdas
