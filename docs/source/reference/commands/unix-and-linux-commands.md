@@ -1741,7 +1741,7 @@ gpg --delete-secret-key "some user Name"
 
 gpg -e -u "some user name, use this sender's key to encypt" -r "other user name, use this receiver's public key to decypt" <some-file>
 gpg -d <some-file.gpg> > <output-file-name>  # redirect to a file
-gpd -o <output-file-name> -d <some-file.gpg> # -o must proceed -d
+gpg -o <output-file-name> -d <some-file.gpg> # -o must proceed -d
 ```
 
 Use `gpg` with git
