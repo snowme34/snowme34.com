@@ -234,6 +234,18 @@ The exit values of commands:
     [Esc]+.
     ```
 
+12. Pause/Freeze the terminal
+
+    ```bash
+    ^s
+    ```
+
+13. Resume the terminal
+
+    ```bash
+    ^q
+    ```
+
 For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cli/) is an excellent picture.
 
 ## Navigation
