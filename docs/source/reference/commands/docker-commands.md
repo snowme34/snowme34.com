@@ -127,4 +127,5 @@ docker network create -d bridge <some-network>
 
 ```bash
 docker volume inspect <some-volume>
+docker volume rm <some-volume>
 ```
