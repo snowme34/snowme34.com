@@ -68,6 +68,7 @@ The organization of this site is as following:
    :name: sec-reference-unix
 
    reference/unix/unix-permissions
+   reference/unix/unix-user-and-group
    reference/unix/unix-file-system
    reference/unix/mount-and-unmount
    reference/unix/unix-network-config
