@@ -69,6 +69,8 @@ The organization of this site is as following:
 
    reference/unix/unix-permissions
    reference/unix/unix-user-and-group
+   reference/unix/disk-basic
+   reference/unix/disk-unix-disk-management
    reference/unix/unix-file-system
    reference/unix/mount-and-unmount
    reference/unix/unix-network-config
