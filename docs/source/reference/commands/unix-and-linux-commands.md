@@ -708,6 +708,8 @@ The event reference (!) is mainly used in scripts?
     * -i ignore case
     * -n precede line numbers
     * -v lines with no specific patterns
+    * -Ax include x lines after the pattern in output
+    * -Bx include x lines before the pattern in output
     * [What is the difference between `grep`, `egrep`, and `fgrep`?](https://unix.stackexchange.com/questions/17949/what-is-the-difference-between-grep-egrep-and-fgrep)
 
     ```bash
@@ -716,6 +718,15 @@ The event reference (!) is mainly used in scripts?
     ```
 
 2. sort
+
+    * sort based on character or number
+    * use alphabet and numbers by default
+    * -r reverse
+    * -n sort numerically
+    * -f ignore case
+    * -u unique, remove duplicated lines
+    * -t SEP use SEP as delimiter/separator
+    * -k KEYDEF specify the key to use when sorting
 
     ```bash
     ps -aef | sort > out.txt
@@ -736,7 +747,10 @@ The event reference (!) is mainly used in scripts?
 
     ```bash
     wc
-    wc -l
+    wc -l # lines
+    wc -w # words
+    wc -c # bytes
+    wc -m # characters
     ```
 
 5. diff
@@ -755,11 +769,20 @@ The event reference (!) is mainly used in scripts?
 
 6. Cut text
 
+    * Used to process specific columns of the delimited text
+    * -d specify the delimiter, TAB by default
+    * -f specify the number of column to output
+    * -c cut based on characters
+
     ```bash
     cut
     cut -b [bytes] # select only specified bytes
     cut -c 1-2, 3, 6 # characters
     cut -d ' ' # use ' ' as delimiter
+
+    cut -d: -f1 /etc/passwd
+    grep some-user /etc/passwd | cut -d: -f2,3,4
+    cut -c2-6 /etc/passwd # output from 2nd character to 6th character
     ```
 
 7. Paste
@@ -770,6 +793,35 @@ The event reference (!) is mainly used in scripts?
     ```bash
     paste
     paste -d ' ' file1 file2 file3 > output
+    ```
+
+8. Check spelling
+
+    ```bash
+    aspell
+    aspell check <some-file>
+    aspell list < <some-file>
+    ```
+
+9. Translate
+
+    * needs redirection
+
+    ```bash
+    tr -d 'some-words' < <some-file> # delete some-words from some-file
+    tr 'a-z' 'A-Z' < <some-file> # change case
+    ```
+
+10. Search and replace
+
+    * regular expression
+    * write to stdout
+
+    ```bash
+    sed 's/aaa/bbb/g' <some-file> # replace 'aaa' with 'bbb', 'g' for global
+    sed '1,50s/aaa/bbb/g' <some-file> # specify the lines
+    sed -e 's/aaaa/bbb/g' -e 's/ccc/ddd/g' <some-file>
+    sed -f <some-script> <some-file> # use a file as script
     ```
 
 ## Date and Time
