@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 12/24/2018.*
+*Last update date: 1/2/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -761,6 +761,8 @@ Searching Engines in Japanese:
 * [1.1.1.1 Purge Cache](https://cloudflare-dns.com/purge-cache/)
 
 * [nginxconfig.io](https://nginxconfig.io/)
+
+* [Dig web interface](https://www.digwebinterface.com/)
 
 ### Miscellaneous Tools
 
