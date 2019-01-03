@@ -238,7 +238,7 @@ fieldset {
  */
 
 legend {
-  box-sizing: border-box; /* 1 */
+  box-sizing: content-box; /* 1 */
   color: inherit; /* 2 */
   display: table; /* 1 */
   max-width: 100%; /* 1 */
@@ -269,7 +269,7 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box; /* 1 */
+  box-sizing: content-box; /* 1 */
   padding: 0; /* 2 */
 }
 

@@ -27,15 +27,15 @@ body {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 *::after {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 *::before {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 .header {

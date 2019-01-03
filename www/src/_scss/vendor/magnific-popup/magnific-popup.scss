@@ -65,7 +65,7 @@
   left: 0;
   top: 0;
   padding: 0 $mfp-popup-padding-left;
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 // Vertical centerer helper
@@ -397,7 +397,7 @@ button {
       height: auto;
       display: block;
       line-height: 0;
-      box-sizing: border-box;
+      box-sizing: content-box;
       padding: $mfp-image-padding-top 0 $mfp-image-padding-bottom;
       margin: 0 auto;
     }
@@ -494,7 +494,7 @@ button {
           top: auto;
           padding: 3px 5px;
           position: fixed;
-          box-sizing: border-box;
+          box-sizing: content-box;
           &:empty {
             padding: 0;
           }
