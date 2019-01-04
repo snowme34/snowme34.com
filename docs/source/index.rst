@@ -32,7 +32,7 @@ Featured
 Some featured pages:
 
 * to learn about the Linux commands, read the
-  `Unix and Linux Commands <reference/commands/unix-and-linux-commands.html>`_
+  `Unix and Linux Commands <reference/commands/linux-and-linux-commands.html>`_
 * to see how easy setting up `iptables` and `neftables` for Debian is, read the
   `Debian Firewall nftables and iptables
   <reference/devops/debian-firewall-nftables-and-iptables.html>`_
@@ -68,7 +68,7 @@ The organization of this site is as following:
    :caption: Command Reference
    :name: sec-reference-command
 
-   reference/commands/unix-and-linux-commands
+   reference/commands/linux-and-linux-commands
    reference/commands/windows-commands
    reference/commands/docker-commands
    reference/commands/git-commands
@@ -86,17 +86,18 @@ The organization of this site is as following:
 
 .. toctree::
    :maxdepth: 1
-   :caption: Unix Reference
-   :name: sec-reference-unix
+   :caption: Linux Reference
+   :name: sec-reference-linux
 
-   reference/unix/unix-permissions
-   reference/unix/unix-user-and-group
-   reference/unix/disk-basics
-   reference/unix/unix-disk-management
-   reference/unix/unix-file-system
-   reference/unix/mount-and-unmount
-   reference/unix/unix-network-config
-   reference/unix/introduction-to-logs-and-rsyslog
+   reference/linux/linux-permissions
+   reference/linux/linux-user-and-group
+   reference/linux/disk-basics
+   reference/linux/linux-disk-management
+   reference/linux/linux-file-system
+   reference/linux/mount-and-unmount
+   reference/linux/linux-network-config
+   reference/linux/introduction-to-logs-and-rsyslog
+   reference/linux/linux-service
 
 
 .. toctree::
