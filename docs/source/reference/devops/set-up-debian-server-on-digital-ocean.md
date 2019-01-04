@@ -143,9 +143,9 @@ hostnamectl set-hostname <some-name>
 
 ### Configure Firewall (iptables/nftables)
 
-Using other front-ends are also acceptable
+Using other front-ends are also acceptable (but not recommended)
 
-<!-- See my other [page]() for more details. -->
+See my other [page](https://docs.snowme34.com/en/latest/reference/devops/debian-firewall-nftables-and-iptables.html) for more details on firewall config (including more explanation about each command).
 
 * The following rules will **NOT** apply to everyone and every situation, they are just my naive preference
 * [Debian encourages](https://wiki.debian.org/nftables) people to use **nftables**
@@ -155,55 +155,57 @@ Using other front-ends are also acceptable
 The order matters, don't block yourself out of your server.
 
 ```bash
-# start adding rules
 sudo iptables -A INPUT -i lo -j ACCEPT
 sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport <ssh-port> -m conntrack --ctstate NEW -j ACCEPT
-sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT # simply accept the ping request
+# change to your ssh-port
+sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+# simply accept the ping request
+sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
 # Timestamp request
 sudo iptables -A INPUT -p icmp -m conntrack --ctstate NEW --icmp-type 13 -j ACCEPT
+# http, https
 sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 sudo iptables -A INPUT -p udp -m multiport --destination-ports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-# drop
+# drop INPUT
 sudo iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 sudo iptables -P INPUT DROP
+# limit for forward
 sudo iptables -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "[iptables] FORWARD_denied: " --log-level 7
 ## customization
-sudo iptables -A INPUT -p tcp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A INPUT -p udp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+#sudo iptables -A INPUT -p tcp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+#sudo iptables -A INPUT -p udp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 # drop FORWARD
 sudo iptables -P FORWARD DROP
 ```
 
-**Note:** `docker` needs "FORWARD" to run properly, I changed the rules for nftables but not here.
-
-#### ip6tabls
+#### ip6tables
 
 ```bash
 sudo ip6tables -A INPUT -i lo -j ACCEPT
 sudo ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo ip6tables -A INPUT -p tcp --dport <ssh-port> -m conntrack --ctstate NEW -j ACCEPT
+# change to your ssh port
+sudo ip6tables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
 sudo ip6tables -A INPUT -p ipv6-icmp --icmpv6-type 128 -j ACCEPT
 
 sudo ip6tables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 sudo ip6tables -A INPUT -p udp -m multiport --destination-ports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+
 sudo ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
 sudo ip6tables -P INPUT DROP
 sudo ip6tables -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "[ip6tables] FORWARD_denied: " --log-level 7
-## add some customization
 sudo ip6tables -P FORWARD DROP
 ```
 
-#### Post-Config for iptabls and ip6tables
+#### Post-Config for iptables and ip6tables
 
-List rules
+List rules and check:
 
 ```bash
 sudo iptables -L -nv
 sudo ip6tables -L -nv
 ```
 
-Save the rules to prevent rebooting from flushing them:
+Make the rules persistent:
 
 ```bash
 sudo apt install iptables-persistent # if not installed yet
@@ -222,8 +224,9 @@ Reference for iptables:
 
 #### nftables
 
+List current ruleset:
+
 ```bash
-# list ruleset
 nft list ruleset
 ```
 
@@ -235,42 +238,45 @@ Edit the conf file (located at /etc/nftables.conf):
 flush ruleset
 
 table inet filter {
-        chain input {
-                type filter hook input priority 0; policy drop;
+    chain input {
+        type filter hook input priority 0; policy drop;
 
-                iifname lo accept
+        iifname lo accept
 
-                tcp dport <ssh-port> ct state new accept
-                ct state established,related accept
+        tcp dport 22 ct state new accept # change to your ssh port
+        ct state established,related accept
 
-                # no ping floods:
-                ip protocol icmp icmp type echo-request limit rate over 10/second burst 4 packets drop
-                ip6 nexthdr icmpv6 icmpv6 type echo-request limit rate over 10/second burst 4 packets drop
+        # no ping floods:
+        ip protocol icmp icmp type echo-request limit rate over 10/second burst 4 packets drop
+        ip6 nexthdr icmpv6 icmpv6 type echo-request limit rate over 10/second burst 4 packets drop
 
-                # ICMP & IGMP
-                ip6 nexthdr icmpv6 icmpv6 type { echo-request, destination-unreachable, packet-too-big, time-exceeded, parameter-problem, mld-listener-query, mld-listener-report, mld-listener-reduction, nd-router-solicit, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert, nd-neighbor-solicit, nd-neighbor-advert, mld-listener-report } accept
-                ip protocol icmp icmp type { echo-request, destination-unreachable, router-solicitation, router-advertisement, time-exceeded, parameter-problem } accept
-                ip protocol igmp accept
+        # ICMP & IGMP
+        ip6 nexthdr icmpv6 icmpv6 type { echo-request, destination-unreachable, packet-too-big, time-exceeded, parameter-problem, mld-listener-query, mld-listener-report, mld-listener-reduction, nd-router-solicit, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert, nd-neighbor-solicit, nd-neighbor-advert, mld-listener-report } accept
+        ip protocol icmp icmp type { echo-request, destination-unreachable, router-solicitation, router-advertisement, time-exceeded, parameter-problem } accept
+        ip protocol igmp accept
 
-                # avoid brute force on ssh:
-                tcp dport <ssh-port> ct state new limit rate 15/minute accept
+        # avoid brute force on ssh:
+        tcp dport 22 ct state new limit rate 15/minute accept # change to your ssh port
 
-                tcp dport { http, https} ct state established,new accept
-                udp dport { http, https} ct state established,new accept
+        tcp dport { http, https} ct state established,new accept
+        udp dport { http, https} ct state established,new accept
 
-                ct state invalid drop
-        }
-        chain forward {
-                type filter hook forward priority 0; policy drop;
-                tcp dport { http, https } ct state { established,new } accept
-                udp dport { http, https } ct state { established,new } accept
-                # for dockers
-                iifname eth0 oifname docker0 ct state { established,new,related } accept
-                oifname eth0 ct state { established,new,related } accept
-        }
-        chain output {
-                type filter hook output priority 0; policy accept;
-        }
+        ct state invalid drop
+
+        # uncomment to enable log
+        #log prefix "[nftables] Input Denied: " flags all counter drop
+    }
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+        tcp dport { http, https } ct state { established,new } accept
+        udp dport { http, https } ct state { established,new } accept
+
+        # uncomment to enable log
+        #log prefix "[nftables] Forward Denied: " flags all counter drop
+    }
+    chain output {
+        type filter hook output priority 0; policy accept;
+    }
 }
 ```
 
@@ -290,7 +296,7 @@ sudo systemctl start nftables
 sudo systemctl status nftables
 ```
 
-Hope Debian buster will make the it easier to use.
+Hope Debian buster will make the nftable easier to use (currently a lot of software still does not support it natively).
 
 Reference for nftables:
 
