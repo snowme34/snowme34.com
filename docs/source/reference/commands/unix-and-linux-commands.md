@@ -2,10 +2,10 @@
 
 *Last Update: 12/31/2018.*
 
-This is a detailed collection of general unix commands.
+This is a detailed collection of general *nix commands.
 
-For commands of specific task, see the unix reference section of this website.
-For example, the commands about managing "file systems" are introduced at [Unix File System — Docsnt documentation](https://docs.snowme34.com/en/latest/reference/unix/unix-file-system.html)
+For commands of specific task, see the linux reference section of this website.
+For example, the commands about managing "file systems" are introduced at [Linux File System — Docsnt documentation](https://docs.snowme34.com/en/latest/reference/linux/linux-file-system.html)
 
 ## Prologue
 
@@ -1014,7 +1014,7 @@ The event reference (!) is mainly used in scripts?
 3. Default permission when creating a new file
 
     * It's negated (reversed)
-    * [details](http://docs.snowme34.com/en/latest/reference/unix/unix-permissions.html#default-permissions)
+    * [details](http://docs.snowme34.com/en/latest/reference/linux/linux-permissions.html#default-permissions)
 
     ```bash
     umask

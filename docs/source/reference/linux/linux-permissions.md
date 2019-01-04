@@ -1,4 +1,4 @@
-# Unix Permissions
+# Linux Permissions
 
 ## Basic
 

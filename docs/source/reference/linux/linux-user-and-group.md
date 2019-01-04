@@ -1,4 +1,4 @@
-# Unix User and Group
+# Linux User and Group
 
 ## Basic
 

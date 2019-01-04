@@ -1,4 +1,4 @@
-# Unix Disk Management
+# Linux Disk Management
 
 Partitions
 

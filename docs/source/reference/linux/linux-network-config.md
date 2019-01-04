@@ -1,4 +1,4 @@
-# Unix Network Config
+# Linux Network Config
 
 ## Ethernet
 

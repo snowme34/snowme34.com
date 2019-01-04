@@ -444,7 +444,7 @@ For C/C++:
 
 * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 
-* [Online Unix Manpages](https://man.cx/)
+* [Online Linux Manpages](https://man.cx/)
 
   * By the way, do you know you can type `man ascii` instead of searching for little ascii table pictures online?
 
