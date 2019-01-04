@@ -32,15 +32,15 @@ Featured
 Some featured pages:
 
 * to learn about the Linux commands, read the
-  `Unix and Linux Commands <reference/commands/unix-and-linux-commands>`_
+  `Unix and Linux Commands <reference/commands/unix-and-linux-commands.html>`_
 * to see how easy setting up `iptables` and `neftables` for Debian is, read the
   `Debian Firewall nftables and iptables
-  <reference/devops/debian-firewall-nftables-and-iptables>`_
+  <reference/devops/debian-firewall-nftables-and-iptables.html>`_
 * to see a huge collection of interesting website, read the
-  `Cuddly Links Collection <links/cuddly_links_collection>`_
+  `Cuddly Links Collection <links/cuddly_links_collection.html>`_
 * to learn about red black trees, read the
   `Red Black Tree
-  <algorithms-and-data-structures/red-black-tree/red-black-tree>`_
+  <algorithms-and-data-structures/red-black-tree/red-black-tree.html>`_
 
 Contents
 ^^^^^^^^
