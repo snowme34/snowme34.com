@@ -96,6 +96,7 @@ The organization of this site is as following:
    reference/unix/unix-file-system
    reference/unix/mount-and-unmount
    reference/unix/unix-network-config
+   reference/unix/introduction-to-logs-and-rsyslog
 
 
 .. toctree::
