@@ -1014,7 +1014,7 @@ The event reference (!) is mainly used in scripts?
 3. Default permission when creating a new file
 
     * It's negated (reversed)
-    * [details](http://docs.snowme34.com/en/latest/reference/unix/unix-permissions.html#default-permission)
+    * [details](http://docs.snowme34.com/en/latest/reference/unix/unix-permissions.html#default-permissions)
 
     ```bash
     umask
