@@ -2,6 +2,10 @@
 
 The source code of snowme34.com.
 
+snomwe34 is not a professional front-end developer.
+
+The highlights are the articles, the intention to find a long-term thing to do, and the way to organize websites.
+
 ## Home
 
 A simple static home page.
