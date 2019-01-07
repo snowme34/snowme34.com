@@ -32,7 +32,7 @@ Featured
 Some featured pages:
 
 * to learn about the Linux commands, read the
-  `Unix and Linux Commands <reference/commands/linux-and-linux-commands.html>`_
+  `Unix and Linux Commands <reference/commands/unix-and-linux-commands.html>`_
 * to see how easy setting up `iptables` and `neftables` for Debian is, read the
   `Debian Firewall nftables and iptables
   <reference/devops/debian-firewall-nftables-and-iptables.html>`_
