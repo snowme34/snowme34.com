@@ -1,72 +1,124 @@
 ---
 title: About
-description: About me
+description: About
 layout: about
 comments: false
 sidebar: custom
 ---
 
-Undergraduate student of computer science.
+# About Site
 
-* Experiences
-  * National Olympiad in Informatics in Provinces 2017 Second Price
-  * Vice-minister of Publicity Department 2016-2017
-  * Joined many other hackthons and programing competitions
-* Skills
-  * CS
-    * Languages
-      * C/C++
-      * Java
-      * python
-      * bash
-      * ARM Assembly
-    * Linux
-  * Graphic Design
-    * Photoshop
-  * Movie Editing
-    * Adobe Premier
-  * Human Languages
-    * Chinese
-    * English
-    * Japanese (passed N4 test)
-* Interests
-  * Sports
-    * Free-climbing
-    * Swimming
-  * Music
-    * Erhu (Chinese traditional music instrument)
-  * Photography
+> Life's but a walking shadow, a poor player that struts and frets his hour upon the stage,
+> and then is heard no more. This is a [**site**] told by an idiot, full of sound and fury,
+> signifying nothing. ― William Shakespeare, Macbeth
 
-* 经历
-  * 2017年 奥林匹克省级信息竞赛 2等奖
-  * 2016-2017年 校学生会宣传部副部长
-* 技能
-  * CS
-    * 语言
-      * C/C++
-      * Java
-      * python
-      * bash
-      * ARM 汇编语言
-    * Linux
-  * 平面设计
-    * Photoshop
-  * 视频剪辑
-    * Adobe Premier
-  * 人类语言
-    * 汉语
-    * 英语
-    * 日语 (通过 N4)
-* 兴趣
-  * 体育
-    * 攀岩
-    * 游泳
-  * 音乐
-    * 二胡
-  * 摄影
+# About Me
 
-注：本站不同语言部分并不都是翻译，有可能包含不同的内容。
+Student.
 
-Notice: The parts written in different languages are not necessarily translations. They may contain different contents.
+## Experiences
 
-Social links are not available currently. This page needs further editing.
+In **reverse** chronological order.
+
+* open source projects
+* hackthons
+* college education about theories
+* coding competitions
+* build snowme34.com (3rd domains and 8th servers)
+* C++ primer
+* Machine Learning and Python on Coursera
+* vice-minister of a department in student union
+
+## Skills
+
+See side bar for levels of top ones.
+
+Number of stars represents my confidence level and is adjusted based on
+my understanding about illusory superiority and Dunning–Kruger effect.
+
+Excluding things like `git` or `soldering` (too basic).
+
+### Technical
+
+* Bash
+* C
+* C++
+* Data Mining
+* DevOps
+* Digital circuit design
+* Java
+* JavaScript
+* Linux
+* Load Test
+* MATLAB
+* Python
+* Verilog
+* Web-hosting
+
+### Theoretical
+
+* Data Structure
+* Algorithms
+* Calculus
+* Probability Theory
+* Computer Organization
+* Systems Programming
+* Analog Design
+
+### Design
+
+* UI/UX Design
+* Graphic Design (Photoshop)
+* Movie Editing (Adobe Premier)
+
+### Leadership
+
+* Team Management
+* Project Design
+
+### Languages
+
+* Mandarin
+* English
+* Japanese
+
+## Technologies Interacted with
+
+Outstanding ones only
+
+* Python Scikit-learn library
+* Python Keras library
+* Firebase
+* Docker
+* Nginx
+* MySQL/MariaDB
+* Oracle Database
+* MongoDB
+* JMeter
+* ReactJS
+* React Redux
+* Material-UI
+* Spring Cloud Framework
+* Swagger
+* MyBatis
+* Maven
+* Vue.js
+* Webpack
+* SASS
+
+## Interests
+
+Algorithms, Containers, Database, Data Structures
+
+### Sports
+
+* Free-climbing
+* Swimming
+
+### Music
+
+* [Erhu](https://en.wikipedia.org/wiki/Erhu)
+
+### Art
+
+* Photography
