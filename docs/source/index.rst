@@ -102,6 +102,14 @@ The organization of this site is as following:
 
 .. toctree::
    :maxdepth: 1
+   :caption: Database Reference
+   :name: sec-reference-database
+
+   reference/database/redis-quick-reference
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Network Reference
    :name: sec-reference-network
 
