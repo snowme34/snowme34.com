@@ -383,8 +383,24 @@ zscan
 * [Persistence - Redis](https://redis.io/topics/persistence)
 * [Commands - Redis](https://redis.io/commands)
 * [Data Types - Redis](https://redis.io/topics/data-types)
-* [Best Practices - Redis](https://redislabs.com/community/redis-best-practices/)
+* [What Redis Data Structures Look Like - Redis Lab](https://redislabs.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/)
+* [Best Practices - Redis Lab](https://redislabs.com/community/redis-best-practices/)
+* [Think in Redis Part One](https://matt.sh/thinking-in-redis-part-one)
 
 Python Redis
 
 * [redis-py’s documentation](https://redis-py.readthedocs.io/en/latest/index.html)
+* [Python Redis - Redis Lab](https://redislabs.com/lp/python-redis/)
+
+## Few Words about Python Redis
+
+Redis by default will encode using utf-8 but will not automatically decode for you.
+
+One solution:
+
+```python
+r = redis.Redis(
+        host='localhost',
+        decode_responses=True,
+    )
+```
