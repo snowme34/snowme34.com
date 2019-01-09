@@ -8,3 +8,6 @@
 # and leads to excessive memory usage on build
 # Disable epub and pdf for now to speed up builds
 formats: []
+
+# pip requirements for RTD
+requirements_file: docs/requirements.txt

@@ -68,7 +68,7 @@ The organization of this site is as following:
    :caption: Command Reference
    :name: sec-reference-command
 
-   reference/commands/linux-and-linux-commands
+   reference/commands/unix-and-linux-commands
    reference/commands/windows-commands
    reference/commands/docker-commands
    reference/commands/git-commands
