@@ -764,6 +764,8 @@ Searching Engines in Japanese:
 
 * [Dig web interface](https://www.digwebinterface.com/)
 
+* [Domain Status](https://domain-status.com/)
+
 ### Miscellaneous Tools
 
 * [Archive](https://archive.org/web/)

@@ -114,6 +114,7 @@ The organization of this site is as following:
    :name: sec-reference-network
 
    reference/network/network-devops-basic
+   reference/network/domain-name-and-dns
 
 
 .. toctree::
