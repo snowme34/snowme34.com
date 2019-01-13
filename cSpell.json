@@ -17,9 +17,7 @@
     "**/node_modules/**",
     ".gitignore",
     "cSpell.json",
-    "package.json",
-    "**/blog/source/_posts/re-rebuild-note.md",
-    "**/docs/source/links/cuddly_links_collection.md"
+    "package.json"
   ],
   "dictionaryDefinitions": [
       {

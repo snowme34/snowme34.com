@@ -68,7 +68,7 @@ docker ps -l
 docker start
 docker stop
 docker rm
-docker container rm $(docker container ls -a -q) # reomve all conatiners
+docker container rm $(docker container ls -a -q) # remove all containers
 ```
 
 ## Hub

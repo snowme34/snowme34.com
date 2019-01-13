@@ -21,7 +21,7 @@ Student.
 In **reverse** chronological order.
 
 * open source projects
-* hackthons
+* Hackathons
 * college education about theories
 * coding competitions
 * build snowme34.com (3rd domains and 8th servers)

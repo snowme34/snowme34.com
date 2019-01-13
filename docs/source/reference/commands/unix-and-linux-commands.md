@@ -435,9 +435,9 @@ Pay heed to the difference between `du` and `df`
     find . -name "a*" -exec ls -l {} \;
 
     # search all files in current directory for pattern
-    # and print the pathes of those files
+    # and print the paths of those files
     find . -type f -print0 | xargs -0 grep "pattern"
-    # only files, no pathes
+    # only files, no paths
     find . -type f -print0 | xargs -0 grep -l "pattern"
     ```
 
@@ -1278,7 +1278,7 @@ The event reference (!) is mainly used in scripts?
     curl --cookie "data=data" [URL] # send cookie for GET
     curl --dump-header [cookie-dump-file] [URL] # record the cookies
     curl --cookie [previous-dumped-cookie] [URL] # user previous stored cookies
-    # preferred way to store cookeis, use non-exist file as --cookie parameter to enable cookie engine only
+    # preferred way to store cookies, use non-exist file as --cookie parameter to enable cookie engine only
     curl --cookie [previous-cookie-file-name] --cookie-jar [new-cookie-file-name] [URL] # use old cookie and store new
 
     # https
@@ -1818,7 +1818,7 @@ gpg --import private-or-public.key # import key
 gpg --delete-key "some user Name"
 gpg --delete-secret-key "some user Name"
 
-gpg -e -u "some user name, use this sender's key to encypt" -r "other user name, use this receiver's public key to decypt" <some-file>
+gpg -e -u "some user name, use this sender's key to encrypt" -r "other user name, use this receiver's public key to decypt" <some-file>
 gpg -d <some-file.gpg> > <output-file-name>  # redirect to a file
 gpg -o <output-file-name> -d <some-file.gpg> # -o must proceed -d
 ```
@@ -1844,7 +1844,7 @@ Also config file available
 ~/.gnupg/gpg-agent.conf
 ```
 
-## Distrubution Specific
+## Distribution Specific
 
 ### Debian
 

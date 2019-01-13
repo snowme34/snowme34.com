@@ -130,7 +130,7 @@ Paths in descending priority (config in `etc` overwrites others):
   * if not true, unit will be (mostly silently) skipped but not failure
   * read the man page (again) for each option
 * Asserts...=
-  * similiar to Conditions...= but failure
+  * similar to Conditions...= but failure
 
 For `enable`, read about the [Install] section.
 

@@ -1,8 +1,10 @@
 # snowme34.com
 
+[![Build Status](https://travis-ci.org/snowme34/snowme34.com.svg?branch=master)](https://travis-ci.org/snowme34/snowme34.com)
+
 The source code of snowme34.com.
 
-snomwe34 is not a professional front-end developer.
+snowme34 is not a professional front-end developer.
 
 The highlights are the articles, the intention to find a long-term thing to do, and the way to organize websites.
 
@@ -31,3 +33,9 @@ A personal reference hosted on readthedoc.
 A MediaWiki page, hosted on Digital Ocean.
 
 [wikisnt](https://wiki.snowme34.com/index.php/Main_Page)
+
+## Contact
+
+A simple and stupid contact page. HTML and CSS only.
+
+[Contact](https://contact.snowme34.com)

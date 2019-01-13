@@ -47,7 +47,7 @@ Cons: at the cost of performance
 mkfs.ext3 /dev/sda3
 ```
 
--b [bocksize] 
+-b [blocksize]
 
 * specify the size of block
 

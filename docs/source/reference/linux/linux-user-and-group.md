@@ -190,7 +190,7 @@ groupmod -g <newgid> <oldgid>
 groupdel <groupname>
 
 # change current group
-sg <groupname> 'somd command'
+sg <groupname> 'some command'
 ## OR
 newgrp <groupname>
 'some commend'
