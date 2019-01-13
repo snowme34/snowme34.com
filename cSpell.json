@@ -13,7 +13,11 @@
   "flagWords": [
       "hte"
   ],
-  "ignorePaths": ["node_modules/**", "/blog/source/_posts/re-rebuild-note.md"],
+  "ignorePaths": [
+    "node_modules/**",
+    "blog/source/_posts/re-rebuild-note.md",
+    "docs/source/links/cuddly_links_collection.md"
+  ],
   "dictionaryDefinitions": [
       {
           "name": "bash",
