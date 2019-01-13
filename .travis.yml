@@ -1,4 +1,6 @@
 language: minimal 
+node_js:
+  - "node"
 install:
   - rm -rf ./node_modules
   - npm install cspell
