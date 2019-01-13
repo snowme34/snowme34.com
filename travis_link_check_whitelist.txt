@@ -2,3 +2,4 @@ travis-ci
 xlinux.nist.gov
 example.com
 localhost
+https://www.unicode.org/charts/PDF/
