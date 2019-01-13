@@ -1,0 +1,33 @@
+{
+  "version": "0.1",
+  "language": "en",
+  "words": [
+      "readthedoc",
+      "Docsnt",
+      "wikisnt",
+      "Erhu",
+      "snowme",
+      "snowme34"
+  ],
+  "flagWords": [
+      "hte"
+  ],
+  "ignorePaths": ["node_modules/**", "/blog/source/_posts/re-rebuild-note.md"],
+  "dictionaryDefinitions": [
+      {
+          "name": "bash",
+          "path": "./cspell_dict_bash.txt"
+      }
+  ],
+  "dictionaries": [
+      "bash", 
+      "en_US", "companies", "softwareTerms", "misc",
+      "go", "python", "powershell", "html", "css", "cpp",
+      "filetypes", "npm"],
+  "languageSettings": [
+      {
+          "languageId": "*",
+          "dictionaries": []
+      }
+  ]
+}
