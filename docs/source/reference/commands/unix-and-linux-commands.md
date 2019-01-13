@@ -1894,8 +1894,8 @@ Also config file available
   * [How to download all files (but not HTML) from a website using wget?](https://stackoverflow.com/questions/8755229/how-to-download-all-files-but-not-html-from-a-website-using-wget)
 
   ```bash
-  wget -A pdf,jpg -m -p -E -k -K -np http://site/path/
-  wget --accept pdf,jpg --mirror --page-requisites --adjust-extension --convert-links --backup-converted --no-parent http://site/path/
+  wget -A pdf,jpg -m -p -E -k -K -np <some-url>
+  wget --accept pdf,jpg --mirror --page-requisites --adjust-extension --convert-links --backup-converted --no-parent <some-url>
   ```
 
 * Calculator

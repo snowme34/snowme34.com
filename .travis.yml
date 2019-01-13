@@ -1,5 +1,3 @@
 language: minimal 
-# services:
-#   - docker
 script:
-  - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
+  - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results --white-list $(paste -d, -s /mnt/travis_link_check_whitelist.txt) `find . -regex ".*\.\(md\|rst\)$"`
