@@ -6,6 +6,7 @@
       "Docsnt",
       "wikisnt",
       "Erhu",
+      "submodule",
       "snowme",
       "snowme34"
   ],
@@ -17,10 +18,14 @@
       {
           "name": "bash",
           "path": "./cspell_dict_bash.txt"
+      },
+      {
+          "name": "snow",
+          "path": "./cspell_dict_snow.txt"
       }
   ],
   "dictionaries": [
-      "bash", 
+      "bash", "snow",
       "en_US", "companies", "softwareTerms", "misc",
       "go", "python", "powershell", "html", "css", "cpp",
       "filetypes", "npm"],

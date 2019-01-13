@@ -141,7 +141,7 @@ mail.*                                        -/var/log/mailog
 
 From the man page:
 
-> By default, files are not synced after earch write.
+> By default, files are not synced after each write.
 > To enable syncing of log files globally, use either the "$ActionFileEnableSync" directive
 > or the "sync" parameter to omfile. Enabling this option degrades performance and
 > it is advised not to enable syncing unless you know what you are doing.

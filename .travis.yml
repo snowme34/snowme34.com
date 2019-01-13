@@ -1,9 +1,9 @@
 dist: trusty
-language: node_js
-node_js:
-  - "node"
+language: minimal
 install:
   - rm -rf ./node_modules
+  - nvm install node
+  - npm --version
   - npm install cspell
   - ./node_modules/.bin/cspell --version
   # - npm install markdownlint-cli
