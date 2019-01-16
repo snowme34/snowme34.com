@@ -199,7 +199,7 @@ Change my.cnf of slave db, add a `server-id`. note that this must be unique and 
 If multiple servers are present, no duplication is allowed.
 
 ```conf
-[myqld]
+[mysqld]
 server-id = 2
 ```
 
@@ -230,7 +230,7 @@ start slave
 Check if it is running properly:
 
 ```sql
-show processslist;                   -- run on slave
+show processlist;                   -- run on slave
 use test; # on master
 create table repl_test (id cnd);
 insert into repl_test values(1),(2);
