@@ -106,6 +106,7 @@ The organization of this site is as following:
    :name: sec-reference-database
 
    reference/database/redis-quick-reference
+   reference/database/mysql/mysql-misc
 
 
 .. toctree::
