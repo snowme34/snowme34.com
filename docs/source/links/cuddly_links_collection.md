@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 1/2/2019.*
+*Last update date: 1/16/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
