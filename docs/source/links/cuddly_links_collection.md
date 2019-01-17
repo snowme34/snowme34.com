@@ -52,6 +52,7 @@ Note: still in progress.
     - [Miscellaneous Informative Resources](#miscellaneous-informative-resources)
   - [Reference and Documentations](#reference-and-documentations)
     - [Documentations for Computer Science](#documentations-for-computer-science)
+      - [CSD - Unix](#csd---unix)
       - [CSD - Collections](#csd---collections)
       - [CSD - Web](#csd---web)
     - [Reference for Biology](#reference-for-biology)
@@ -355,6 +356,10 @@ Some competitions:
 ### Documentations for Computer Science
 
 Use CSD for abbreviation.
+
+#### CSD - Unix
+
+* [The Linux Kernel documentation](https://www.kernel.org/doc/html/latest/index.html)
 
 #### CSD - Collections
 
@@ -972,8 +977,6 @@ For programmers and developers and data scientists and so forth.
 * [The Open Source Data Science Masters](http://datasciencemasters.org/)
 
   * Collection (?) for Data Science
-
-* [Foray of haseebr into the world of competitive programming](https://github.com/haseebr/competitive-programming)
 
 * [Awesome Checklist Checklist](http://checklist.yingjiehu.com/)
 
