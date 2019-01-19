@@ -6,7 +6,7 @@ To setup a basic master DNS server.
 
 The most popular DNS server software.
 
-Berkeley Internet Name Domain, originally developed in Berkeley and
+Berkeley Internet Name Domain (bind), originally developed in Berkeley and
 not maintained by ISC, Internet Systems Consortium.
 
 Its main component is called `named`.
@@ -15,6 +15,7 @@ Its main component is called `named`.
 
 ```bash
 sudo apt-get install bind9 bind9-doc
+
 # yum install -y bind bind-chroot bind-utils # for centos with chroot
 ```
 
@@ -36,7 +37,9 @@ Bind is usually not installed by default.
 
 ### Chroot
 
-Not recommended for modern environments (with `SELinux`).
+Not recommended for modern environments (where `SELinux` is properly enabled).
+
+You may skip this section if you are not planning to use `chroot`.
 
 Nowadays people use `bind9`. But for `bind8` and even old days,
 there were severe security bugs. So it was common for people to create
@@ -50,15 +53,17 @@ On Debian, `bind9` can be directly configured to use `chroot`.
 
 [Debian wiki - Bind9 (Bind Chroot)](https://wiki.debian.org/Bind9#Bind_Chroot)
 
-If additional program, `bind-chroot`, is what you need. install it and
-create "fake" directories for "chroot". The common way:
+If you still decide to use `chroot`, there is an additional program, `bind-chroot`,
+that may come to be handy.
+
+To prepare for `chroot` jail, create "fake" directories for "chroot". The common way:
 
 ```bash
 /var/named/chroot/etc/named.conf
 /var/named/chroot/var/named
 ```
 
-Also it may be required to "fake" complete directory structure in `chroot`
+Also it may be required to "fake" all other necessary directory structure in `chroot`
 directories.
 
 ## Config Bind
@@ -155,12 +160,14 @@ options {
 };
 ```
 
+Minimum version:
+
 ```bash
 options
 {
-    directory (/var/named)               # directory for bind to work in
-    listen-on port 53    {127.0.0.1}     # listen to loopback address
-    listen-on-v6 port 53    {::1:}
+        directory (/var/named)               # directory for bind to work in
+        listen-on port 53    {127.0.0.1}     # listen to loopback address
+        listen-on-v6 port 53    {::1:}
 }
 ```
 
@@ -169,8 +176,8 @@ options
 ```bash
 // add our own zone config here
 zone “xxx.net” {
-    type master;                  // master server
-    file "/etc/bind/db.com.zone"; // name can be anything
+        type master;                  // master server
+        file "/etc/bind/db.com.zone"; // name can be anything
 };
 ```
 
@@ -180,11 +187,37 @@ To configure a master server for a domain
 
 1. Add zone definition in `named.conf.local` as shown above
 
-2. create zone file in `/etc/bind/zones/` or `/var/named/chroot/var/named`
+2. Create zone file in `/etc/bind/zones/` or `/var/named/chroot/var/named`
 
-    It is common to copy the existing zone file as template.
+    * It is common to copy the existing zone file as template:
+    * `cp named.localhost xxx.net.zone`
 
-    `cp named.localhost xxx.net.zone`
+3. Edit zone files
+
+    Zone file, simply speaking, is just TTL (time to live) and
+    the resource record of this domain. Read
+    [another page](http://docs.snowme34.com/en/latest/reference/network/domain-name-and-dns.html)
+    on this site to learn more.
+
+4. Restart `named` service or reload config
+5. Check if work properly
+
+Sample way to check:
+
+Change `/etc/resolv.conf`:
+
+```bash
+nameserver 127.0.0.1
+```
+
+Then
+
+```bash
+host some.domain
+dig -t MX some.domain
+```
+
+Actually you can specify DNS server for those commands directly.
 
 ## Troubleshoot
 
@@ -194,10 +227,11 @@ bind provides 2 grammar checking tools
 named-checkconf # check conf files
 named-checkzone # check zone files
 
+named-checkconf /etc/named.conf                  # main conf
 named-checkconf /var/named/chroot/etc/named.conf # main conf
-named-checkzone linuxcase.net linuxcast.net.zone # domain zone-file
+named-checkzone some.domain some.domain.zone     # domain zone-file
 ```
 
 It's usually either grammar errors or permission errors.
 
-Make sure all zone files have reading permission open.
+Make sure all zone files have reading permission on.
