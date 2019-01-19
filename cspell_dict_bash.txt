@@ -462,3 +462,8 @@ Binlog's
 semisync
 soname
 createtime
+
+centos
+rndc
+checkconf
+checkzone
