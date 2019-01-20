@@ -149,3 +149,42 @@ Network Processes to Application
 > defines user interface responsible for displaying received information to the user
 
 [Wikipedia](https://en.wikipedia.org/wiki/Application_layer)
+
+## Data Encapsulation
+
+applications generate data
+
+Data begin with 7th layer, the application layer.
+They will be transmitted from top to bottom.
+Each layer will include a HDR (header) to the data.
+Each layer stores its information in HDR.
+
+The process of "data going throughout 7 layers from top to lowermost one"
+in which each layer concatenates its header (or footer or both)
+is called data encapsulation.
+
+![osi-data-encapsulation](https://i.imgur.com/7vJObbO.png)
+
+Upon receiving, data will be "de-encapsulated".
+
+Each layer will check the information it is responsible for.
+
+From lowermost level to topmost layer.
+
+At the end only the original data will be transmitted to application.
+
+## TCP/IP Stack
+
+Now everyone uses TCP/IP. It is an implementation of OSI model.
+
+It has 4 layers.
+
+![TCP/IP-OSI](https://i.imgur.com/P1UaRNu.png)
+
+The most "important" ones are 3rd and 4th layer.
+
+## Summary
+
+For networking, it usually refers to the 4 low layers.
+
+For software engineering, people care the top 3 layers more.
