@@ -1,5 +1,10 @@
 dist: trusty
 language: minimal
+branches:
+  except:
+  - master
+  - legacy
+  - experimental
 install:
   - rm -rf ./node_modules
   - nvm install node
