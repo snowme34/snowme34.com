@@ -2,6 +2,12 @@
 
 To setup a basic master DNS server.
 
+This passage may contain some outdated information.
+
+Always read the latest official document first.
+
+Debian, for example, [Bind9 - Debian Wiki](https://wiki.debian.org/Bind9).
+
 ## BIND
 
 The most popular DNS server software.
