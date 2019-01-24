@@ -6,3 +6,4 @@ localhost
 https://www.unicode.org/charts/PDF/
 waifu2x.udp.jp
 www.gnu.org
+https://huaji8.top/
