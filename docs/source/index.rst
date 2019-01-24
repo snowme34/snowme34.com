@@ -65,6 +65,14 @@ The organization of this site is as following:
 
 .. toctree::
    :maxdepth: 1
+   :caption: Programming Language Reference
+   :name: sec-reference-programming-language
+
+   reference/programming-language/golang/go-tour
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Command Reference
    :name: sec-reference-command
 
