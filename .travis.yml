@@ -2,7 +2,6 @@ dist: trusty
 language: minimal
 branches:
   except:
-  - master
   - legacy
   - experimental
 install:
