@@ -495,3 +495,5 @@ sprintf
 strconv
 RGBA
 rect
+pbqr
+penpxrq
