@@ -65,6 +65,9 @@ Quoted from "A Tour of Go"
 > The example shows variables of several types, and also that variable declarations may be "factored" into blocks, as with import statements.
 > The int, uint, and uintptr types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems. When you need an integer value you should use int unless you have a specific reason to use a sized or unsigned integer type.
 
+Note that in Go it is safe to return a pointer to local variable.
+See [Effective Go Composite Literals](https://golang.org/doc/effective_go.html#composite_literals).
+
 ## Flow Control
 
 Go can run statement before `if` or `for`
@@ -208,11 +211,11 @@ slices of slices
 
 ```go
 // Create a tic-tac-toe board.
-   board := [][]string{
-       []string{"_", "_", "_"},
-       []string{"_", "_", "_"},
-       []string{"_", "_", "_"},
-   }
+board := [][]string{
+    []string{"_", "_", "_"},
+    []string{"_", "_", "_"},
+    []string{"_", "_", "_"},
+}
 ```
 
 join strings
@@ -649,8 +652,167 @@ func (e ErrNegativeSqrt) Error() string {
 }
 
 func main() {
-    fmt.Println(ErrNegativeSqrt(-2).Error())
+  fmt.Println(ErrNegativeSqrt(-2).Error())
 	fmt.Println(Sqrt(2))
 	fmt.Println(Sqrt(-2))
+}
+```
+
+## Readers
+
+An interface `io.Reader`.
+
+[Implementations of Reader Interface - Go](https://golang.org/search?q=Read#Global)
+
+```go
+func (T) Read(b []byte) (n int, err error)
+```
+
+> Read populates the given byte slice with data and returns the number of bytes populated and an error value. 
+> It returns an io.EOF error when the stream ends.
+
+```go
+r := strings.NewReader("Hello, Reader!")
+b := make([]byte, 8)
+for {
+	n, err := r.Read(b)
+	fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
+	fmt.Printf("b[:n] = %q\n", b[:n])
+	if err == io.EOF {
+		break
+	}
+}
+```
+
+```go
+package main
+
+import "golang.org/x/tour/reader"
+
+type MyReader struct{}
+
+// TODO: Add a Read([]byte) (int, error) method to MyReader.
+func (m MyReader) Read(b []byte) (int, error) {
+	for i := range b {
+		b[i] = 'A'
+	}
+ 	return len(b), nil
+}
+
+func main() {
+	reader.Validate(MyReader{})
+}
+```
+
+```go
+package main
+
+import (
+	"io"
+	"os"
+	"strings"
+	"fmt"
+)
+
+const ROT13_SHIFT byte = 13
+
+type rot13Reader struct {
+	r io.Reader
+}
+
+func (a rot13Reader) Error() string {
+	return fmt.Sprintf("Failed to parse input")
+}
+
+func (a rot13Reader) Read(b []byte) (int, error) {
+	_,err := a.r.Read(b)
+	if err != nil {
+		return 0, err
+	}
+	fmt.Printf("size: %v\n", len(b)) // 32768
+	for i,v := range b {
+		switch {
+			case byte('a') <= byte(v) && byte(v) <= byte('z'): // lower case
+				if (byte(v) + ROT13_SHIFT) > byte('z') {
+					b[i] -= ROT13_SHIFT
+				} else {
+					b[i] += ROT13_SHIFT
+				}
+			case byte('A') <= byte(v) && byte(v) <= byte('Z'): // upper case
+				if (byte(v) + ROT13_SHIFT) > byte('Z') {
+					b[i] -= ROT13_SHIFT
+				} else {
+					b[i] += ROT13_SHIFT
+				}
+		}
+	}
+	return len(b), nil
+}
+
+func main() {
+	s := strings.NewReader("Lbh penpxrq gur pbqr!")
+	r := rot13Reader{s}
+	io.Copy(os.Stdout, &r)
+}
+```
+
+## Images
+
+Image interface is defined in `image` package [documentation](https://golang.org/pkg/image/#Image).
+
+[documentation for color](https://golang.org/pkg/image/color/)
+
+```go
+package image
+
+type Image interface {
+    ColorModel() color.Model
+    Bounds() Rectangle
+    At(x, y int) color.Color
+}
+```
+
+```go
+m := image.NewRGBA(image.Rect(0, 0, 100, 100))
+fmt.Println(m.Bounds())
+fmt.Println(m.At(0, 0).RGBA())
+```
+
+```go
+package main
+
+import (
+	"image"
+	"image/color"
+	"golang.org/x/tour/pic"
+)
+
+type Image struct{
+	Width int
+	Height int
+	Color int
+}
+
+const WIDTH int = 256
+const HEIGHT int = 256
+const COLOR int = 128
+
+func (img Image) Bounds() image.Rectangle {
+	return image.Rect(0,0,img.Width,img.Height)
+}
+
+func (img Image) ColorModel() color.Model {
+	return color.RGBAModel
+}
+
+func (img Image) At(x,y int) color.Color {
+	//v := uint8(x^y)
+	//return color.RGBA{v,v,255,255}
+	return color.RGBA{uint8(x+img.Color),uint8(y+img.Color),255,255}
+}
+
+func main() {
+	m := Image{WIDTH, HEIGHT, COLOR}
+	pic.ShowImage(m)
 }
 ```
