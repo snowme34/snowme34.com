@@ -427,6 +427,8 @@ For C/C++:
 
 * [Pro Git](https://git-scm.com/book/en/v2)
 
+* [Understanding .git/config's 'remote' and 'branch' sections](https://stackoverflow.com/questions/43317872/understanding-git-configs-remote-and-branch-sections)
+
 * [Debugging with GDB](https://www.sourceware.org/gdb/onlinedocs/gdb.html)
 
 * [GNU Make](https://www.gnu.org/software/make/make.html)
