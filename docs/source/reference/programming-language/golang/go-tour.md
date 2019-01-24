@@ -3,6 +3,8 @@
 Heavily based on [A Tour of Go](https://tour.golang.org/)
 with some codes of mine for the practice problems.
 
+[Effective Go](https://golang.org/doc/effective_go.html)
+
 ## Packages
 
 Basic
@@ -193,6 +195,8 @@ s == nil // true
 
 Create dynamically-sized arrays using `make`
 
+> The make function takes a type, a length, and an optional capacity. When called, make allocates an array and returns a slice that refers to that array.
+
 ```go
 b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 
@@ -222,8 +226,8 @@ array and slice
 > A slice cannot be grown beyond its capacity. Attempting to do so will cause a runtime panic, just as when indexing outside the bounds of a slice or array. Similarly, slices cannot be re-sliced below zero to access earlier elements in the array.
 
 ```go
-b := [...]string{"Penn", "Teller"} // array
-letters := []string{"a", "b", "c", "d"} // slice
+b := [...]string{"Penn", "Teller"} // array (have the compiler count the array elements)
+letters := []string{"a", "b", "c", "d"} // slice (leave out the element count)
 
 b := []byte{'g', 'o', 'l', 'a', 'n', 'g'}
 // b[1:4] == []byte{'o', 'l', 'a'}, sharing the same storage as b
@@ -457,3 +461,196 @@ regard `p.go(5)` as `(*p).go(5)` where p is a pointer.
 Pointer receivers are recommended since it can modify and Go will not make a copy.
 
 Mixture of 2 is discouraged.
+
+## Interfaces
+
+`a set of method signatures`
+
+A value of interface can be anything as long as those methods are implemented.
+
+Note the indirection will not count, i.e. only a pointer receiver method will not
+suffice for the value to have those methods.
+
+```go
+type Itf interface {
+	M() float64
+}
+
+func main() {
+	var a Itf
+
+	f := FF(math.Sqrt2)
+	v := MyStruct{1, 0}
+
+	a = f  // a FF implements M()
+	a = &v // a *MyStruct implements M()
+
+	// v is a MyStruct (not *MyStruct) without M()
+	a = v // will give error
+
+	fmt.Println(a.M())
+}
+
+type FF float64
+
+func (f FF) M() float64 {
+	return float64(f)
+}
+
+type MyStruct struct {
+	X, Y float64
+}
+
+func (ms *MyStruct) M() float64 {
+  return ms.X
+}
+```
+
+Interfaces are implemented implicitly
+
+No explicit declaration or arrangement is necessary (can appear everywhere).
+
+> interface values can be thought of as a tuple of a value and a concrete type
+
+If the value is `nil`, method will be called with a nil receiver.
+
+> In some languages this would trigger a null pointer exception, but in Go it is common to write methods that gracefully handle being called with a nil receiver
+
+```go
+func (t *T) M() {
+	if t == nil {
+		fmt.Println("<nil>")
+		return
+	}
+	fmt.Println(t.S)
+}
+```
+
+> an interface value that holds a nil concrete value is itself non-nil.
+
+Cannot call methods of `nil` interface values since no *concrete* method specified.
+
+### Empty Interface
+
+Specifies zero methods.
+
+```go
+interface{}
+```
+
+Holds values of any type.
+
+> Empty interfaces are used by code that handles values of unknown type. For example, fmt.Print takes any number of arguments of type interface{}.
+
+```go
+func main() {
+  var emp interface{}
+
+  fmt.Printf("(%v, %T)\n", emp, emp)
+
+  emp = 39
+
+  fmt.Printf("(%v, %T)\n", emp, emp)
+
+  emp = "39"
+
+  fmt.Printf("(%v, %T)\n", emp, emp)
+}
+```
+
+## Type Assertions
+
+Assets if interface value `i` has `T` and assign to t if success.
+
+```go
+t := i.(T)     // Trigger a Panic if not T
+t, ok := i.(T) // return (zero value, false) if not T
+```
+
+Type switches
+
+```go
+func check(i interface{}) {
+  switch v := i.(type) {
+  case T:
+    // here v has type T
+  case S:
+    // here v has type S
+  default:
+    // no match; here v has the same type as i
+  }
+}
+```
+
+## Stringers
+
+Defined by `fmt` package.
+
+```go
+type Stringer interface {
+    String() string
+}
+
+func (a Apple) String() string {
+	return fmt.Sprintf("%v (%v years)", p.Size, p.Age)
+}
+```
+
+Like "toString" of Java. Any type with this method implemented will be used to print
+by packages like `fmt`.
+
+## Errors
+
+Similar to `Stringer`, another interface for errors:
+
+```go
+type error interface {
+    Error() string
+}
+```
+
+```go
+i, err := strconv.Atoi("42")
+if err != nil {
+    fmt.Printf("couldn't convert number: %v\n", err)
+    return
+}
+fmt.Println("Converted integer:", i)
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func Newton(a, b float64) float64 {
+  return (a*a - b)/(2*a)
+}
+
+func Sqrt(x float64) (float64, error) {
+  if(x < 0) {
+  	return x, ErrNegativeSqrt(x)
+  }
+  const delta = 1e-12
+  z := 1.0
+  for a := Newton(z,x); math.Abs(z*z - x) > delta; a = Newton(z,x){
+      z -= a
+  }
+  return z, nil
+}
+
+type ErrNegativeSqrt float64
+
+func (e ErrNegativeSqrt) Error() string {
+	return fmt.Sprintf("negative number cannot calc square root: %v", float64(e)) // A call to fmt.Sprint(e) inside the Error method will send the program into an infinite loop.
+}
+
+func main() {
+    fmt.Println(ErrNegativeSqrt(-2).Error())
+	fmt.Println(Sqrt(2))
+	fmt.Println(Sqrt(-2))
+}
+```

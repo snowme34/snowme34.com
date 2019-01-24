@@ -490,3 +490,5 @@ uintptr
 rune
 println
 printf
+itf
+sprintf
