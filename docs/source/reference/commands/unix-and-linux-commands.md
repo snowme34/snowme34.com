@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 12/31/2018.*
+*Last Update: 1/25/2019.*
 
 This is a detailed collection of general *nix commands.
 
@@ -308,12 +308,17 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
 
     * -h human-reading friendly
     * -s sum
+    * -a all files not just directories
+    * -dN max-depth=N
 
     ```bash
     du
     du -sh
     du -s *
     du -hs .[^.]*
+    du -sch .[!.]* * | sort -h
+    du -hd1 | sort -h
+    du -ahd1 | sort -h
     ```
 
 4. Copy
