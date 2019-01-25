@@ -170,6 +170,10 @@ JavaScript:
 
 * [A re-introduction to JavaScript (JS tutorial)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 
+Go:
+
+* [Go wiki](https://github.com/golang/go/wiki)
+
 #### CS - General Online Schools
 
 * [freeCodeCamp](https://www.freecodecamp.org/)
@@ -354,6 +358,8 @@ Some competitions:
 ## Reference and Documentations
 
 ### Documentations for Computer Science
+
+Not trying to be "professional" here to avoid unnecessary duplications.
 
 Use CSD for abbreviation.
 
