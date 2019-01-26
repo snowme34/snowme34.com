@@ -174,6 +174,12 @@ sudo apt install iptables-persistent # if not installed yet
 6. [How To Choose an Effective Firewall Policy to Secure your Servers | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-choose-an-effective-firewall-policy-to-secure-your-servers)
 7. [Basic iptables template for ordinary servers (both IPv4 and IPv6)](https://gist.github.com/jirutka/3742890)
 
+### Few Words about iptables
+
+If you have a large number of IPs to manage, try `ipset` ([ipset - ArchWiki](https://wiki.archlinux.org/index.php/Ipset))
+
+If you still prefer some well-known websites, [here]( https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands#service-ssh) is one.
+
 ## `nftables`
 
 Read the man page if you have time:

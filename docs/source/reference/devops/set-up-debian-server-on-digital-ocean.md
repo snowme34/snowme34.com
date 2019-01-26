@@ -122,6 +122,16 @@ sudo systemctl restart sshd
 If ever locked out, try the VNC connection (Console Access) on Digital Ocean's website,
 the "Access" dashboard for the droplets.
 
+If you want something fancy, you can choose to:
+
+* specify users who can ssh login
+* use [Google Authenticator](https://wiki.archlinux.org/index.php/Google_Authenticator) (ArchWiki)!
+* port knocking
+  * send a ICMP packet first then allow the source ip to ssh
+  * send a tcp packet first to a specific port then open that port as ssh port
+  * etc.
+* port multiplexing
+
 ### Add apt source list (optional)
 
 The following commands are only examples.
