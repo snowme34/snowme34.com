@@ -3,7 +3,7 @@
 A popular open source DBMS.
 
 * bought by Oracle
-* has open-source fork MariaDB
+* has an open-source fork, MariaDB
 
 ## Common Packages
 
