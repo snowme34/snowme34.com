@@ -132,6 +132,8 @@ If you want something fancy, you can choose to:
   * etc.
 * port multiplexing
 
+The Authenticator one is recommended.
+
 ### Add apt source list (optional)
 
 The following commands are only examples.
