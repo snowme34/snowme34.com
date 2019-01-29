@@ -114,6 +114,7 @@ The organization of this site is as following:
    :caption: Database Reference
    :name: sec-reference-database
 
+   reference/database/sql
    reference/database/redis-quick-reference
    reference/database/mysql/mysql-misc
 

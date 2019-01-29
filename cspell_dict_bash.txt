@@ -502,3 +502,4 @@ Goroutines
 mysqladmin
 devel
 mariadb
+SAVEPOINT
