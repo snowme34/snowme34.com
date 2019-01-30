@@ -503,3 +503,6 @@ mysqladmin
 devel
 mariadb
 SAVEPOINT
+smallint
+tinyint
+varchar
