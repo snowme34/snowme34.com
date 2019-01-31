@@ -175,3 +175,57 @@ ALTER TABLE aaa MODIFY ccc some_new_type;
 
 ALTER TABLE aaa CHANGE COLUMN ccc some_new_name some_new_type;
 ```
+
+## Table Data
+
+Insert a record
+
+* either provide all columns
+* or specify columns to insert
+  * might have some concern with `Null`
+
+```sql
+INSERT INTO table_name VALUES (val_0, val_1, ...);
+INSERT INTO table_name (col_a, col_b) VALUES (val_a, val_b);
+```
+
+Lookup records
+
+```sql
+SELECT col_1, col2, ... FROM table_name;
+SELECT * FROM table_name;
+SELECT * FROM table_name\G
+
+SELECT col FROM table_name WHERE col operator val;
+SELECT * FROM course WHERE course_level = 1;
+SELECT * FROM course WHERE course_name = 'SQL';
+```
+
+Common `WHERE` operators
+
+| operator | meaning                  |
+| -------- | ------------------------ |
+| =        | equal                    |
+| <>       | not equal                |
+| >        | larger than              |
+| <        | smaller than             |
+| >=       | larger than or equal to  |
+| <=       | smaller than or equal to |
+| BETWEEN  | between a range          |
+| LIKE     | pattern matching         |
+
+[MySQL :: MySQL 8.0 Reference Manual :: 12.3 Operators](https://dev.mysql.com/doc/refman/8.0/en/non-typed-operators.html)
+
+Delete records
+
+```sql
+DELETE FROM table_name WHERE col operator val;
+DELETE * FROM table_name;
+```
+
+Update records
+
+```sql
+UPDATE table_name SET col_to_change = new_value WHERE col_identify = val;
+UPDATE course SET lecture = 'Math' WHERE id = 1;
+```

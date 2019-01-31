@@ -462,6 +462,7 @@ Binlog's
 semisync
 soname
 createtime
+ipset
 
 centos
 rndc
