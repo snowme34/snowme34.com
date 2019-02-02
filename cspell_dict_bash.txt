@@ -500,6 +500,7 @@ pbqr
 penpxrq
 Goroutines
 
+mysqld
 mysqladmin
 devel
 mariadb
@@ -507,3 +508,4 @@ SAVEPOINT
 smallint
 tinyint
 varchar
+mysqldump

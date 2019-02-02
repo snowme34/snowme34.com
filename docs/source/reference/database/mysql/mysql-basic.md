@@ -112,3 +112,95 @@ DROP DATABASE some_database;
 ```
 
 [About renaming database](https://stackoverflow.com/questions/67093/how-do-i-quickly-rename-a-mysql-database-change-schema-name)
+
+## Simple Backup
+
+```bash
+mysqldump -u root -p some-database-name > some-backup-file-name.sql
+mysql -u root -p some-database-name < some-backup-file-name.sql
+```
+
+## Character Set and Collation
+
+A database uses specific encoding for the data.
+
+Usually use different encoding for different languages
+
+Why different?
+
+* Storage size
+* Communication between database and client
+
+It should be
+
+* The data are stored using the minimum space
+* Same char set should be used otherwise the data will be garbled text
+
+### MySQL
+
+Default:
+
+```markdown
+char set: latin1
+collation: latin1_swedish_ci
+```
+
+Char set and collation should be changed in the same time.
+
+List supported char set
+
+```sql
+SHOW CHARACTER SET;
+```
+
+The most commonly used one is UTF-8.
+
+List environment variables
+
+```sql
+SHOW VARIABLES;
+```
+
+List current config
+
+```sql
+SHOW VARIABLES LIKE 'character_set%';
+SHOW VARIABLES LIKE 'collation%';
+```
+
+Specify when creating databases
+
+```sql
+CREATE DATABASE db DEFAULT CHARACTER_SET utf8 DEFAULT COLLATE utf8_general_ci;
+```
+
+Change existing ones
+
+* Note the existing records might not be encoded correctly
+* They must be dropped and recreated
+
+```sql
+ALTER DATABASE db CHARACTER SET utf8 COLLATE utf8_general_ci;
+```
+
+### Default Character Set and Collation Config
+
+The file is located at `/etc/my.cnf`.
+
+```conf
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
+[mysqld]
+default-character-set=utf8
+collation-server=uft8_unicode_ci
+init-connect='SET NAMES utf8'
+character-set-server=utf8
+```
+
+Reload mysql after changing
+
+[MySQL :: MySQL 8.0 Reference Manual :: 4.2.7 Using Option Files](https://dev.mysql.com/doc/refman/8.0/en/option-files.html)
