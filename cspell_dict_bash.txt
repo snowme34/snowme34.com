@@ -307,6 +307,7 @@ cvzf
 rwxrwxr
 drwxr
 Ext'd
+pidof
 
 BASHPID
 nsswitch

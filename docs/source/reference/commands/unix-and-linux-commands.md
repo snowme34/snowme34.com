@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 1/25/2019.*
+*Last Update: 2/7/2019.*
 
 This is a detailed collection of general *nix commands.
 
@@ -1082,6 +1082,9 @@ The event reference (!) is mainly used in scripts?
     ps axuf
     ps aux | grep -v grep | grep -i -e VSZ -e
     ps -e -o pid,vsz,comm= | sort -n -k 2
+
+    ps -C bash -o pid= # show pid of bash
+    pidof bash         # show pid of bash
     ```
 
 7. Monitor processes
@@ -1535,6 +1538,106 @@ The event reference (!) is mainly used in scripts?
     echo "$2"
     shift
     echo "$1" # same thing
+
+    # read command line arguments
+    while [[ $# > 0 ]];do
+        key="$1"
+        case $key in
+            -n|--name)
+            NAME="${2}"
+            shift # we read 2 args
+            ;;
+            -h|--help)
+            HELP="1"
+            ;;
+            -f|--force)
+            FORCE="1"
+            ;;
+            *)
+            # unknown
+            echo "Invalid arg detected, aborting..."
+            exit -1
+            ;;
+        esac
+        shift
+    done
+    ```
+
+8. Exec
+
+    * 2 main usages
+    * redirect stdin and stdout
+    * replease current process with new process
+    * [Using exec](https://www.tldp.org/LDP/abs/html/x17974.html)
+    * [I/O Redirection](https://www.tldp.org/LDP/abs/html/io-redirection.html)
+
+    ```bash
+    # stdin
+    exec 6<&0          # Link file descriptor #6 with stdin. Saves stdin.
+    exec < input-file  # stdin replaced by file "input-file"
+    read var           # read first line in input-file to var
+    exec 0<&6 6<&-     # restore stdin from file descriptor #6 and free #6
+    exec <&6 6<&-      # restore stdin from file descriptor #6 and free #6
+
+    # stdout
+    exec 7>&1           # Link file descriptor #6 with stdout. Saves stdout.
+    exec > output-file  # stdout replaced by file "output-file".
+    echo "Editing file"
+    exec 1>&7 7>&-      # Restore stdout and close file descriptor #7.
+
+    # no extra process
+    exec bash -l
+    ps                  # new bash will have same process ID as current shell
+
+    bash -l             # create a new bash shell
+    ps                  # will have (at least) 2 shell processes
+
+    # subshell problem (inaccessible variables within a subshell)
+    num=0
+    cat input | read num  # first line of input is a non-zero number
+    echo $num             # num is still 0
+
+    # exec for subshell problem
+    num=0
+    exec 3<> input        # set file descriptor #3 to input, create if not exist
+    read num <&3
+    echo $num             # num is the number in input file
+    ```
+
+9. eval
+
+    * combine strings into a single command and execute
+    * useful if args are only known at run-time
+
+    ```bash
+    help eval # read the usage help for your own shell
+    eval echo -e $USER
+    ```
+
+## Schedule
+
+1. Chronos
+
+    ```bash
+    crontab -e
+    (crontab -l 2>/dev/null; echo "*/5 * * * * <some-job>") | crontab -
+    ```
+
+2. Chronons Job
+
+   * Edit current crontab after `crontab -e`
+   * [CronHowto - Community Help Wiki](https://help.ubuntu.com/community/CronHowto)
+   * [Cron format](http://www.nncron.ru/help/EN/working/cron-format.htm)
+     * "In extended mode, crontab notation may be abridged by omitting the rightmost asterisks."
+
+    ```bash
+    Minute Hour DayOfMonth MonthOfYear DayOfWeek Year Command
+
+    * * * * * *          each minute
+    59 23 */2 * *        each 2 day at 23:59
+    @reboot              reboot
+
+    0 0-11 * Mon-Fri *   each hour before 12 on weekdays
     ```
 
 ## Run in a Shell
@@ -1658,6 +1761,17 @@ See [What is the exact difference between a 'terminal', a 'shell', a 'tty' and a
 
     ```bash
     yes
+    ```
+
+3. Wait
+
+    * wait for a job to complete
+
+    ```bash
+    sleep 8&
+    # get pid of specific process
+    wait `ps -C sleep -o pid=`
+    wait `pidof sleep`
     ```
 
 ## Message
