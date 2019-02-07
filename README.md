@@ -1,6 +1,6 @@
 # snowme34.com
 
-[![Build Status](https://travis-ci.org/snowme34/snowme34.com.svg?branch=master)](https://travis-ci.org/snowme34/snowme34.com)
+Spelling and broken links check: [![Build Status](https://travis-ci.org/snowme34/snowme34.com.svg?branch=master)](https://travis-ci.org/snowme34/snowme34.com)
 
 The source code of snowme34.com.
 
