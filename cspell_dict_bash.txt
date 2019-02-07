@@ -308,6 +308,7 @@ rwxrwxr
 drwxr
 Ext'd
 pidof
+Chronos
 
 BASHPID
 nsswitch

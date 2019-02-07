@@ -1567,7 +1567,7 @@ The event reference (!) is mainly used in scripts?
 
     * 2 main usages
     * redirect stdin and stdout
-    * replease current process with new process
+    * replace current process with new process
     * [Using exec](https://www.tldp.org/LDP/abs/html/x17974.html)
     * [I/O Redirection](https://www.tldp.org/LDP/abs/html/io-redirection.html)
 
