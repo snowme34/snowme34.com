@@ -128,6 +128,22 @@ git rm --cached <file> # don't know which commit it was
 # For a pushed commit
 git filter-branch --index-filter 'git rm --cached <file>' HEAD # use with care
 # see https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html
+
+# check which files changed
+git diff --name-status branch_a..branch_b
+# check diff of a file in different branches 
+# https://stackoverflow.com/questions/4099742/how-to-compare-files-from-two-different-branches
+git diff branch_a branch_b -- some.file
+git diff branch_a..branch_b -- some.file
+```
+
+* [Git workflow and rebase vs merge questions](https://stackoverflow.com/questions/457927/git-workflow-and-rebase-vs-merge-questions)
+* [When do you use git rebase instead of git merge?](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge)
+* [What does cherry-picking a commit with Git mean?](https://stackoverflow.com/questions/9339429/what-does-cherry-picking-a-commit-with-git-mean)
+* [Git Cherry-pick vs Merge Workflow](https://stackoverflow.com/questions/1241720/git-cherry-pick-vs-merge-workflow)
+
+```bash
+git cherry-pick [commit_hash]
 ```
 
 ## Miscellaneous
