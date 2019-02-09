@@ -623,6 +623,8 @@ Others:
 
   * reStructuredText preview
 
+* [LeetCode Playground](https://leetcode.com/playground/)
+
 ### Tools for Research
 
 * [Scimago Journal & Country Rank](https://www.scimagojr.com/journalrank.php)
