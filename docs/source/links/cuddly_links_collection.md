@@ -804,7 +804,7 @@ Searching Engines in Japanese:
 ### Fun Stuff for Developers
 
 * [Debugging](http://umich.edu/~eecs381/generalFAQ/Debugging.html)
-* [2018 Developer Skills Report - HackerRank](https://research.hackerrank.com/developer-skills/2018/?utm_medium=email&utm_source=drip)
+* [2018 Developer Skills Report - HackerRank](https://research.hackerrank.com/developer-skills/2018/)
 
 ### Gaming
 
