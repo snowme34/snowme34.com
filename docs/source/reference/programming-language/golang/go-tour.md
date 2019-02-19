@@ -78,6 +78,14 @@ if v := math.Pow(x, n); v < lim {
 }
 ```
 
+`for` is go's `while`
+
+```go
+for i < 1 {
+	i++
+}
+```
+
 Snowme34's implementation of Newton algorithm:
 
 ```go
@@ -135,6 +143,14 @@ fmt.Println("done")
 
 ## More Types
 
+No pointer arithmetic
+
+```go
+var p *int // zero is nil
+p = &a
+*p = 1
+```
+
 ```go
    v := Vertex{1, 2}
    p := &v
@@ -187,6 +203,11 @@ printSlice(s)
 //output:
 // len=4 cap=6 [2 3 5 7]
 // len=2 cap=4 [5 7]
+
+// slice can grow up from its end
+// but cannot grow back from its head, i.e. cannot get the "dropped" first values back
+s = s[s:cap(s)] // grow to its capacity
+s = s[-1:] // illegal
 ```
 
 > The zero value of a slice is nil.
@@ -814,5 +835,495 @@ func (img Image) At(x,y int) color.Color {
 func main() {
 	m := Image{WIDTH, HEIGHT, COLOR}
 	pic.ShowImage(m)
+}
+```
+
+## Goroutines
+
+A lightweight thread managed by Go runtime.
+
+```go
+func main() {
+	go say("world")
+	say("hello")
+}
+```
+
+The argument is evaluated in the current goroutine.
+
+The address space is shared. Shared memory access should be synced.
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func speak() {
+	for i := 0; i < 5; i++ {
+    //time.Sleep(100 * time.Millisecond)
+    // if not comment, will not fully output since the main thread will quit before the print statement ?
+		fmt.Println("Speaking: %v",i)
+	}
+}
+
+func say(s string) {
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
+	}
+	go speak()
+}
+
+func main() {
+	go say("world")
+	say("hello")
+}
+```
+
+## Channels
+
+A way goroutines use to send and receive values.
+
+```go
+ch := make(chan int) // make channel ch before use
+
+ch <- v    // Send v to ch
+v := <-ch  // Assign value received from ch to v
+// as the arrow points
+```
+
+> By default, sends and receives block until the other side is ready.
+> This allows goroutines to synchronize without explicit locks or condition variables.
+
+```go
+  s := []int{7, 2, 8, -9, 4, 0}
+
+	c := make(chan int)
+	go sum(s[len(s)/2:], c)
+	go sum(s[:len(s)/2], c)
+	x, y := <-c, <-c
+
+	go squareSum(s[len(s)/2:], c)
+	go squareSum(s[:len(s)/2], c)
+  a,b := <-c, <-c
+  
+  fmt.Println(x, y, x+y)
+	fmt.Println(a, b, a+b)
+```
+
+```go
+	go sum(s[len(s)/2:], c)
+	go sum(s[:len(s)/2], c)
+	go squareSum(s[len(s)/2:], c)
+  go squareSum(s[:len(s)/2], c)
+  // will mess up
+	x, y := <-c, <-c
+  a,b := <-c, <-c
+  
+  fmt.Println(x, y, x+y)
+	fmt.Println(a, b, a+b)
+```
+
+Channels can be buffered
+
+> Sends to a buffered channel block only when the buffer is full.
+> Receives block when the buffer is empty.
+
+```go
+func main() {
+	ch := make(chan int, 2)
+	ch <- 1
+	ch <- 2
+	//ch <- 3 // uncomment to overfill buffer
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+}
+
+// not overfilling
+
+func main() {
+	ch := make(chan int, 2)
+	ch <- 1
+	fmt.Println(<-ch)
+
+	ch <- 2
+	ch <- 3
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+}
+```
+
+## Range and Close
+
+To indicate ending of sending, senders can `close` a channel. Receivers can test it if closed
+but should never close it on themselves.
+
+```go
+v, ok := <-ch // ok is false if no more values and channel is closed
+for i := range ch // receive until closed
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func fibonacci(n int, c chan int) {
+	x, y := 0, 1
+	for i := 0; i < n; i++ {
+		c <- x
+		x, y = y, x+y
+	}
+	close(c)
+}
+
+func bgSend(n int, c chan int) {
+	for i:=0; i < n; i++ {
+		time.Sleep(10*time.Millisecond)
+		c <- i
+	}
+	close(c)
+}
+
+func main() {
+  c := make(chan int,10)
+  // calling them together might lead to send to closed channel
+  // which is a panic
+	go bgSend(cap(c)*20, c)
+	//go fibonacci(cap(c), c)
+	for i := range c {
+		fmt.Println(i)
+	}
+	fmt.Println("Done")
+}
+```
+
+> Channels aren't like files; you don't usually need to close them.
+> Closing is only necessary when the receiver must be told there are
+> no more values coming, such as to terminate a range loop.
+
+## Select
+
+Let a goroutine be able to wait for multiple communications (including "default").
+
+```go
+select {
+	case i := <-c:
+			// use i
+	case <-myTimer:
+			// this channel is open, for now
+	default:
+			// receiving from c would block
+}
+```
+
+> A select blocks until one of its cases can run, then it executes that case.
+> It chooses one at random if multiple are ready.
+
+```go
+package main
+
+import "fmt"
+
+func count(c, quit chan int) {
+	x := 0
+	for {
+		select {
+		case c <- x:
+			x++
+		case <-quit:
+			fmt.Println("quit")
+			return
+		}
+	}
+}
+
+func main() {
+	c := make(chan int)
+	quit := make(chan int)
+	go func() {
+		for i := 0; i < 10; i++ {
+			fmt.Println(<-c)
+		}
+		quit <- 0
+	}()
+	count(c,quit)
+}
+```
+
+snowme34's solution to "Exercise: Equivalent Binary Trees" (with a brief implementation of stack)
+
+```go
+package main
+
+import "golang.org/x/tour/tree"
+import "fmt"
+
+const TREE_SIZE int = 10
+
+type stack []interface{}
+
+func (s *stack) Push(v interface{}) {
+    *s = append(*s, v)
+}
+
+func (s *stack) Pop() interface{} {
+	l := len(*s)
+
+	if l == 0 {
+		return nil
+	}
+
+	ret := (*s)[l-1]
+	*s = (*s)[:l-1]
+
+	return ret
+}
+
+func (s *stack) Len() int {
+	return len(*s)
+}
+
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+func Walk(t *tree.Tree, ch chan int) {
+    var st stack
+
+	for t != nil || st.Len() != 0 {
+		if t != nil {
+			st.Push(t)
+			t = t.Left
+		} else {
+			t = st.Pop().(*tree.Tree)
+			ch <- t.Value
+			t = t.Right
+		}
+	}
+
+}
+
+// pre-order
+func WalkPreOrder(t *tree.Tree, ch chan int) {
+    var st stack
+
+    if (t != nil) {
+	  st.Push(t)
+	}
+
+    for st.Len() != 0 {
+    	var x *tree.Tree
+		x = st.Pop().(*tree.Tree)
+    	for (x != nil) {
+			ch <- x.Value
+      		if(x.Right != nil) {
+			  st.Push(x.Right)
+			}
+
+      		x = x.Left
+    	}
+  	}
+}
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool {
+    c1 := make(chan int)
+	c2 := make(chan int)
+	go Walk(t1, c1)
+	go Walk(t2, c2)
+	for i := 0; i < TREE_SIZE; i++ {
+		if((<-c1) != (<-c2)) {
+			return false
+		}
+	}
+	return true
+}
+
+func main() {
+  fmt.Println("Testing Walk")
+  ch := make(chan int)
+  go Walk(tree.New(1), ch)
+  for i := 0; i < TREE_SIZE; i++ {
+  	fmt.Println(<-ch)
+  }
+  
+  fmt.Println("===============")
+  
+  fmt.Println("Testing Same")
+  fmt.Println("Should be true",Same(tree.New(1), tree.New(1)))
+  fmt.Println("Should be false",Same(tree.New(1), tree.New(2)))
+}
+```
+
+## Mutual Exclusion
+
+Mutex
+
+Avoid conflicts
+
+Go lib `sync.Mutex` has: `Lock`, `Unlock`
+
+Can use `defer` to make sure mutex is unlocked at the end
+
+```go
+type aThing struct {
+	v   []string
+	mux sync.Mutex
+}
+
+func (a *aThing) Write(s string) {
+	a.mux.Lock()
+	a.v = append(a.v, s)
+	a.mux.Unlock()
+}
+
+func (a *aThing) WriteDefer(s string) {
+	a.mux.Lock()
+	defer a.mux.Unlock()
+	a.v = append(a.v, s)
+}
+
+func main() {
+	a := aThing{v:[]string{}}
+	a.Write("A")
+	a.WriteDefer("B")
+	fmt.Println(a.v)
+}
+```
+
+snowme34's solutions to "Exercise: Web Crawler" (better one below)
+
+```go
+type CrawlCache struct {
+  v	map[string]bool
+  mux sync.Mutex
+}
+
+func (s *CrawlCache)checkAnsSetVisit(url string)bool{
+	s.mux.Lock()
+	defer s.mux.Unlock()
+
+	if _,ok:=s.v[url]; ok==false {
+		s.v[url] = true
+		return false
+	}
+
+	return true
+}
+
+// Crawl uses fetcher to recursively crawl
+// pages starting with url, to a maximum of depth.
+func Crawl(ch chan string, cache *CrawlCache, url string, depth int, fetcher Fetcher) {
+  defer close(ch)
+  
+  if depth <= 0 || cache.checkAnsSetVisit(url) {
+    return
+  }
+  
+  body, urls, err := fetcher.Fetch(url)
+  if err != nil {
+    ch <- fmt.Sprintf("%v", err)
+	return
+  }
+  
+  ch <- fmt.Sprintf("found: %s %q", url, body)
+  
+  chs := make([]chan string, len(urls))
+  for i, u := range urls {
+    chs[i] = make(chan string)
+    go Crawl(chs[i], cache, u, depth-1, fetcher)
+  }
+
+  for i := range chs {
+    for s := range chs[i] {
+        ch <- s
+    }
+  }
+
+  return
+}
+
+func main() {
+  // all goroutines have ptr to this
+  cache := CrawlCache{v:make(map[string]bool)} 
+  ch := make(chan string)
+  
+  go Crawl(ch, &cache, "https://golang.org/", 4, fetcher)
+  
+  for s := range ch {
+    fmt.Println(s)
+  }
+}
+```
+
+The solution using Wait Group
+
+```go
+type CrawlCache struct {
+  v	map[string]bool
+  mux sync.Mutex
+}
+
+func (s *CrawlCache)checkAnsSetVisit(url string)bool{
+	s.mux.Lock()
+	defer s.mux.Unlock()
+
+	if _,ok:=s.v[url]; !ok {
+		s.v[url] = true
+		return false
+	}
+	
+	return true
+}
+
+func doCrawl(wg *sync.WaitGroup, ch chan string, cache *CrawlCache, url string, depth int, fetcher Fetcher) {
+  defer wg.Done()
+  
+  if depth <= 0 || cache.checkAnsSetVisit(url) {
+    return
+  }
+  
+  body, urls, err := fetcher.Fetch(url)
+  if err != nil {
+    ch <- fmt.Sprintf("%v", err)
+	return
+  }
+  
+  ch <- fmt.Sprintf("found: %s %q", url, body)
+  
+  for _, u := range urls {
+    wg.Add(1)
+    go doCrawl(wg, ch, cache, u, depth-1, fetcher)
+  }
+}
+
+func Crawl(wg *sync.WaitGroup, ch chan string, cache *CrawlCache, url string, depth int, fetcher Fetcher) {
+  defer close(ch)
+  
+  wg.Add(1)
+  go doCrawl(wg, ch, cache, url, depth, fetcher)
+  
+  wg.Wait()
+}
+
+func main() {
+  // all goroutines have ptr to this
+  cache := CrawlCache{v:make(map[string]bool)} 
+  ch := make(chan string)
+  
+  var wg sync.WaitGroup
+  
+  go Crawl(&wg, ch, &cache, "https://golang.org/", 4, fetcher)
+  
+  for s := range ch {
+    fmt.Println(s)
+  }
 }
 ```

@@ -511,3 +511,6 @@ smallint
 tinyint
 varchar
 mysqldump
+
+ret
+mutex
