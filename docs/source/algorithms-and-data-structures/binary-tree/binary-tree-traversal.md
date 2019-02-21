@@ -21,7 +21,7 @@ Note this is a "good" example to refute "To iterate is human, to recurse divine"
 (i.e. to iterate the recursive is programmer).
 
 The following ones are just some ways to achieve traversal. There are plenty of
-alternatives.
+alternatives, which might be much better than the ones here.
 
 ## Successor
 
@@ -106,9 +106,9 @@ Obvious recursive way:
 template<typename F>
 void inOrderTraverse(Node* x, F& visit) {
   if(!x) return;
-  preOrderTraverse(x->lc, visit);
+  inOrderTraverse(x->lc, visit);
   visit(x);
-  preOrderTraverse(x->rc, visit);
+  inOrderTraverse(x->rc, visit);
 }
 ```
 
@@ -134,7 +134,7 @@ void inOrderTraverseIterative(Node* x, F& visit) {
 }
 ```
 
-Another way
+Another way using successor
 
 ```c++
 template<typename F>
@@ -145,7 +145,7 @@ void inOrderTraverseIterative(Node* x, F& visit) {
     } else {
       visit(x);
       while(!x->rc) {
-        if(!successorOf(x)) return;
+        if(!(x = successorOf(x))) return;
         visit(x);
       }
       x=x->rc;
@@ -162,8 +162,8 @@ Obvious recursive way:
 template<typename F>
 void postOrderTraverse(Node* x, F& visit) {
   if(!x) return;
-  preTraverse(x->lc, visit);
-  preTraverse(x->rc, visit);
+  postOrderTraverse(x->lc, visit);
+  postOrderTraverse(x->rc, visit);
   visit(x);
 }
 ```
