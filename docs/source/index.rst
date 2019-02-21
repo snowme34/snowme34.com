@@ -61,6 +61,7 @@ The organization of this site is as following:
    :name: sec-algorithms-and-data-structures
 
    algorithms-and-data-structures/red-black-tree/red-black-tree
+   algorithms-and-data-structures/binary-tree/binary-tree-traversal
 
 
 .. toctree::
