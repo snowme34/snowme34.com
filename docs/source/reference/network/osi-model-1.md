@@ -2,9 +2,9 @@
 
 ## First Layer
 
-The physical layer that is responsible for binary transmission.
+The physical layer that is responsible for the bit-level transmission.
 
-Define how transmission is achieved.
+Define how transmission is achieved, whether via electronic or optical signals.
 
 ## Layer 1 Equipments
 
@@ -12,9 +12,12 @@ Use cables to connect.
 
 Different network uses some medium to communicate.
 
+List of some equipments:
+
 * Network interface controller (NIC)
 * Repeater
 * Ethernet hub
+  * like an amplifier, treat the cables connecting to it as if they are directly connected
 * Modem
 * Fiber media converter
 
@@ -37,7 +40,6 @@ It means, the speed is 100 M, uses baseband transmission, and twisted-pair cable
 
 Tx: twisted-air
 Fx: fiber
-Lx: long
 
 ### Twisted-Pair Cable
 
@@ -65,6 +67,16 @@ A slot to plug in connector
 
 * 568A
 * 568B
+  * 1 white orange
+  * 2 orange
+  * 3 white green
+  * 4 blue
+  * 5 white blue
+  * 6 green
+  * 7 white brown
+  * 8 brown
+
+Difference should be 1326 only
 
 ### Straight-Through and Crossover
 
@@ -81,4 +93,24 @@ Use crossover for devices with same type
 
 Use Straight-Through for devices with different order.
 
-So that both sending and receiving can be done in the same time.
+[Why do I need a crossover cable to connect devices of the same type?](https://networkengineering.stackexchange.com/questions/34425/why-do-i-need-a-crossover-cable-to-connect-devices-of-the-same-type)
+
+Have 2 pairs, so that both sending and receiving can be done in the same time.
+
+4,5 is used for fixed phone
+7,8 are not used 
+
+### Optical Fiber
+
+Always as a pair
+
+* Single-mode Fiber
+* Multi-mode Fiber
+
+## Transmission Distance
+
+Twisted-Pair cables are only reliable under 100 Meters.
+
+In real life, we usually limit it to be 90 meters.
+
+Must use Optical Fiber for longer distance.
