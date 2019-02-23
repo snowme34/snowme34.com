@@ -38,7 +38,7 @@ Example:
 
 It means, the speed is 100 M, uses baseband transmission, and twisted-pair cable.
 
-Tx: twisted-air
+Tx: twisted-pair
 Fx: fiber
 
 ### Twisted-Pair Cable
@@ -65,7 +65,37 @@ A slot to plug in connector
 
 ### Wiring
 
+Pin Label
+
+* 1 TX+
+* 2 TX-
+* 3 RX+
+* 4 NC
+* 5 NC
+* 6 RX-
+* 7 NC
+* 8 NC
+
+4,5 is used for fixed phone
+7,8 are not used
+
+* TX: Transmit Data
+* RX: Receive Data
+* NC: Not Connected
+
+#### Wiring Order
+
+This is the order of wires inside the cable.
+
 * 568A
+  * 1 white green
+  * 2 green
+  * 3 white orange
+  * 4 blue
+  * 5 white blue
+  * 6 orange
+  * 7 white brown
+  * 8 brown
 * 568B
   * 1 white orange
   * 2 orange
@@ -76,18 +106,26 @@ A slot to plug in connector
   * 7 white brown
   * 8 brown
 
-Difference should be 1326 only
+Difference should be 1-3 2-6 only
 
 ### Straight-Through and Crossover
 
 Straight-Through
 
 * Same wiring on both ends
+* 1 <-> 1
+* 2 <-> 2
+* 3 <-> 3
+* 6 <-> 6
 
 Crossover
 
 * Different wiring on both ends
 * 1326
+* 1 -> 3
+* 2 -> 6
+* 3 <- 1
+* 6 <- 2
 
 Use crossover for devices with same type
 
@@ -95,22 +133,33 @@ Use Straight-Through for devices with different order.
 
 [Why do I need a crossover cable to connect devices of the same type?](https://networkengineering.stackexchange.com/questions/34425/why-do-i-need-a-crossover-cable-to-connect-devices-of-the-same-type)
 
-Have 2 pairs, so that both sending and receiving can be done in the same time.
-
-4,5 is used for fixed phone
-7,8 are not used 
-
 ### Optical Fiber
+
+Have 2 pairs, so that both sending and receiving can be done in the same time.
 
 Always as a pair
 
 * Single-mode Fiber
+  * longer
 * Multi-mode Fiber
+  * shorter
 
-## Transmission Distance
+#### Transmission Distance
 
 Twisted-Pair cables are only reliable under 100 Meters.
 
 In real life, we usually limit it to be 90 meters.
 
 Must use Optical Fiber for longer distance.
+
+Max transmission dist of SX is around thousands of meters.
+
+The one of LX will be longer.
+
+When connecting, as usual, the Rx and Tx ends 
+
+#### Transceiver Module
+
+Might need transceiver modules to use the optical fiber.
+
+When purchasing, make sure the mode matches the one of the fiber.
