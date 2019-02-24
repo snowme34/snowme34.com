@@ -129,6 +129,7 @@ The organization of this site is as following:
    reference/network/domain-name-and-dns
    reference/network/osi-model
    reference/network/osi-model-1
+   reference/network/osi-model-2
 
 
 .. toctree::
