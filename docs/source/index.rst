@@ -117,6 +117,8 @@ The organization of this site is as following:
 
    reference/database/sql
    reference/database/redis-quick-reference
+   reference/database/mysql/mysql-basic
+   reference/database/mysql/mysql-user
    reference/database/mysql/mysql-misc
 
 
