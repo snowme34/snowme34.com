@@ -470,7 +470,7 @@ For C/C++:
 I'm not a professional here, see the other collections listed later for more.
 
 * [日本の伝統色 The Traditional Colors of Japan](http://nipponcolors.com/)
-* [Adobe Color CC Explore](https://color.adobe.com/explore/?filter=most-popular&time=month)
+* [Adobe Color CC Explore](https://color.adobe.com/explore/)
 * [uiGradients - Beautiful colored gradients](https://uigradients.com/#Disco)
 
 ### Reference for Mathematics
