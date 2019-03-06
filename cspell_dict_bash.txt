@@ -521,3 +521,12 @@ multicast
 CSMA
 
 priv
+
+gmail
+SMTP
+linode
+sendmail
+procmail
+maildrop
+dovercot
+imaps

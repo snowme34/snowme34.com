@@ -108,6 +108,7 @@ The organization of this site is as following:
    reference/linux/linux-network-config
    reference/linux/introduction-to-logs-and-rsyslog
    reference/linux/linux-service
+   reference/linux/linux-email-service
 
 
 .. toctree::
