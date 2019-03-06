@@ -12,7 +12,7 @@ For formal communications.
 
 Below is one possible email infrastructure.
 
-[schema](https://i.imgur.com/PVyVugV.png)
+![schema](https://i.imgur.com/PVyVugV.png)
 
 ### MxA
 
