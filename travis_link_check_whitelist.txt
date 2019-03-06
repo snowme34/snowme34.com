@@ -1,12 +1,13 @@
+localhost
+example.com
 cpp.sh
 travis-ci
+www.gnu.org
 xlinux.nist.gov
-example.com
-localhost
 https://www.unicode.org/charts/PDF/
 waifu2x.udp.jp
 www.pixivision.net
 dsa.cs.tsinghua.edu.cn
+https://wiki.zthxxx.me/ 
 https://huaji8.top/
-www.gnu.org
 https://color.adobe.com/explore/
