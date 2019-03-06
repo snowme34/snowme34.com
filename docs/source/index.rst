@@ -33,6 +33,8 @@ Some featured pages:
 
 * to learn about the Linux commands, read the
   `Unix and Linux Commands <reference/commands/unix-and-linux-commands.html>`_
+* to learn about email infrastructure, read the
+  `Linux Email Service <reference/linux/linux-email-service.html>`_
 * to see how easy setting up `iptables` and `neftables` for Debian is, read the
   `Debian Firewall nftables and iptables
   <reference/devops/debian-firewall-nftables-and-iptables.html>`_
