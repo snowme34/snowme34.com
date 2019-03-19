@@ -394,4 +394,4 @@ Potential Form
 
 本站(docs.snowme34.com)没有使用任何知识共享协议，所有内容保留所有权利
 
-任何非直接在本站阅读的使用方式请[联系作者](contact.snowme34.com) (contact.snowme34.com)
+任何非直接在本站阅读的使用方式请[联系作者](https://contact.snowme34.com) (https://contact.snowme34.com)
