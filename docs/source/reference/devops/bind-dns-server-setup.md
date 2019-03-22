@@ -2,9 +2,9 @@
 
 To setup a basic master DNS server.
 
-This passage may contain some outdated information.
+This article may contain some outdated information.
 
-Always read the latest official document first.
+**Always** read the latest official document first.
 
 Debian, for example, [Bind9 - Debian Wiki](https://wiki.debian.org/Bind9).
 
@@ -241,3 +241,77 @@ named-checkzone some.domain some.domain.zone     # domain zone-file
 It's usually either grammar errors or permission errors.
 
 Make sure all zone files have reading permission on.
+
+## Slave Bind Server
+
+To backup or load balance, bind servers can be configured to be slave.
+
+* large amount of DNS requests
+* master server stops working
+
+All information of slave bind server is retrieved from master server.
+All changes are made on master server.
+
+### Configure a Slave Bind Server (brief)
+
+There are multiple ways to "update" the zone files on salve server. Two examples:
+
+* Wait for slave server to fetch each time it boots
+* Let master server to notify slave servers
+
+On master:
+
+1. update listen port accordingly
+2. add "notify" options
+
+On slave:
+
+1. add domain definition to bind config file
+   * see sample below
+   * make sure DNS service has read and write permission
+2. restart bind service (load changes)
+3. check if zone files are retrieved correctly
+    * check firewall
+    * check selinux
+4. use `host` or `dig` to check if everything works
+
+Sample slave zone definition:
+
+```bash
+zone "some.domain" {
+    type slave;
+    masters { 192.168.1.1; };
+    file "slaves.some.domain.zone"
+}
+```
+
+## Caching or Forwarding Bind Server
+
+There is also another type of bind server that contains no zone definitions.
+
+It recursively lookup DNS queries and caches the results,
+usually to accelerate the DNS query speed of its clients.
+
+Example will be such a server in a LAN network that speeds up the DNS queries inside this network
+
+Forwarding servers will forward some or all DNS queries to other servers.
+
+It allows user to access both the local zone files and the DNS records of the other servers.
+
+Example will be such a server in a LAN network that contains zone definitions for
+the domains in this LAN but it also forwards other queries to other public DNS,
+so that users in this LAN can both access the local domains and the "outside" ones.
+
+```bash
+forwarders {1.2.3.4; };
+```
+
+This server does nothing but forwards DNS query:
+
+```bash
+forward only;
+```
+
+From [Forwarding (DNS and BIND, 4th Edition)](https://docstore.mik.ua/orelly/networking_2ndEd/dns/ch10_05.htm):
+
+> A name server in forward-only mode is a variation on a name server that uses forwarders. It still answers queries from its authoritative data and cached data. However, it relies completely on its forwarders; it doesn't try to contact other name servers to find information if the forwarders don't give it an answer.
