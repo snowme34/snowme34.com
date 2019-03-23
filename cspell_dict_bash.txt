@@ -1,3 +1,5 @@
+struct
+
 alias
 apropos
 apt-get
