@@ -532,3 +532,5 @@ procmail
 maildrop
 dovercot
 imaps
+
+selinux
