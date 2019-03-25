@@ -72,6 +72,7 @@ The organization of this site is as following:
    :name: sec-reference-programming-language
 
    reference/programming-language/golang/go-tour
+   reference/programming-language/cpp/cpp-concurrency-basic
 
 
 .. toctree::
