@@ -534,3 +534,11 @@ dovercot
 imaps
 
 selinux
+
+Multithreading
+functor
+functors
+chrono
+endl
+mutex
+ofstream
