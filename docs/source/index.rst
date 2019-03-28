@@ -73,6 +73,7 @@ The organization of this site is as following:
 
    reference/programming-language/golang/go-tour
    reference/programming-language/cpp/cpp-concurrency-basic
+   reference/programming-language/cpp/cpp-concurrency-data-race
 
 
 .. toctree::
