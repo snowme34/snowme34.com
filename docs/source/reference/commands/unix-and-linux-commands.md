@@ -1004,7 +1004,16 @@ The event reference (!) is mainly used in scripts?
     chmod u=rwx [file]
     ```
 
-2. SELinux (advanced way to manage permissions)
+2. Change ownership
+
+    * -R: recursively change all subdirectories and files
+
+    ```bash
+    chown some-user some-file
+    chown -R some-user some-directory
+    ```
+
+3. SELinux (advanced way to manage permissions)
 
     * [details](https://people.redhat.com/rsawhill/selinux/)
 
@@ -1016,7 +1025,7 @@ The event reference (!) is mainly used in scripts?
     semanage
     ```
 
-3. Default permission when creating a new file
+4. Default permission when creating a new file
 
     * It's negated (reversed)
     * [details](http://docs.snowme34.com/en/latest/reference/linux/linux-permissions.html#default-permissions)
