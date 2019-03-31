@@ -113,6 +113,7 @@ The organization of this site is as following:
    reference/linux/introduction-to-logs-and-rsyslog
    reference/linux/linux-service
    reference/linux/linux-email-service
+   reference/linux/ftp
 
 
 .. toctree::

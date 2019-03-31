@@ -542,3 +542,8 @@ chrono
 endl
 mutex
 ofstream
+
+PASV
+vsftpd
+ftpusers
+xferlog
