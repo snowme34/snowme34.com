@@ -114,6 +114,7 @@ The organization of this site is as following:
    reference/linux/linux-service
    reference/linux/linux-email-service
    reference/linux/ftp
+   reference/linux/nfs
 
 
 .. toctree::
