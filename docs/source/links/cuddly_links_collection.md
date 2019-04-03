@@ -347,9 +347,31 @@ Some competitions:
 
 ### Literature
 
+A little messy. Some history and other text included. Apologize.
+
 * [Free ebooks - Project Gutenberg](http://www.gutenberg.org/)
 
   * In case you don't know, this site has almost all the great books whose copyrights have expired.
+
+* [The Internet Classics Archive: 441 searchable works of classical literature](http://classics.mit.edu/)
+
+* [Internet Shakespeare Editions :: Internet Shakespeare Editions](http://internetshakespeare.uvic.ca/)
+
+* [Timeless Myths](http://www.timelessmyths.com/)
+
+* [Richard Wagner Archive](http://users.utu.fi/hansalmi/wagner.html)
+
+* [The John Milton Reading Room](https://www.dartmouth.edu/~milton/reading_room/contents/text.shtml)
+
+* [The Victorian Web](http://www.victorianweb.org/victorian/index.html)
+
+* [Rickard Parker's "Exploring" series of websites](http://world.std.com/~raparker/exploring/explore.html)
+
+* [The Rise and Fall of Alexandria](http://alexpetrov.com/memes/hum/alexandria/)
+
+* [Internet History Source books Project](https://sourcebooks.fordham.edu/)
+
+* [How to tell you're reading a gothic novel – in pictures | Books](https://www.theguardian.com/books/interactive/2014/may/09/reading-gothic-novel-pictures?CMP=fb_gu)
 
 ### Miscellaneous Informative Resources
 
