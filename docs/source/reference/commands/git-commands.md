@@ -135,6 +135,15 @@ git diff --name-status branch_a..branch_b
 # https://stackoverflow.com/questions/4099742/how-to-compare-files-from-two-different-branches
 git diff branch_a branch_b -- some.file
 git diff branch_a..branch_b -- some.file
+
+# remove local untracked files
+# must have -i -n -f options to run this command
+git clean -n   # dry run
+git clean -f   # remove files
+git clean -fd  # remove files and directory
+git clean -fX  # remove ignored files
+git clean -fdX # remove ignored files and directory
+git clean -fdx # remove ignored and non-ignored files and directory
 ```
 
 * [Git workflow and rebase vs merge questions](https://stackoverflow.com/questions/457927/git-workflow-and-rebase-vs-merge-questions)
