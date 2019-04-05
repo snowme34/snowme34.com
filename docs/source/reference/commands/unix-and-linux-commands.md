@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 2/7/2019.*
+*Last Update: 4/5/2019.*
 
 This is a detailed collection of general *nix commands.
 
@@ -1089,6 +1089,7 @@ The event reference (!) is mainly used in scripts?
     ```bash
     ps
     ps axuf
+    ps auxww           # output with unlimited width
     ps aux | grep -v grep | grep -i -e VSZ -e
     ps -e -o pid,vsz,comm= | sort -n -k 2
 
