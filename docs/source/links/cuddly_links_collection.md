@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 1/16/2019.*
+*Last update date: 4/3/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -165,6 +165,8 @@ Python:
 * [A Byte of Python](https://python.swaroopch.com/)
 
   * A free book by Swaroop C.H.
+
+* [Built-in magic commands — IPython 7.4.0 documentation](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
 
 JavaScript:
 
