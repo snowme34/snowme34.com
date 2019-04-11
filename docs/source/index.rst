@@ -64,6 +64,7 @@ The organization of this site is as following:
 
    algorithms-and-data-structures/red-black-tree/red-black-tree
    algorithms-and-data-structures/binary-tree/binary-tree-traversal
+   algorithms-and-data-structures/graph/basic-graph-algorithms
 
 
 .. toctree::
