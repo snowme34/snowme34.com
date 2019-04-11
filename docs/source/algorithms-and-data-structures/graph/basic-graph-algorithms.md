@@ -126,3 +126,76 @@ for(auto e:edges) {
 ```
 
 Will include sample union-find code in the future.
+
+### Prim's
+
+First choose a random node
+
+Use priority queue to find the next edge that adds a new node
+
+*Bad* implementation below (not tested or even compiled):
+
+```cpp
+int n_nodes = graph.n_nodes(); // total number of nodes
+
+x->done = 1; n_nodes -= 1;
+
+for (auto ne : x->edges) {
+  pq.push(make_pair(-ne->dist, ne->node));
+}
+
+while (n_nodes && !pq.empty()) {
+  auto t = pq.top(); pq.pop();
+  Node* n = t.second;
+  if (!n->done) {
+    n->done = 1; n_nodes -= 1;
+    for (auto ne : n->edges) {
+      if (ne->node->done) continue;
+      pq.push(make_pair(-ne->dist, ne->node));
+    }
+  }
+}
+```
+
+Ideally we should update the priority somehow, i.e. no duplicated edges in queue.
+
+## Topological Sort
+
+No cycle allowed
+
+3 states:
+
+* 0: not discovered
+* 1: processing
+* 2: processed
+
+Run DFS, add to ans when a node is 2.
+
+Order of answer is "reversed".
+
+```cpp
+vector<int> adj[N];
+vector<bool> visited(N, false);
+vector<int> order;
+void t_sort(int u) {
+  if (visited[u]) { return; }
+
+  visited[u] = true;
+
+  for (int i = 0; i < adj[u].size(); ++i) {
+    t_sort(adj[u][i]);
+  }
+
+  order.push_back(u);
+}
+
+for (int u = 0; u < n; u++) {
+  t_sort(u);
+}
+```
+
+## Reference
+
+* [DS](https://dsa.cs.tsinghua.edu.cn/~deng/ds/index.htm)
+* [Competitive programming books](https://cses.fi/book/index.html)
+* [Graph - Unweighted Graphs](https://algo.is/aflv16/aflv_07_graphs_1.pdf)

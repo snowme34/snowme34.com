@@ -93,3 +93,9 @@ refreshenv
 
 repo's
 nullptr
+
+Eulerian
+Biconnected
+Warshall
+Kruskal's
+Prim's
