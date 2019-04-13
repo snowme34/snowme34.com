@@ -25,6 +25,8 @@ No odd-number-edge cycles
 | Diameter                                            | BFS       |
 | Eulerian Tour                                       | DFS       |
 | Topological Sort                                    | DFS       |
+| Sinks and Sources of DAG                            | DFS       |
+| Connected component                                 | DFS       |
 | Biconnected component, Strongly Connected Component | DFS       |
 
 ## Shortest Path
@@ -193,6 +195,8 @@ for (int u = 0; u < n; u++) {
   t_sort(u);
 }
 ```
+
+Or decreasing post number of DFS.
 
 ## Reference
 
