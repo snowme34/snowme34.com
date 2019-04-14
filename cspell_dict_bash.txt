@@ -564,3 +564,7 @@ Rickard
 untracked
 
 cloudflare
+
+jisho
+rikai
+rikaikun

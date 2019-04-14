@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 4/3/2019.*
+*Last update date: 4/13/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -154,6 +154,8 @@ Python:
 
 * [Learn Python The Hard Way](https://learnpythonthehardway.org/book/)
 
+* [A Whirlwind Tour of Python](https://github.com/jakevdp/WhirlwindTourOfPython)
+
 * [Learn Python](http://www.learnpython.org/)
 
 * [Python PEPs](https://legacy.python.org/dev/peps/)
@@ -167,6 +169,8 @@ Python:
   * A free book by Swaroop C.H.
 
 * [Built-in magic commands — IPython 7.4.0 documentation](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
+
+* [The Python Challenge](http://www.pythonchallenge.com/)
 
 JavaScript:
 
@@ -307,6 +311,8 @@ Some competitions:
 
 #### HL - Japanese
 
+* [Jisho.org: Japanese Dictionary](https://jisho.org/)
+
 * [日本地図 特産品](http://sn1.e-kokoro.ne.jp/kyozai/print/se/P-126_nihonchizu/P-126_nihonchizu01.pdf)
 
   * Specialties of Japan by location.
@@ -316,6 +322,12 @@ Some competitions:
   * A website for a textbook. Using flash.
 
 * [Kanji alive - A free study tool for reading and writing kanji](https://kanjialive.com/)
+
+* [Use Rikai.com to learn Japanese Kanji or as a Japanese Dictionary](http://www.rikai.com/perl/Home.pl)
+
+* [rikaikun - Chrome Extension](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp/related?hl=en-US)
+
+* [POPjisyo.com - Dictionary Translation Japanese/Chinese/Korean/Kanji/Hanzi](http://www.popjisyo.com/WebHint/Portal_e.aspx)
 
 * [Japanese Online Self-Help Utility - JOSHU](https://laits.utexas.edu/japanese/joshu/index.php)
 
