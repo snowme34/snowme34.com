@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 4/13/2019.*
+*Last update date: 4/14/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -34,33 +34,33 @@ Note: still in progress.
   - [Table of Content](#table-of-content)
   - [Education](#education)
     - [Math](#math)
-      - [Math - Calculus](#math---calculus)
+      - [Calculus](#calculus)
     - [Computer Science](#computer-science)
-      - [CS - Intro](#cs---intro)
-      - [CS - Languages](#cs---languages)
-      - [CS - General Online Schools](#cs---general-online-schools)
-      - [CS - Data Structure and Algorithms](#cs---data-structure-and-algorithms)
-      - [CS - Competitive Programming](#cs---competitive-programming)
-      - [CS - Just Want to Practice](#cs---just-want-to-practice)
-      - [CS - Miscellaneous](#cs---miscellaneous)
+      - [Intro to CS](#intro-to-cs)
+      - [Programming Languages](#programming-languages)
+      - [General Online Computer Science Schools](#general-online-computer-science-schools)
+      - [Data Structure and Algorithms](#data-structure-and-algorithms)
+      - [Competitive Programming](#competitive-programming)
+      - [Just Want to Practice Programming](#just-want-to-practice-programming)
+      - [Computer Science Miscellaneous](#computer-science-miscellaneous)
     - [Data Science](#data-science)
-      - [DS - Online Courses](#ds---online-courses)
-      - [DS - Machine Learning](#ds---machine-learning)
+      - [Online Data Science Courses](#online-data-science-courses)
+      - [Machine Learning](#machine-learning)
     - [Human Languages](#human-languages)
-      - [HL - Japanese](#hl---japanese)
+      - [Japanese Language](#japanese-language)
     - [Literature](#literature)
     - [Miscellaneous Informative Resources](#miscellaneous-informative-resources)
   - [Reference and Documentations](#reference-and-documentations)
     - [Documentations for Computer Science](#documentations-for-computer-science)
-      - [CSD - Unix](#csd---unix)
-      - [CSD - Collections](#csd---collections)
-      - [CSD - Web](#csd---web)
+      - [Unix Documentation](#unix-documentation)
+      - [Collections of CS Documentations](#collections-of-cs-documentations)
+      - [Web Documentations](#web-documentations)
     - [Reference for Biology](#reference-for-biology)
     - [Reference for Computer Science and Information Technology](#reference-for-computer-science-and-information-technology)
-      - [CSR - Algorithms and Data Structures](#csr---algorithms-and-data-structures)
-      - [CSR - Style](#csr---style)
-      - [CSR - Developing Tools](#csr---developing-tools)
-      - [CSR - Misc](#csr---misc)
+      - [CS Reference Algorithms and Data Structures](#cs-reference-algorithms-and-data-structures)
+      - [CS Reference Style](#cs-reference-style)
+      - [CS Reference Developing Tools](#cs-reference-developing-tools)
+      - [CS Reference Misc](#cs-reference-misc)
     - [Reference for Graphic Design](#reference-for-graphic-design)
     - [Reference for Mathematics](#reference-for-mathematics)
     - [Reference for Philosophy](#reference-for-philosophy)
@@ -75,8 +75,8 @@ Note: still in progress.
     - [Tools for Graphic Design](#tools-for-graphic-design)
     - [Tools for Human Language Study](#tools-for-human-language-study)
     - [Tools for Programming](#tools-for-programming)
-      - [TP - Visualizers](#tp---visualizers)
-      - [TP - Online Shells](#tp---online-shells)
+      - [CS Visualizers](#cs-visualizers)
+      - [CS Online Shells](#cs-online-shells)
     - [Tools for Research](#tools-for-research)
     - [Tools for RSS](#tools-for-rss)
     - [Tools for Searching](#tools-for-searching)
@@ -100,9 +100,9 @@ Note: still in progress.
     - [Updates from Forums](#updates-from-forums)
   - [Other Collections](#other-collections)
     - [Collections involving Programming](#collections-involving-programming)
-      - [CP - General](#cp---general)
-      - [CP - Course](#cp---course)
-      - [CP - Fun](#cp---fun)
+      - [General Programming Collection](#general-programming-collection)
+      - [CS Course Collection](#cs-course-collection)
+      - [Fun Collection](#fun-collection)
 
 ## Education
 
@@ -110,7 +110,7 @@ Self-study materials and online courses.
 
 ### Math
 
-#### Math - Calculus
+#### Calculus
 
 * [Single Variable Calculus - MIT](https://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/index.htm?utm_source=OCWDept&utm_medium=CarouselSm&utm_campaign=FeaturedCourse)
 
@@ -118,7 +118,7 @@ Self-study materials and online courses.
 
 ### Computer Science
 
-#### CS - Intro
+#### Intro to CS
 
 * [CS50](https://www.reddit.com/r/cs50/)
 
@@ -126,7 +126,7 @@ Self-study materials and online courses.
 
   * Or search online and on YouTube for more.
 
-#### CS - Languages
+#### Programming Languages
 
 C/C++:
 
@@ -180,7 +180,7 @@ Go:
 
 * [Go wiki](https://github.com/golang/go/wiki)
 
-#### CS - General Online Schools
+#### General Online Computer Science Schools
 
 * [freeCodeCamp](https://www.freecodecamp.org/)
 
@@ -190,7 +190,7 @@ Go:
 
   * Hands-on experiences...from Google!
 
-#### CS - Data Structure and Algorithms
+#### Data Structure and Algorithms
 
 General ones:
 
@@ -228,7 +228,7 @@ Specific ones:
 
   * There are codes out there, too.
 
-#### CS - Competitive Programming
+#### Competitive Programming
 
 Sites here are ranked
 
@@ -265,7 +265,7 @@ Some competitions:
 
   * This one is a little bit of buggy.
 
-#### CS - Just Want to Practice
+#### Just Want to Practice Programming
 
 * [Project Euler](https://projecteuler.net/)
 
@@ -281,7 +281,7 @@ Some competitions:
 
 * [Hacker Rank](https://www.hackerrank.com/)
 
-#### CS - Miscellaneous
+#### Computer Science Miscellaneous
 
 * [Stanford CS Education Library](http://cslibrary.stanford.edu/)
 
@@ -293,11 +293,11 @@ Some competitions:
 
 ### Data Science
 
-#### DS - Online Courses
+#### Online Data Science Courses
 
 * [Data Science CSCI E-109 Publication Listing](https://matterhorn.dce.harvard.edu/engage/ui/index.html#/2016/01/14328)
 
-#### DS - Machine Learning
+#### Machine Learning
 
 * [Machine Learning Yearning by Andrew Ng](http://www.mlyearning.org/)
 
@@ -309,7 +309,7 @@ Some competitions:
 
   * There are plenty of free and high-quality podcasts. Just change the region of iTunes to the language you are learning.
 
-#### HL - Japanese
+#### Japanese Language
 
 * [Jisho.org: Japanese Dictionary](https://jisho.org/)
 
@@ -399,11 +399,11 @@ Not trying to be "professional" here to avoid unnecessary duplications.
 
 Use CSD for abbreviation.
 
-#### CSD - Unix
+#### Unix Documentation
 
 * [The Linux Kernel documentation](https://www.kernel.org/doc/html/latest/index.html)
 
-#### CSD - Collections
+#### Collections of CS Documentations
 
 * [DevDocs](https://devdocs.io/)
 
@@ -417,7 +417,7 @@ Use CSD for abbreviation.
 
   * Another offline documentation browser
 
-#### CSD - Web
+#### Web Documentations
 
 * [MDN web docs](https://developer.mozilla.org/en-US/)
 
@@ -433,7 +433,7 @@ Use CSD for abbreviation.
 
 Use CSR for abbreviation.
 
-#### CSR - Algorithms and Data Structures
+#### CS Reference Algorithms and Data Structures
 
 * [Dictionary of Algorithms and Data Structures](https://xlinux.nist.gov/dads/)
 
@@ -453,7 +453,7 @@ Use CSR for abbreviation.
 
   * Visualization for algorithms.
 
-#### CSR - Style
+#### CS Reference Style
 
 General:
 
@@ -465,7 +465,7 @@ For C/C++:
 
 * [Good C programming habits.](https://www.reddit.com/r/C_Programming/comments/1vuubw/good_c_programming_habits/)
 
-#### CSR - Developing Tools
+#### CS Reference Developing Tools
 
 * [Pro Git](https://git-scm.com/book/en/v2)
 
@@ -489,7 +489,7 @@ For C/C++:
 
 * [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line)
 
-#### CSR - Misc
+#### CS Reference Misc
 
 * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 
@@ -629,7 +629,7 @@ Others:
 
 ### Tools for Programming
 
-#### TP - Visualizers
+#### CS Visualizers
 
 * [Binary Tree Visualizer](https://codepen.io/rantaoca/full/altfG)
 
@@ -639,7 +639,7 @@ Others:
 
 * [Cuckoo Hashing Visualization](http://www.lkozma.net/cuckoo_hashing_visualization/)
 
-#### TP - Online Shells
+#### CS Online Shells
 
 * [C++ Shell](http://cpp.sh/)
 
@@ -1010,7 +1010,7 @@ and so on.
 
 For programmers and developers and data scientists and so forth.
 
-#### CP - General
+#### General Programming Collection
 
 * [GeekPlux's Wiki](https://wiki.geekplux.com/)
 
@@ -1036,11 +1036,11 @@ For programmers and developers and data scientists and so forth.
 
 * [Doc of imzlp](https://doc.imzlp.me/#/)
 
-#### CP - Course
+#### CS Course Collection
 
 * [Free alternative to CodeCademy](https://www.reddit.com/r/learnprogramming/comments/4bsl4q/free_alternative_to_codecademy/)
 
-#### CP - Fun
+#### Fun Collection
 
 * [Comprehensive Guide to Vocaloid - Reddit](https://www.reddit.com/r/Vocaloid/comments/2cu3bl/comprehensive_guide_to_vocaloid/)
 
