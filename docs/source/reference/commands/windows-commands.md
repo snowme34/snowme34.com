@@ -1,7 +1,5 @@
 # Windows Commands
 
-*Last Update: 12/19/2018.*
-
 ## Make Junctions
 
 ```cmd
@@ -34,3 +32,20 @@ Run the following case-insensitive "names" directly in `Run` (press Win+R)
 shell:RecycleBinFolder
 shell:startup
 ```
+
+## File inside Picture
+
+Will put a file inside an image.
+
+* Put the files inside an archive (rar or zip)
+
+```cmd
+copy /b input.jpg+input.rar=output.jpg
+copy /b input.jpg+input.zip=output.jpg
+```
+
+Rename `output.jpg` to either `output.rar` or `output.zip`
+and unpack to get original file.
+
+Note even if the original input archive is `rar`, try `zip`
+to see if it works.
