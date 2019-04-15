@@ -16,7 +16,10 @@ git clone url [dir]
 
 git status
 
-git add .
+git add -A
+git add .  # no 'rm'
+git add -u # no new files
+
 git commit -m ""
 git commit --amend
 git diff
