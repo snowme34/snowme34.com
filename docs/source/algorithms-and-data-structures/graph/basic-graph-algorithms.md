@@ -53,6 +53,8 @@ for(int i = 1; i <= n-1; ++i) {
 
 ### Dijkstra's
 
+Best First Search
+
 Graph Search using priority queue.
 
 Multiple by `-1` to make the min_heap of c++ a max_heap.
@@ -78,6 +80,13 @@ while (!pq.empty()) {
   }
 }
 ```
+
+#### Non-Negativity
+
+We assumed edges are non-negative in Dijkstra's since we
+need that the smallest path in each step is the permanent
+shortest path by arguing that using additional edge
+will always increase the total length.
 
 ### Floyd-Warshall
 
