@@ -568,3 +568,6 @@ cloudflare
 jisho
 rikai
 rikaikun
+
+Livelock
+herlihy

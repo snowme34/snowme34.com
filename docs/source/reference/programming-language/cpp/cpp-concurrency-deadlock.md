@@ -67,7 +67,7 @@ There are 4 required conditions for deadlock to happen:
 
 This page is not going to cover those details (yet)
 
-## Avoidance When Programming Cpp
+## Avoidance When Programming in C++
 
 Try to avoid logic that requires multiple locks.
 
@@ -181,8 +181,22 @@ public:
 };
 ```
 
-<!-- ## Starvation and Livelock -->
+## Starvation and Livelock
 
+Two problems that are less common than deadlocks
+
+Starvation happens when a process never gains access to one necessary resource.
+
+It may be a result of bad scheduling algorithm which never schedules some resources to
+some processes.
+
+Livelock happens when thread A takes actions in response of thread B and B also takes
+actions in response of A. Like 2 people walk on the street towards each other, person A
+takes left turn, person B takes right turn. Same things happens again and again.
+They both responses (not waiting) but still cannot proceed.
+
+It may be a result of deadlock recovery. Both threads takes actions and the same
+recovery algorithm is repeatedly triggered.
 
 ## Granularity
 
@@ -197,8 +211,19 @@ Based on [herlihy4-5-presentation](http://fileadmin.cs.lth.se/cs/education/eda01
   * More than one lock
   * Small number of resources
 
+More coarse-grained locks lead to higher possibility for one process to
+wait for another one, resulting in more waiting time, which is bad for parallelism.
+
+More fine-grained locks lead to more trouble managing them and increase the possibility
+of dead locks.
+
 ## Reference/Read More
 
-* [Deadlock (The Java™ Tutorials > Essential Classes > Concurrency)](https://docs.oracle.com/javase/tutorial/essential/concurrency/deadlock.html)
 * [Operating Systems: Deadlocks](https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/7_Deadlocks.html)
+* [Deadlock - Wikipedia](https://en.wikipedia.org/wiki/Deadlock)
+* [Deadlock prevention algorithms - Wikipedia](https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms)
+* [Deadlock (The Java™ Tutorials > Essential Classes > Concurrency)](https://docs.oracle.com/javase/tutorial/essential/concurrency/deadlock.html)
+* [Starvation and Livelock (The Java™ Tutorials > Essential Classes > Concurrency)](https://docs.oracle.com/javase/tutorial/essential/concurrency/starvelive.html)
 * [C++ Threading #4: Deadlock](https://www.youtube.com/watch?v=_N0B5ua7oN8&list=PL5jc9xFGsL8E12so1wlMS0r0hTQoJL74M&index=4)
+* [Coarse-grained and fine-grained locking](http://fileadmin.cs.lth.se/cs/education/eda015f/2013/herlihy4-5-presentation.pdf):
+* [terminology - Distributed vs parallel computing - Computer Science Stack Exchange](https://cs.stackexchange.com/questions/1580/distributed-vs-parallel-computing)
