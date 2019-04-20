@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 4/14/2019.*
+*Last update date: 4/19/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -126,6 +126,8 @@ Self-study materials and online courses.
 
   * Or search online and on YouTube for more.
 
+* [A Beginner's Guide to Programming Languages - IT Hare on Soft.ware](http://ithare.com/a-beginners-guide-to-programming-languages/)
+
 #### Programming Languages
 
 C/C++:
@@ -179,6 +181,11 @@ JavaScript:
 Go:
 
 * [Go wiki](https://github.com/golang/go/wiki)
+
+SQL:
+
+* [SQLZOO](https://sqlzoo.net/wiki/SQL_Tutorial)
+* [SQLBolt](https://sqlbolt.com/)
 
 #### General Online Computer Science Schools
 
