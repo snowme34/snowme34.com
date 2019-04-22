@@ -276,7 +276,7 @@ SELECT * FROM user ORDER BY age DESC LIMIT 5; -- return top 5 oldest user
 
 #### JOIN
 
-Think of JOINs using venn diagrams.
+Try to understand JOINs using venn diagrams.
 
 INNER JOINS:
 
@@ -303,7 +303,7 @@ INNER JOIN table_2               -- INNER JOIN is default JOIN
 
 See *end of this page* for examples.
 
-This page has some good discussion on JOINs: [MySQL FULL JOIN? - Stack Overflow](https://stackoverflow.com/questions/7978663/mysql-full-join/36001694)
+This page has some good discussions on JOINs: [MySQL FULL JOIN? - Stack Overflow](https://stackoverflow.com/questions/7978663/mysql-full-join/36001694)
 
 #### Aggregate and Group Results
 
