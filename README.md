@@ -2,6 +2,8 @@
 
 Spelling and broken links check: [![Build Status](https://travis-ci.org/snowme34/snowme34.com.svg?branch=master)](https://travis-ci.org/snowme34/snowme34.com)
 
+Build of Docsnt: [![Documentation Status](https://readthedocs.org/projects/docsnt34/badge/?version=latest)](https://docs.snowme34.com/en/latest/?badge=latest)
+
 The source code of snowme34.com.
 
 snowme34 is not a professional front-end developer.
