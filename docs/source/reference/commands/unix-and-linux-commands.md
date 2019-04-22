@@ -332,7 +332,21 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     scp [source] [target] # secure copy, copy across ssh and so on
     ```
 
-5. Move and rename
+5. rsync
+
+    * -n dry-run
+    * -a archive
+    * -v verbose
+    * -h human-friendly size
+    * -u update, skip newer files on the receiving side
+    * remove dry-run after checking the result
+
+    ```bash
+    rsync -avh --dry-run <source> <target>    # copy and overwrite, no deletion
+    rsync -u -ah --dry-run <source> <target> # copy and overwrite for files that are newer in source
+    ```
+
+6. Move and rename
 
     * -v verbose
     * `mv` treats directories and files the same
@@ -341,7 +355,7 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     mv [source] [target]
     ```
 
-6. Delete
+7. Delete
 
     * -i interactive
     * -r dir
@@ -353,13 +367,13 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     rm
     ```
 
-7. Quota
+8. Quota
 
     ```bash
     quota -v
     ```
 
-8. File system disk space usage
+9. File system disk space usage
 
     ```bash
     df
