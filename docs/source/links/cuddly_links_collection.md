@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 4/19/2019.*
+*Last update date: 4/23/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -66,13 +66,14 @@ Note: still in progress.
     - [Reference for Philosophy](#reference-for-philosophy)
     - [Reference for Privacy](#reference-for-privacy)
     - [Reference for ACGN](#reference-for-acgn)
+    - [Reference for Data Science](#reference-for-data-science)
     - [Other References](#other-references)
   - [Career](#career)
     - [Resume](#resume)
     - [Preparation](#preparation)
   - [Tools](#tools)
     - [Tools for Calculating](#tools-for-calculating)
-    - [Tools for Graphic Design](#tools-for-graphic-design)
+    - [Tools for Draw and Design](#tools-for-draw-and-design)
     - [Tools for Human Language Study](#tools-for-human-language-study)
     - [Tools for Programming](#tools-for-programming)
       - [CS Visualizers](#cs-visualizers)
@@ -100,6 +101,7 @@ Note: still in progress.
     - [Updates from Forums](#updates-from-forums)
   - [Other Collections](#other-collections)
     - [Collections involving Programming](#collections-involving-programming)
+      - [Developer Resources](#developer-resources)
       - [General Programming Collection](#general-programming-collection)
       - [CS Course Collection](#cs-course-collection)
       - [Fun Collection](#fun-collection)
@@ -544,6 +546,10 @@ I'm not a professional here, see the other collections listed later for more.
 
   * In Traditional Chinese.
 
+### Reference for Data Science
+
+* [ML Cheatsheet](https://ml-cheatsheet.readthedocs.io/)
+
 ### Other References
 
 * [A Modern Herbal](https://botanical.com/)
@@ -584,17 +590,30 @@ I'm not a professional here, see the other collections listed later for more.
 
 * [Desmos](https://www.desmos.com/calculator)
 
-### Tools for Graphic Design
+### Tools for Draw and Design
+
+Draw and Chart
+
+* [draw.io](https://www.draw.io)
+* [Lucid chart](https://www.lucidchart.com/)
+  * not free
 
 Online Photoshop (in flash):
 
 * [Pixlr](https://pixlr.com/editor/)
 * [Toolpic](https://www.toolpic.com/)
 
-Prototyping Tools:
+Prototyping (Wire Frame) Tools:
 
 * [Figma](https://www.figma.com/)
 * [Moqups](https://moqups.com/)
+* [Adobe XD](https://www.adobe.com/products/xd.html)
+* [wireframe.cc](https://wireframe.cc/)
+
+DB Schema:
+
+* [Sql DBM](https://sqldbm.com/Home/)
+* [dbdiagram](https://dbdiagram.io/home)
 
 Others:
 
@@ -1017,13 +1036,27 @@ and so on.
 
 For programmers and developers and data scientists and so forth.
 
+#### Developer Resources
+
+* [getAwesomeness](https://getawesomeness.herokuapp.com/)
+
+  * Retrieve awesome repos from GitHub
+
+* [Free For Dev](https://free-for.dev/)
+
+  * "A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradev"
+
+* [Free and open-source software for developers](https://github.com/tvvocold/FOSS-for-Dev)
+
+* [Public APIs](https://github.com/n0shake/Public-APIs)
+
+* [public apis](https://github.com/toddmotto/public-apis)
+
 #### General Programming Collection
 
 * [GeekPlux's Wiki](https://wiki.geekplux.com/)
 
   * One of the blogs inspired me
-
-* [free-for-dev](https://github.com/ripienaar/free-for-dev/blob/master/README.md)
 
 * [Every Programmer Should Know](https://github.com/mtdvio/every-programmer-should-know)
 
