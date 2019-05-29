@@ -1024,6 +1024,8 @@ and so on.
 
 * [5ch](http://5ch.net/)
 
+  * *seems* that they banned non-JP IP, not sure
+
 ## Other Collections
 
 * [cheat-sheets](http://www.cheat-sheets.org/)

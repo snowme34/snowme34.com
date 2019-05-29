@@ -579,3 +579,6 @@ infradev
 repos
 wireframe
 dbdiagram
+
+DISTINCTROW
+DUMPFILE
