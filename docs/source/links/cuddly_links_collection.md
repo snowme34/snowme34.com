@@ -310,6 +310,8 @@ Some competitions:
 
 * [Machine Learning Yearning by Andrew Ng](http://www.mlyearning.org/)
 
+* [A Home for Pandas and Sklearn: Beginner How-Tos | Kaggle](https://www.kaggle.com/timolee/a-home-for-pandas-and-sklearn-beginner-how-tos/notebook)
+
 ### Human Languages
 
 * [iTunes Podcast](https://www.apple.com/itunes/podcasts/)
