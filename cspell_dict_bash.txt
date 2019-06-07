@@ -582,3 +582,5 @@ dbdiagram
 
 DISTINCTROW
 DUMPFILE
+
+vmstat

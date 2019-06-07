@@ -872,10 +872,13 @@ The event reference (!) is mainly used in scripts?
 
 4. Up time
 
+    * troubleshooting
     * Output is consist with:
         * uptime
         * Login users
         * load
+            * average of 1 min, 5 min and 15 min
+            * note that machine may have more than one CPU
 
     ```bash
     uptime
@@ -981,6 +984,16 @@ The event reference (!) is mainly used in scripts?
 
     ```bash
     pkill -u [username]
+    ```
+
+13. Last logged in user
+
+    * -a: display hostname in last column
+    * -i: display ip
+
+    ```bash
+    last -5
+    last -5ai
     ```
 
 ## Privileges and Permissions
@@ -1091,6 +1104,7 @@ The event reference (!) is mainly used in scripts?
 
 6. List processes
 
+    * troubleshoot
     * See IDs of processes
     * Read help of `ps` for details
     * -e all processes
@@ -1112,6 +1126,8 @@ The event reference (!) is mainly used in scripts?
     ```
 
 7. Monitor processes
+
+    * troubleshoot
 
     ```bash
     top
@@ -1159,6 +1175,8 @@ The event reference (!) is mainly used in scripts?
 
 11. Show available memories
 
+    * troubleshoot
+
     ```bash
     free
     free -h
@@ -1166,6 +1184,8 @@ The event reference (!) is mainly used in scripts?
     ```
 
 12. Read syslog
+
+    * troubleshoot
 
     ```bash
     sudo tail -f /var/log/syslog
@@ -1185,6 +1205,20 @@ The event reference (!) is mainly used in scripts?
     sudo journalctl -u docker -f # follow
     sudo journalctl -u docker --no-pager # print to stdout
     sudo journalctl -u docker --no-pager > ./some-log # and redirect to a file
+    ```
+
+15. Virtual Memory Stat
+
+    * troubleshoot
+    * r: running
+    * b: blocked
+    * in: interrupts
+    * cn: context switches
+    * can leave it run for some time and see the trends
+
+    ```bash
+    vmstat
+    vmstat 1 # per second, output is 1 second average
     ```
 
 ## Network
