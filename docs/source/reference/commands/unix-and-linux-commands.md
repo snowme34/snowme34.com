@@ -1359,6 +1359,12 @@ The event reference (!) is mainly used in scripts?
     curl --proxy [some_proxy] [URL]
     ```
 
+8. wget
+
+    ```bash
+    wget -qO- 127.0.0.1
+    ```
+
 ## Free Cache
 
 [How to Clear RAM Memory Cache, Buffer and Swap Space on Linux](https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/)

@@ -584,3 +584,6 @@ DISTINCTROW
 DUMPFILE
 
 vmstat
+
+yuki
+moto
