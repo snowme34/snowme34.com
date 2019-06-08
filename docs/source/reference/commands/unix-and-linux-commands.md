@@ -1361,7 +1361,12 @@ The event reference (!) is mainly used in scripts?
 
 8. wget
 
+    * directly download a link
+    * q: quite
+    * O: output, `-` for stdout
+
     ```bash
+    wget 127.0.0.1/file.txt
     wget -qO- 127.0.0.1
     ```
 
