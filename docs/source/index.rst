@@ -88,6 +88,7 @@ The organization of this site is as following:
    reference/commands/docker-commands
    reference/commands/git-commands
    reference/commands/vim-commands
+   reference/commands/vagrant
 
 
 .. toctree::

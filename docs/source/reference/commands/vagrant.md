@@ -85,14 +85,37 @@ vagrant push
 
 ## Vagrantfile
 
+* [Getting Started - Vagrant by HashiCorp](https://www.vagrantup.com/intro/getting-started/index.html)
+* [Vagrantfile - Vagrant by HashiCorp](https://www.vagrantup.com/docs/vagrantfile/)
+
 ```ruby
 Vagrant.configure("2") do |config|
   config.vm.box = "hashicorp/precise64"
   config.vm.box_version = "1.1.0"
   config.vm.box_url = "https://vagrantcloud.com/hashicorp/precise64"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 999
+    vb.cpus = 1
+    #vb.gui = true
+  end
+
   config.vm.provision :shell, path: "bootstrap.sh"
+
+  config.vm.network :forwarded_port, guest: 80, host: 4567
+  config.vm.network :forwarded_port, guest: 443, host: 5678, auto_correct: true
 end
 ```
+
+## Plug-ins
+
+* vagrant-share
+
+```bash
+vagrant share
+```
+
+* vagrant-auto_network
 
 ## Read More
 
