@@ -1,10 +1,12 @@
 # Git Commands
 
-*Last Update: 11/24/2018.*
+*Last Update: 07/11/2019.*
 
 ## From Github Git Cheat Sheet
 
 * [Git Cheat Sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)
+
+basic
 
 ```bash
 git help [command]
@@ -15,7 +17,11 @@ git init
 git clone url [dir]
 
 git status
+```
 
+add and commit and check and re-set
+
+```bash
 git add -A
 git add .  # no 'rm'
 git add -u # no new files
@@ -25,45 +31,74 @@ git commit --amend
 git diff
 git diff --staged
 git reset [file]
+```
 
+branch
+
+```bash
 git branch
 git branch [new-branch-name]
 git checkout [branch]
 git checkout -b [new-branch-name]
 git merge [branch]
 git branch -d [branch-to-delete]
+```
 
+remote
+
+```bash
 git remote add origin
 
 git fetch [bookmark]
 git merge [bookmark]/[branch]
 git push [alias] [branch]
 git pull # git fetch + git merge
+```
 
+history
+
+```bash
 git log
 git log --follow [file]
 git diff [branch_a]...[branch_b]
 git show [commit]
 git tag
+```
 
+rm
+
+```bash
 git rm [file] # both delete from working directory and stage this deletion
 git rm --cashed [file] # delete from version control
 git mv [file-original] [file-new]
+```
 
+ignore
+
+```bash
 vim .gitignore # edit excluded files
 git ls-files --other --ignored --exclude-standard # list excluded files
+```
 
-# temporarily store changes
+temporarily store changes
+
+```bash
 git stash
 git stash pop
 git stash list
 git stash drop
+```
 
+reset
+
+```bash
 git reset [commit] # undo, locally
 git reset --hard [commit] # discard all and jump back
 ```
 
-## Git Commands
+## Commands
+
+config
 
 ```bash
 git config --global user.name "na"
@@ -72,8 +107,11 @@ git config --global user.email "a@b.co"
 # line ending preference
 git config --global core.autocrlf input
 git config --global core.safecrlf true
+```
 
-# log
+log
+
+```bash
 git log --pretty=oneline
 git log --pretty=oneline --all
 git log --pretty=oneline --max-count=2 --since='1024 minutes ago' --until='256 minutes ago' --author=<Mike>
@@ -81,18 +119,28 @@ git log --all --pretty=format:'%h %cd %s (%an)' --since='1 days ago'
 git log --pretty=format:'%h %ad - %s%d [%an]' --graph --date=short
 # in .gitconfig, under [alias], add "history = log --pretty=format:'%h %ad - %s%d [%an]' --graph --date=short"
 git log --graph --date=short master --all
+```
 
-# look at an old state without affecting current working directory
+look at an old state without affecting current working directory
+
+```bash
 git checkout [hash-of-previous-commits]
 git checkout master # go back to master
+```
 
-# tag
+tag
+
+```bash
 git tag # list tags
 git tag v0 # tag current version as v0
 # checkout to the first ancestor of a tag
 git checkout v0^
 git checkout v0~1
+```
 
+edit
+
+```bash
 # discard unstaged changes
 ## make changes to a.b
 ## start to undo
@@ -131,14 +179,22 @@ git rm --cached <file> # don't know which commit it was
 # For a pushed commit
 git filter-branch --index-filter 'git rm --cached <file>' HEAD # use with care
 # see https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html
+```
 
+diff
+
+```bash
 # check which files changed
 git diff --name-status branch_a..branch_b
 # check diff of a file in different branches 
 # https://stackoverflow.com/questions/4099742/how-to-compare-files-from-two-different-branches
 git diff branch_a branch_b -- some.file
 git diff branch_a..branch_b -- some.file
+```
 
+clean
+
+```bash
 # remove local untracked files
 # must have -i -n -f options to run this command
 git clean -n   # dry run
@@ -155,12 +211,13 @@ git clean -fdx # remove ignored and non-ignored files and directory
 * [Git Cherry-pick vs Merge Workflow](https://stackoverflow.com/questions/1241720/git-cherry-pick-vs-merge-workflow)
 
 ```bash
+git rebase -i
 git cherry-pick [commit_hash]
 ```
 
 ## Miscellaneous
 
-Apply .gitignore 
+Apply .gitignore
 
 * [Apply gitignore on an existing repository already tracking large number of files](https://stackoverflow.com/questions/19663093/apply-gitignore-on-an-existing-repository-already-tracking-large-number-of-files)
 
@@ -173,3 +230,16 @@ git commit -m ".gitignore is now working"
 ```
 
 [Set CRLF of git to LF on Windows](https://stackoverflow.com/questions/2517190/how-do-i-force-git-to-use-lf-instead-of-crlf-under-windows)
+
+Push up to a commit
+
+* can be combined with `git rebase -i`
+* fails if remote branch not exist, create one first
+* [How can I push a specific commit to a remote, and not previous commits?](https://stackoverflow.com/questions/3230074/how-can-i-push-a-specific-commit-to-a-remote-and-not-previous-commits)
+
+```bash
+git push <remote> <commit SHA>:<remote-branch>
+
+# auto create a remote branch
+git push <remote> <commit SHA>:refs/heads/<remote-branch>
+```
