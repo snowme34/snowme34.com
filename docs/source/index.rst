@@ -100,6 +100,7 @@ The organization of this site is as following:
    reference/devops/debian-firewall-nftables-and-iptables
    reference/devops/bind-dns-server-setup
    reference/devops/scale
+   reference/devops/engineering-and-operation
 
 
 .. toctree::
