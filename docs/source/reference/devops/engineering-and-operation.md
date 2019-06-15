@@ -2,14 +2,23 @@
 
 Code is shipped to production
 
+* coding
+  * write the code
+  * test locally
+* debugging
+  * ship the code
+  * issues emerge
+
 ## Coding
 
 Think about production environment while developing
 
 * How to avoid/defend/recover from issues?
-* How it make it easier to debug?
+* How to help to troubleshoot?
 
-### Race Conditions
+### Race Conditions and Edge Cases
+
+Very likely happen when
 
 * Threads
 * Multi-Process (resource contention)
@@ -17,12 +26,17 @@ Think about production environment while developing
 
 Use "atomic" operations to avoid race conditions
 
+May happen in the situations never thought about, the Edge Cases
+
+* all possible input
+* never assume something never happens
+
 Research on the implicit and explicit locks or semaphores available (for file systems or databases etc.)
 
 * usually DBMS automatically locks
 * but they may or may not be correct or enough
 
-#### UNIX file locking
+UNIX file locking
 
 * lockf()
 * flock()
@@ -30,36 +44,69 @@ Research on the implicit and explicit locks or semaphores available (for file sy
 
 #### File
 
-Think carefully when opening files.
+Think carefully when opening files. (Majority developers never think beyond closing after opening)
 
 It may change after opening, may disappear or even may be maliciously edited (or read).
 
-### Edge Cases
+One security measurement: create a randomly named directory for the files under /tmp/, and change the permission of that directory
 
-All possible input
+#### Race Condition Pitfall
 
-Never assume something never happens
+Bad Locks, use randomness to help
 
-### Efficient
+* deadlock
+* livelock
 
-Over-efficient is bad
+Failed to account for network latency
 
-### Scale
+* possible solution is to averaging the data of multi-clients (e.g. local and remote)
+  * e.g. display player in a location between where the player thinks and others thinks
+* do not wish to slow down other people via atomic operations etc.
 
-What is the limit (disk, memory, cpu, networking)?
+### Efficiency and Scalability
 
-What happens when reaching the limit?
+There is usually a trade-off between speed to ship the product vs scalable or efficient
 
-Need to scale at all?
+First know
 
-How to scale?
+* over-efficient is bad
+  * may prevent scaling
+* unnecessary scalability is unnecessary
+  * never able to predict the future exactly
+  * always trading-off scalability with others, usually efficiency
+    * e.g. more servers -> slower to start the whole system
+
+Think about your own product
+
+* what is the limit (disk, memory, cpu, networking)?
+* what happens when reaching the limit?
+* how to scale?
+
+How
+
+* separate by layers
+* load balancing
+* DNS evenly lookup
+* active/passive mode
+
+See the [Scale](https://docs.snowme34.com/en/latest/reference/devops/scale.html) page for more details
+
+Don't forget availability
+
+* CAP theorem
 
 ### Debug
+
+Output
 
 * Logs
 * Console output
 
-* "Switch"
+Switches
+
+* Manual switch
+  * command line
+  * process signal (`kill`)
 * Config file
 
 ## Debugging

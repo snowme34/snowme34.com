@@ -592,3 +592,4 @@ hashicorp
 
 IOPS
 lockf
+fcntl
