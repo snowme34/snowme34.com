@@ -375,9 +375,12 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
 
 9. File system disk space usage
 
+    * troubleshoot
+
     ```bash
     df
     df .
+    df -k  # use 1k as SIZE scale
     ```
 
 Pay heed to the difference between `du` and `df`
@@ -877,8 +880,11 @@ The event reference (!) is mainly used in scripts?
         * uptime
         * Login users
         * load
-            * average of 1 min, 5 min and 15 min
+            * average number of processes in "run" or "ready" queue of 1 min, 5 min and 15 min
             * note that machine may have more than one CPU
+            * 1 means 100% load for one CPU
+            * not that fantastic anymore since majority of systems run on multi-core CPUs
+        * also consider processes blocked due to I/O, shown as load
 
     ```bash
     uptime
@@ -1128,6 +1134,7 @@ The event reference (!) is mainly used in scripts?
 7. Monitor processes
 
     * troubleshoot
+    * `top` is very powerful
 
     ```bash
     top
@@ -1155,6 +1162,8 @@ The event reference (!) is mainly used in scripts?
     kill [id]
     kill -9 [id] # the kill signal cannot be ignored and immediately
                  # skipping the "clean up" before dying
+
+    kill -0 [id] # check if process exists or permission to signal exists
     ```
 
 9. Run commands that ignore some signals
@@ -1200,6 +1209,8 @@ The event reference (!) is mainly used in scripts?
 
 14. Journals / logs
 
+    * troubleshoot
+
     ```bash
     sudo journalctl -u docker -b # unit boot
     sudo journalctl -u docker -f # follow
@@ -1212,8 +1223,16 @@ The event reference (!) is mainly used in scripts?
     * troubleshoot
     * r: running
     * b: blocked
+    * io
+      * bi: Blocks In
+      * bo: Blocks Out
     * in: interrupts
     * cn: context switches
+    * cpu (in %)
+      * USer
+      * SYstem
+      * IDle
+      * Wait
     * can leave it run for some time and see the trends
 
     ```bash
@@ -1221,13 +1240,30 @@ The event reference (!) is mainly used in scripts?
     vmstat 1 # per second, output is 1 second average
     ```
 
-## Network
+16. IO Status
 
-1. List listening ports
+    * troubleshoot
 
     ```bash
-    sudo netstat -lnp # show all open ports, including sockets
+    iostat
+    iostat 1 # per 1 sec
+    iostat -x
+    ```
+
+## Network
+
+1. Net Status
+
+    * troubleshoot
+
+    ```bash
+    netstat -s          # show a sweet summary
+    sudo netstat -lnp   # show all open ports, including sockets
     sudo netstat -tupln # without sockets
+
+    netstat -an    # all and numerical
+    netstat -tan   # tcp
+    netstst -tanep # extended and show program
     ```
 
 2. Investigate sockets
@@ -1368,6 +1404,17 @@ The event reference (!) is mainly used in scripts?
     ```bash
     wget 127.0.0.1/file.txt
     wget -qO- 127.0.0.1
+    ```
+
+9. Actual Netoworking Traffic
+
+    * troubleshoot
+
+    ```bash
+    tail -f /proc/net/dev
+    iftop
+    iptraf
+    tcpdump # raw
     ```
 
 ## Free Cache
@@ -1892,11 +1939,15 @@ See [What is the exact difference between a 'terminal', a 'shell', a 'tty' and a
 
 5. CPU
 
+    * troubleshoot
+
     ```bash
     cat /proc/cpuinfo
     ```
 
 6. Mem
+
+    * troubleshoot
 
     ```bash
     free
