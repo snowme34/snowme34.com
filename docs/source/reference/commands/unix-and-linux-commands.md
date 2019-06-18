@@ -17,8 +17,6 @@ It's not necessary to master *nix cli, but it's necessary to know it well to be 
 
 The commands below are listed mostly for my personal reference. They are not ranked by any specific order or designed to be a tutorial for beginners.
 
-(Instead of seeking for note-management apps in my phone each time, e.g. on a public computer, I can just easily type in this URL :D)
-
 ## Philosophies and Notes
 
 * Everything is a file, including the shell, the devices, the directories.
@@ -36,6 +34,17 @@ The exit values of commands:
 | non-0 | failure           |
 | 2     | incorrect usage   |
 | 127   | command not found |
+```
+
+Shell built-in vs external
+
+* some commands are only built-in in shell (`man builtins`)
+* some are only external (actually the majority)
+* others have both versions (e.g. `kill`)
+
+```bash
+builtin kill
+/bin/kill
 ```
 
 ## Basics
@@ -1113,17 +1122,23 @@ The event reference (!) is mainly used in scripts?
     * troubleshoot
     * See IDs of processes
     * Read help of `ps` for details
-    * -e all processes
-    * -a all processes except session leader and processes not associated with a terminal
-    * -x display session leader and processes not associated with a terminal (?)
+    * e: all processes
+    * a: all processes except session leader and processes not associated with a terminal
+    * x: display session leader and processes not associated with a terminal (?)
         * e = a + x ?
-    * -u userlist
-    * -w wide, use twice for unlimited width
+    * u: userlist
+    * w: wide, use twice for unlimited width
 
     ```bash
     ps
+    ps ef   # all processes
+    ps aux  # no parent process ID
+
+    ps -ef | grep mysql | grep -v grep | awk '{print $2}' # lookup PID of mysql
+
     ps axuf
     ps auxww           # output with unlimited width
+
     ps aux | grep -v grep | grep -i -e VSZ -e
     ps -e -o pid,vsz,comm= | sort -n -k 2
 
@@ -1164,6 +1179,12 @@ The event reference (!) is mainly used in scripts?
                  # skipping the "clean up" before dying
 
     kill -0 [id] # check if process exists or permission to signal exists
+
+    # note that built-in kill is different from the external kill
+    # http://man7.org/linux/man-pages/man2/kill.2.html
+    kill -s [sig] 0  # send sig to every process in the process group of the calling processh
+    kill -s [sig] -1 # all processes except the kill process itself and init
+    # If pid is less than -1, then sig is sent to every process in the process group whose ID is -pid.
     ```
 
 9. Run commands that ignore some signals
