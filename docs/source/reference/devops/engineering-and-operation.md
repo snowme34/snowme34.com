@@ -4,7 +4,7 @@ Code is shipped to production
 
 * coding
   * write the code
-  * test locally
+  * test
 * debugging
   * ship the code
   * issues emerge
@@ -18,7 +18,7 @@ Think about production environment while developing
 
 ### Race Conditions and Edge Cases
 
-Very likely happen when
+Very likely happen when the following are involved
 
 * Threads
 * Multi-Process (resource contention)
@@ -34,7 +34,7 @@ May happen in the situations never thought about, the Edge Cases
 Research on the implicit and explicit locks or semaphores available (for file systems or databases etc.)
 
 * usually DBMS automatically locks
-* but they may or may not be correct or enough
+* but they may or may not be correct or enough or efficient
 
 UNIX file locking
 
@@ -46,7 +46,7 @@ UNIX file locking
 
 Think carefully when opening files. (Majority developers never think beyond closing after opening)
 
-It may change after opening, may disappear or even may be maliciously edited (or read).
+They may change after opening, may disappear or even may be maliciously edited (or read).
 
 One security measurement: create a randomly named directory for the files under /tmp/, and change the permission of that directory
 
@@ -65,12 +65,13 @@ Failed to account for network latency
 
 ### Efficiency and Scalability
 
-There is usually a trade-off between speed to ship the product vs scalable or efficient
+There is usually a trade-off between "speed to ship the product" and "scalable or efficient code"
 
 First know
 
 * over-efficient is bad
   * may prevent scaling
+  * may harm later development
 * unnecessary scalability is unnecessary
   * never able to predict the future exactly
   * always trading-off scalability with others, usually efficiency
@@ -109,23 +110,56 @@ Switches
   * process signal (`kill`)
 * Config file
 
+Think carefully (again) what to use. Some bugs may be caused by logging itself. Some switches like reloading
+a config file may clear the bug.
+
+#### Logs
+
+One of the most important things.
+
+Logging builds the bridge between developers and debuggers.
+
+##### Logging Level
+
+Usually different levels for logs
+
+* debug
+* info
+* warning
+* fatal
+
+##### Logging Pitfalls
+
+Logging costs
+
+* over-logging wastes resources
+* jumbled or interleaved logging makes logs useless
+
 ## Debugging
 
 Now it's time to debug
 
 ### System Health
 
-CPU
+#### CPU
 
 * load average
 * processor utilization
 
-Memory
+#### Memory
 
 * resident set sizes
 * swap
 
-Disk I/O
+About swap
+
+* If forking a large process, lack of memory will fail this fork unless there is enough swap.
+* But we don't want to use swap. Check problems that cause processes to use swap.
+* Can use `ps` to check swap
+
+Also Linux has OOM Killer (Out of memory killer). Overloaded memory usage might trigger it to kill.
+
+#### Disk I/O
 
 * IOPS
   * I/O operations Per Second
@@ -136,7 +170,7 @@ Disk I/O
   * NFS
   * NAS (Network Attached Storage)
 
-Network
+#### Network
 
 * utilization
   * bps (bit per seconds)
@@ -151,11 +185,19 @@ Network
   * not exist
   * malicious
 
+There are 65535 TCP/IP ports (some are reserved) in total. Running out of ports is another common issue.
+
+There are "2" ips: IPv6 and IPv4. One process might make 2 connection attempts or 1 or 0.
+
 ### Process Health
 
 * pegged CPU
 * weird memory usage
 * process state
+
+-------------------------------------
+
+See [Unix and Linux Commands](https://docs.snowme34.com/en/latest/reference/commands/unix-and-linux-commands.html) for commands to use. Search for key word: troubleshoot or click this [link](https://docs.snowme34.com/en/latest/reference/commands/unix-and-linux-commands.html?highlight=troubleshoot) for built-in highlight.
 
 ### Log
 
@@ -163,6 +205,19 @@ Network
 * useful
 * readable
 
+Check how your program logs
+
+Check system logs (system health)
+
 ### Dependency
 
 Does it depend on other recourses? Are those working?
+
+* blocking synchronous calls
+* slow asynchronous calls
+* dependency services go down
+* components in series go down
+* proxy servers
+* etc.
+
+Real problem might be surprising, like a DNS record issue or an expired certificate
