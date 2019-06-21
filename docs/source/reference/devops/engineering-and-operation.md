@@ -13,7 +13,7 @@ Code is shipped to production
 
 Think about production environment while developing
 
-* How to avoid/defend/recover from issues?
+* How to avoid/defend against/recover from issues?
 * How to help to troubleshoot?
 
 ### Race Conditions and Edge Cases
@@ -30,6 +30,7 @@ May happen in the situations never thought about, the Edge Cases
 
 * all possible input
 * never assume something never happens
+  * at least log the extremely rare cases
 
 Research on the implicit and explicit locks or semaphores available (for file systems or databases etc.)
 
@@ -105,10 +106,13 @@ Output
 
 Switches
 
-* Manual switch
-  * command line
-  * process signal (`kill`)
+* command line call
+* process signal (`kill`)
 * Config file
+* response of another service (time-out or different response code)
+* presence of a file on the system
+* webhook
+* ...
 
 Think carefully (again) what to use. Some bugs may be caused by logging itself. Some switches like reloading
 a config file may clear the bug.
@@ -119,6 +123,25 @@ One of the most important things.
 
 Logging builds the bridge between developers and debuggers.
 
+No logging means, operation people have to call development people at 2 AM.
+
+##### Logging and Monitoring and Investment
+
+Nothing can hide the important of monitoring the production software.
+
+Logging, hooks, and so on are common choices.
+
+* log the transactions within the system
+* log the performance of each function call (like queries)
+* log the data, whose values are greater than the cost to log
+
+Big logging implies big investment, either specialized framework or specialized servers.
+
+* log all critical data
+* passive logging
+* sample huge traffic
+  * cautious about how to pick the "real" and "sweet" randomness
+
 ##### Logging Level
 
 Usually different levels for logs
@@ -128,16 +151,23 @@ Usually different levels for logs
 * warning
 * fatal
 
+There can be many many other levels; use based on your own need
+
+Since plenty of bugs only appear at specific time period, chances are people do not want to
+restart or re-compile the code. Here is where switches come to be handy (mentioned above)
+
 ##### Logging Pitfalls
 
-Logging costs
-
 * over-logging wastes resources
+  * and possibly hides the real issues
 * jumbled or interleaved logging makes logs useless
+  * make sure log entries are uniquely identified
+* logging changes behavior of the program
+  * one more function call changes the stack frame?
+* bad strategy to sample log
+  * not capturing enough data
 
 ## Debugging
-
-Now it's time to debug
 
 ### System Health
 
@@ -197,7 +227,7 @@ There are "2" ips: IPv6 and IPv4. One process might make 2 connection attempts o
 
 -------------------------------------
 
-See [Unix and Linux Commands](https://docs.snowme34.com/en/latest/reference/commands/unix-and-linux-commands.html) for commands to use. Search for key word: troubleshoot or click this [link](https://docs.snowme34.com/en/latest/reference/commands/unix-and-linux-commands.html?highlight=troubleshoot) for built-in highlight.
+See [Unix and Linux Commands](https://docs.snowme34.com/en/latest/reference/commands/unix-and-linux-commands.html) for commands to use. Search for the keyword: **troubleshoot** or click this [link](https://docs.snowme34.com/en/latest/reference/commands/unix-and-linux-commands.html?highlight=troubleshoot) for built-in highlight. (It's a long page)
 
 ### Log
 
