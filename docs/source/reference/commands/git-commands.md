@@ -87,6 +87,10 @@ git stash
 git stash pop
 git stash list
 git stash drop
+
+git stash show -p             # default to be stash@{0}
+git stash show -p stash@{1}   # can specify
+git stash show -p stash@{0}^! # can specify the commit only (no parent)
 ```
 
 reset
