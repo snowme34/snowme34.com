@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 4/23/2019.*
+*Last update date: 6/21/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -37,6 +37,7 @@ Note: still in progress.
       - [Calculus](#Calculus)
     - [Computer Science](#Computer-Science)
       - [Intro to CS](#Intro-to-CS)
+      - [Intro to Open Source](#Intro-to-Open-Source)
       - [Programming Languages](#Programming-Languages)
       - [General Online Computer Science Schools](#General-Online-Computer-Science-Schools)
       - [Data Structure and Algorithms](#Data-Structure-and-Algorithms)
@@ -129,6 +130,14 @@ Self-study materials and online courses.
   * Or search online and on YouTube for more.
 
 * [A Beginner's Guide to Programming Languages - IT Hare on Soft.ware](http://ithare.com/a-beginners-guide-to-programming-languages/)
+
+#### Intro to Open Source
+
+* [CodeTriage](https://www.codetriage.com/)
+
+* [First Timers Only](https://www.firsttimersonly.com/)
+
+* [First Contributions](https://firstcontributions.github.io/)
 
 #### Programming Languages
 
