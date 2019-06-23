@@ -83,6 +83,19 @@ vagrant package --output <some-new-box-name.box>
 vagrant push
 ```
 
+[snapshot](https://www.vagrantup.com/docs/cli/snapshot.html), DO NOT MIX TWO SETS (either push/pop or save/restore)
+
+* `[vm-name]` may be `default`
+
+```bash
+vagrant snapshot push
+vagrant snapshot pop  --no-delete --no-start
+
+vagrant snapshot save    [vm-name] NAME
+vagrant snapshot restore [vm-name] NAME
+vagrant snapshot delete  [vm-name] NAME
+```
+
 ## Vagrantfile
 
 * [Getting Started - Vagrant by HashiCorp](https://www.vagrantup.com/intro/getting-started/index.html)
