@@ -10,6 +10,8 @@ as `/vagrant` in the virtual machine (default via VirtualBox shared folder).
 
 [Discover Vagrant Boxes](https://app.vagrantup.com/boxes/search)
 
+Also those virtual machines can be directly managed via Virtualbox GUI
+
 ## Commands
 
 ```bash
