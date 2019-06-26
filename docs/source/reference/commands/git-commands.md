@@ -80,7 +80,7 @@ vim .gitignore # edit excluded files
 git ls-files --other --ignored --exclude-standard # list excluded files
 ```
 
-temporarily store changes
+temporarily store changes (stash)
 
 ```bash
 git stash
@@ -91,6 +91,9 @@ git stash drop
 git stash show -p             # default to be stash@{0}
 git stash show -p stash@{1}   # can specify
 git stash show -p stash@{0}^! # can specify the commit only (no parent)
+
+# https://stackoverflow.com/questions/5506339/how-can-i-git-stash-a-specific-file#
+git stash push -m <some-stash-message> -- <some-file>
 ```
 
 reset
