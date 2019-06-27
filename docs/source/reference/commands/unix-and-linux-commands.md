@@ -1248,7 +1248,7 @@ The event reference (!) is mainly used in scripts?
       * bi: Blocks In
       * bo: Blocks Out
     * in: interrupts
-    * cn: context switches
+    * cs: context switches
     * cpu (in %)
       * USer
       * SYstem
