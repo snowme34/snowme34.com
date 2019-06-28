@@ -72,10 +72,11 @@ The organization of this site is as following:
    :caption: Programming Language Reference
    :name: sec-reference-programming-language
 
-   reference/programming-language/golang/go-tour
    reference/programming-language/cpp/cpp-concurrency-basic
    reference/programming-language/cpp/cpp-concurrency-data-race
    reference/programming-language/cpp/cpp-concurrency-deadlock
+   reference/programming-language/golang/go-tour
+   reference/programming-language/ruby/ruby-in-more-than-20-lines
 
 
 .. toctree::

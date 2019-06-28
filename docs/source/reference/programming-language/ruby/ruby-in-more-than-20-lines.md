@@ -2,6 +2,8 @@
 
 Heavily inspired by [Ruby in Twenty Minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
 
+## First 20 Minutes
+
 ```ruby
 class Greeter
 def initialize(name = "World")
@@ -39,17 +41,23 @@ class MegaGreeter
 
   # Say hi to everybody
   def say_hi
-    if @names.nil?
-      puts "You Are Nameless"
-    elsif @names.respond_to?("each")
-      # @names is a list of some kind, iterate!
-      # between do…end is a block of code to run, like a lambda
-      # |parameter|
-      @names.each do |name|
-        puts "Hello #{name}!"
+    case
+    when !@greeted
+      if @names.nil?
+        puts "You Are Nameless"
+      elsif @names.respond_to?("each")
+        # @names is a list of some kind, iterate!
+        # between do…end is a block of code to run, like a lambda
+        # |parameter|
+        @names.each do |name|
+          puts "Hello #{name}!"
+        end
+      else
+        puts "Hello #{@names}!"
       end
+      greet
     else
-      puts "Hello #{@names}!"
+      say_bye
     end
   end
 
@@ -63,6 +71,11 @@ class MegaGreeter
     else
       puts "Goodbye #{@names}.  Come back soon!"
     end
+  end
+
+  private
+  def greet
+    @greeted ||= true
   end
 end
 
@@ -116,3 +129,14 @@ end
 * newline
 * debugging
 * [doc](https://ruby-doc.org/core-2.6.3/Kernel.html#method-i-p)
+
+## Arguments
+
+* [calling_methods.rdoc Ruby 2.5.1](https://ruby-doc.org/core-2.5.1/doc/syntax/calling_methods_rdoc.html#label-Arguments), Ruby Doc about arguments
+* [Mixing keyword with regular arguments in Ruby? - Stack Overflow](https://stackoverflow.com/questions/20633412/mixing-keyword-with-regular-arguments-in-ruby), has a pseudo-regex, very helpful
+* [Ruby: Do not mix optional and keyword arguments](https://makandracards.com/makandra/36011-ruby-do-not-mix-optional-and-keyword-arguments), one edge case where Ruby fails to parse
+
+```ruby
+def func(a, b = "B", aa, *sp, c: "C", d:, **ksp, &callback)
+end
+```
