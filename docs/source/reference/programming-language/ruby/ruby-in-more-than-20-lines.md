@@ -140,3 +140,42 @@ end
 def func(a, b = "B", aa, *sp, c: "C", d:, **ksp, &callback)
 end
 ```
+
+## Long String Formatting
+
+```ruby
+p 'a string using '\
+  'implicit concatenation'
+
+p <<SOME_END.gsub(/\s+/," ").strip
+a string using
+HEREDOC syntax
+priting another str: #{s}
+SOME_END
+
+p <<"SOME_END".gsub(/\s+/," ").strip
+a string using
+HEREDOC syntax
+priting another str: #{s}
+SOME_END
+
+p <<`SOME_END`.gsub(/\s+/," ").strip
+echo "a command using HEREDOC syntax"
+SOME_END
+
+p(<<"FIR", 123, <<"SEC")
+This is the first str
+FIR
+This is the second str
+SEC
+
+p <<-SOME_INDENTED_END.gsub(/\s+/," ").strip
+  this is
+  indented
+  SOME_INDENTED_END
+
+p %{
+SELECT * FROM     food
+         GROUP BY food.type
+}.gsub(/\s+/, " ").strip
+```
