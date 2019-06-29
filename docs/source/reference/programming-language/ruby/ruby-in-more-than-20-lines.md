@@ -1,8 +1,8 @@
 # Ruby in More Than 20 Lines
 
-Heavily inspired by [Ruby in Twenty Minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
-
 ## First 20 Minutes
+
+Heavily inspired by [Ruby in Twenty Minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
 
 ```ruby
 class Greeter
@@ -178,4 +178,35 @@ p %{
 SELECT * FROM     food
          GROUP BY food.type
 }.gsub(/\s+/, " ").strip
+```
+
+## Percent Strings
+
+[Percent Strings](https://docs.ruby-lang.org/en/2.5.0/syntax/literals_rdoc.html#label-Percent+Strings)
+
+> For strings,
+> an uppercase letter allows interpolation and escaped characters
+> while a lowercase letter disables them.
+
+Most non-alphanumeric characters can be used as delimiters, like (), |, %, <>, {}...
+
+Note the brackets must be paired if used.
+
+```ruby
+# strings
+%()
+%q(string)
+%Q(string with interpolation and escaped char)
+%w(array of strings) # need to escape space (\ ) if space in strings
+%W(array of strings with interpolation and escaped char)
+%w(word1 word2 word3 I\ am\ a\ word) # example of w
+
+%s(symbol)
+%i(array of symbols)
+
+%r(regular expression)
+
+%x(shell command, ``)
+
+%^I'm another string #{puts "printing"}^
 ```
