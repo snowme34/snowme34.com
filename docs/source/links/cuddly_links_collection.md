@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 6/21/2019.*
+*Last update date: 7/30/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -58,6 +58,7 @@ Note: still in progress.
       - [Web Documentations](#Web-Documentations)
     - [Reference for Biology](#Reference-for-Biology)
     - [Reference for Computer Science and Information Technology](#Reference-for-Computer-Science-and-Information-Technology)
+      - [CS Reference Linux](#CS-Reference-Linux)
       - [CS Reference Algorithms and Data Structures](#CS-Reference-Algorithms-and-Data-Structures)
       - [CS Reference Style](#CS-Reference-Style)
       - [CS Reference Developing Tools](#CS-Reference-Developing-Tools)
@@ -457,6 +458,12 @@ Use CSD for abbreviation.
 ### Reference for Computer Science and Information Technology
 
 Use CSR for abbreviation.
+
+#### CS Reference Linux
+
+* [LinuxMM - Wiki for Linux Memory Management](https://linux-mm.org/LinuxMM)
+
+* [rsaw's SELinux Cheat Sheet](https://people.redhat.com/rsawhill/selinux/)
 
 #### CS Reference Algorithms and Data Structures
 
