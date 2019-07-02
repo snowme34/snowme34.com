@@ -381,6 +381,27 @@ UPDATE table_name SET col_to_change = new_value WHERE col_identify = val;
 UPDATE course SET lecture = 'Math' WHERE id = 1;
 ```
 
+### Create Procedure
+
+[MySQL :: MySQL 8.0 Reference Manual :: 13.1.17 CREATE PROCEDURE and CREATE FUNCTION Syntax](https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html)
+
+```sql
+delimiter //
+
+CREATE PROCEDURE loop_insert (N int, theName VARCHAR(20), theData MEDIUMTEXT)
+BEGIN
+  DECLARE i INT DEFAULT 0;
+  WHILE (i < N) DO
+    INSERT INTO `theTable` (name, data) VALUES (theName, theData);
+    SET i = i + 1;
+  END WHILE;
+END//
+
+delimiter ;
+
+CALL loop_insert(100, "Tom", "is a cat");
+```
+
 ## Example Query
 
 Example for JOINs and some constrains:
@@ -571,4 +592,5 @@ This will fail the foreign key constrain.
 
 ## Read More
 
-[SQL left join vs multiple tables on FROM line? - Stack Overflow](https://stackoverflow.com/questions/894490/sql-left-join-vs-multiple-tables-on-from-line)
+* [SQL left join vs multiple tables on FROM line? - Stack Overflow](https://stackoverflow.com/questions/894490/sql-left-join-vs-multiple-tables-on-from-line)
+* [When to use single quotes, double quotes, and backticks in MySQL - Stack Overflow](https://stackoverflow.com/questions/11321491/when-to-use-single-quotes-double-quotes-and-backticks-in-mysql?lq=1)
