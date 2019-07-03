@@ -1,26 +1,73 @@
 # Unix and Linux Commands
 
-*Last Update: 6/16/2019.*
+*Last Update: 07/02/2019.*
 
-This is a detailed collection of general *nix commands.
+This is a collection of general *nix commands.
 
-For commands of specific task, see the linux reference section of this website.
-For example, the commands about managing "file systems" are introduced at [Linux File System — Docsnt documentation](https://docs.snowme34.com/en/latest/reference/linux/linux-file-system.html)
+For commands of specific task (not found here), see the specific reference section of this website.
+
+(For example, the commands about managing "file systems" are introduced at [Linux File System — Docsnt documentation](https://docs.snowme34.com/en/latest/reference/linux/linux-file-system.html))
+
+## How to Use
+
+This is not a tutorial.
+
+See the table of contents and search for keyword.
+
+- [Unix and Linux Commands](#Unix-and-Linux-Commands)
+  - [How to Use](#How-to-Use)
+  - [Prologue](#Prologue)
+  - [Philosophies and Notes](#Philosophies-and-Notes)
+  - [Basics](#Basics)
+  - [Keyboard Shortcuts](#Keyboard-Shortcuts)
+  - [Navigation](#Navigation)
+  - [Files](#Files)
+  - [Directory](#Directory)
+  - [Links](#Links)
+  - [Find](#Find)
+  - [Archive and Compress](#Archive-and-Compress)
+  - [Help](#Help)
+  - [Previous Commands](#Previous-Commands)
+  - [Input and Output](#Input-and-Output)
+  - [Filters and Text Manipulation](#Filters-and-Text-Manipulation)
+  - [Date and Time](#Date-and-Time)
+  - [Names](#Names)
+  - [Users](#Users)
+  - [Privileges and Permissions](#Privileges-and-Permissions)
+  - [Process Management and Resource Monitor](#Process-Management-and-Resource-Monitor)
+  - [Network](#Network)
+  - [Free Cache](#Free-Cache)
+  - [Environment and Global Variables](#Environment-and-Global-Variables)
+  - [Scripting](#Scripting)
+  - [Schedule](#Schedule)
+  - [Run in a Shell](#Run-in-a-Shell)
+  - [Build and Install](#Build-and-Install)
+  - [Debugging](#Debugging)
+  - [Popular Paths](#Popular-Paths)
+  - [Uncanny Commands](#Uncanny-Commands)
+  - [Message](#Message)
+  - [Hardware Information](#Hardware-Information)
+  - [Disk and Filesystem](#Disk-and-Filesystem)
+  - [Run levels](#Run-levels)
+  - [Power](#Power)
+  - [Printers](#Printers)
+  - [Gpg Signature](#Gpg-Signature)
+  - [Distribution Specific](#Distribution-Specific)
+    - [Debian](#Debian)
+  - [Miscellaneous](#Miscellaneous)
 
 ## Prologue
 
 As the most common operating systems in production environments, *nix systems are known for their command line interface (cli).
 
-For people working with computers, even they are not professional DevOps, the familiarity with *nix cli still corresponds with their level of experiences in development.
+For people working with "systems", even not professional DevOps, the familiarity with *nix cli still corresponds with the level of experiences in development.
 
-It's not necessary to master *nix cli, but it's necessary to know it well to be a qualified and experienced developer.
-
-The commands below are listed mostly for my personal reference. They are not ranked by any specific order or designed to be a tutorial for beginners.
+Things are ordered from general fundamentals to specific tips.
 
 ## Philosophies and Notes
 
-* Everything is a file, including the shell, the devices, the directories.
-* Shell is very very very serious with spaces. Pay extra heed when writing scripts.
+* [Everything is a "file"](https://en.wikipedia.org/wiki/Everything_is_a_file), including the shell, the devices, the directories.
+* Shell is very serious with spaces. Pay extra heed when writing scripts.
 
 * The brackets are meaningful in bash, I used them to represent user input if not specified otherwise.
 * [Here](http://bashoneliners.com) is a small website for oneline commands.
@@ -43,6 +90,8 @@ Shell built-in vs external
 * others have both versions (e.g. `kill`)
 
 ```bash
+help
+command -V command
 builtin kill
 /bin/kill
 ```
