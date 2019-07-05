@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 6/30/2019.*
+*Last update date: 07/04/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -541,9 +541,10 @@ For C/C++:
 
 I'm not a professional here, see the other collections listed later for more.
 
-* [日本の伝統色 The Traditional Colors of Japan](http://nipponcolors.com/)
 * [Adobe Color CC Explore](https://color.adobe.com/explore/)
 * [uiGradients - Beautiful colored gradients](https://uigradients.com/#Disco)
+* [日本の伝統色 The Traditional Colors of Japan](http://nipponcolors.com/)
+* [WEB色見本 原色大辞典 - HTMLカラーコード](https://www.colordic.org/)
 
 ### Reference for Mathematics
 
