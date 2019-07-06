@@ -14,47 +14,47 @@ This is not a tutorial.
 
 See the table of contents and search for keyword.
 
-- [Unix and Linux Commands](#Unix-and-Linux-Commands)
-  - [How to Use](#How-to-Use)
-  - [Prologue](#Prologue)
-  - [Philosophies and Notes](#Philosophies-and-Notes)
-  - [Basics](#Basics)
-  - [Keyboard Shortcuts](#Keyboard-Shortcuts)
-  - [Navigation](#Navigation)
-  - [Files](#Files)
-  - [Directory](#Directory)
-  - [Links](#Links)
-  - [Find](#Find)
-  - [Archive and Compress](#Archive-and-Compress)
-  - [Help](#Help)
-  - [Previous Commands](#Previous-Commands)
-  - [Input and Output](#Input-and-Output)
-  - [Filters and Text Manipulation](#Filters-and-Text-Manipulation)
-  - [Date and Time](#Date-and-Time)
-  - [Names](#Names)
-  - [Users](#Users)
-  - [Privileges and Permissions](#Privileges-and-Permissions)
-  - [Process Management and Resource Monitor](#Process-Management-and-Resource-Monitor)
-  - [Network](#Network)
-  - [Free Cache](#Free-Cache)
-  - [Environment and Global Variables](#Environment-and-Global-Variables)
-  - [Scripting](#Scripting)
-  - [Schedule](#Schedule)
-  - [Run in a Shell](#Run-in-a-Shell)
-  - [Build and Install](#Build-and-Install)
-  - [Debugging](#Debugging)
-  - [Popular Paths](#Popular-Paths)
-  - [Uncanny Commands](#Uncanny-Commands)
-  - [Message](#Message)
-  - [Hardware Information](#Hardware-Information)
-  - [Disk and Filesystem](#Disk-and-Filesystem)
-  - [Run levels](#Run-levels)
-  - [Power](#Power)
-  - [Printers](#Printers)
-  - [Gpg Signature](#Gpg-Signature)
-  - [Distribution Specific](#Distribution-Specific)
-    - [Debian](#Debian)
-  - [Miscellaneous](#Miscellaneous)
+- [Unix and Linux Commands](#unix-and-linux-commands)
+  - [How to Use](#how-to-use)
+  - [Prologue](#prologue)
+  - [Philosophies and Notes](#philosophies-and-notes)
+  - [Basics](#basics)
+  - [Keyboard Shortcuts](#keyboard-shortcuts)
+  - [Navigation](#navigation)
+  - [Files](#files)
+  - [Directory](#directory)
+  - [Links](#links)
+  - [Find](#find)
+  - [Archive and Compress](#archive-and-compress)
+  - [Help](#help)
+  - [Previous Commands](#previous-commands)
+  - [Input and Output](#input-and-output)
+  - [Filters and Text Manipulation](#filters-and-text-manipulation)
+  - [Date and Time](#date-and-time)
+  - [Names](#names)
+  - [Users](#users)
+  - [Privileges and Permissions](#privileges-and-permissions)
+  - [Process Management and Resource Monitor](#process-management-and-resource-monitor)
+  - [Network](#network)
+  - [Free Cache](#free-cache)
+  - [Environment and Global Variables](#environment-and-global-variables)
+  - [Scripting](#scripting)
+  - [Schedule](#schedule)
+  - [Run in a Shell](#run-in-a-shell)
+  - [Build and Install](#build-and-install)
+  - [Debugging](#debugging)
+  - [Popular Paths](#popular-paths)
+  - [Uncanny Commands](#uncanny-commands)
+  - [Message](#message)
+  - [Hardware Information](#hardware-information)
+  - [Disk and Filesystem](#disk-and-filesystem)
+  - [Run levels](#run-levels)
+  - [Power](#power)
+  - [Printers](#printers)
+  - [Gpg Signature](#gpg-signature)
+  - [Distribution Specific](#distribution-specific)
+    - [Debian](#debian)
+  - [Miscellaneous](#miscellaneous)
 
 ## Prologue
 
@@ -742,6 +742,9 @@ The event reference (!) is mainly used in scripts?
 
     * -n
     * -f Follow the latest updates of one file (usually used to watch the log files)
+    * -F (recommended) same as -f but "keep trying to open a file if it is inaccessible"
+      * can track when renaming
+      * avoid confusion when logs are rotated
 
     ```bash
     tail
@@ -985,6 +988,13 @@ The event reference (!) is mainly used in scripts?
 
     ```bash
     sudo
+    sudo -E                # pass environment
+    sudo SOME_VAR=SOME_VAL # pass variable
+
+    sudo -i # a shell
+
+    [sudo] SOME_CMD | sudo tee SOME_WRITE_FILE    # redirection
+    [sudo] SOME_CMD | sudo tee -a SOME_WRITE_FILE # redirection append
     ```
 
 4. Log out
@@ -1015,11 +1025,17 @@ The event reference (!) is mainly used in scripts?
     w
     ```
 
-8. Create user
+8. Create and delete user
 
     ```bash
+    # add
     useradd
     adduser # a wrapper of useradd
+    # passwd [user] # set password if not already
+
+    # del
+    deluser --remove-home [user] # Debian-based
+    userdel -r [user]            # RHEL-based
     ```
 
 9. Create group
@@ -1267,7 +1283,7 @@ The event reference (!) is mainly used in scripts?
     * troubleshoot
 
     ```bash
-    sudo tail -f /var/log/syslog
+    sudo tail -F /var/log/syslog
     ```
 
 13. system control
@@ -1481,7 +1497,7 @@ The event reference (!) is mainly used in scripts?
     * troubleshoot
 
     ```bash
-    tail -f /proc/net/dev
+    tail -F /proc/net/dev
     iftop
     iptraf
     tcpdump # raw
@@ -2162,6 +2178,14 @@ Also config file available
   ```bash
   sudo apt install build-essential
   sudo aptitude install build-essential
+  ```
+
+* upgrade
+
+  * `upgrade` will potentially hold back versions and cause potential problems
+
+  ```bash
+  sudo apt-get dist-upgrade
   ```
 
 * Reconfig timezone
