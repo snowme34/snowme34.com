@@ -114,6 +114,7 @@ The organization of this site is as following:
    reference/linux/disk-basics
    reference/linux/linux-disk-management
    reference/linux/linux-file-system
+   reference/linux/linux-root-directory-structure
    reference/linux/mount-and-unmount
    reference/linux/linux-network-config
    reference/linux/introduction-to-logs-and-rsyslog
