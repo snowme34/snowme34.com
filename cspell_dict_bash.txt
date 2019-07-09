@@ -565,46 +565,17 @@ untracked
 
 cloudflare
 
-jisho
-rikai
-rikaikun
-
-Livelock
-herlihy
-
-SQLZOO
-
-devops
-infradev
-repos
-wireframe
-dbdiagram
-
 DISTINCTROW
 DUMPFILE
 
 vmstat
-
-yuki
-moto
-Vagrantfile
-hashicorp
 
 IOPS
 lockf
 fcntl
 
 builtins
-webhook
 
-virtualbox
-
-rdoc
-
-LinuxMM
-rsaw's
-
-backtick
-backticks
-
-mediumtext
+tanep
+iftop
+iptraf

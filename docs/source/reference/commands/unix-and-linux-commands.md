@@ -1349,7 +1349,7 @@ The event reference (!) is mainly used in scripts?
 
     netstat -an    # all and numerical
     netstat -tan   # tcp
-    netstst -tanep # extended and show program
+    netstat -tanep # extended and show program
     ```
 
 2. Investigate sockets
@@ -1492,7 +1492,7 @@ The event reference (!) is mainly used in scripts?
     wget -qO- 127.0.0.1
     ```
 
-9. Actual Netoworking Traffic
+9. Actual Networking Traffic
 
     * troubleshoot
 

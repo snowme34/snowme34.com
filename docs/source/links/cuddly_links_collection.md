@@ -676,6 +676,7 @@ Others:
 * [Think Exist](http://thinkexist.com/)
 
   * Searching for Quotations
+  * [down](https://www.facebook.com/Thinkexistcom-287052534103/)
 
 * [Yahoo!知恵袋](https://chiebukuro.yahoo.co.jp/)
 

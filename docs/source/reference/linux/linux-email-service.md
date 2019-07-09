@@ -190,4 +190,4 @@ dig -t mx gmail.com
 
 * [Running a Mail Server - Linode](https://www.linode.com/docs/email/running-a-mail-server/)
 * [Extended SMTP - Wikipedia](https://en.wikipedia.org/wiki/Extended_SMTP)
-* [8.5. Setting Up Your System To Use E-Mail](https://www.debian.org/releases/stable/i386/ch08s05.html.en)
+* [8.5. Setting Up Your System To Use E-Mail](https://www.debian.org/releases/jessie/amd64/ch08s05.html.en)
