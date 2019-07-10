@@ -4,6 +4,8 @@ Brief about the Linux FHS (Filesystem_Hierarchy_Standard)
 
 Everything on a system is under root directory, `/`, no matter the physical location
 
+(for more concise or more detailed versions, see reference)
+
 ## Structure
 
 `/bin`
@@ -184,7 +186,7 @@ There are sharable and non-shareable directories.
 
 ## Reference
 
+* [FilesystemHierarchyStandard - Debian Wiki](https://wiki.debian.org/FilesystemHierarchyStandard), a very concise one
 * [Filesystem Hierarchy Standard - Wikipedia](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
 * [Linux Filesystem Hierarchy](http://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/)
-* [FilesystemHierarchyStandard - Debian Wiki](https://wiki.debian.org/FilesystemHierarchyStandard)
-* [fhs-3.0.pdf](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)
+* [fhs-3.0.pdf](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf), a very detailed one
