@@ -1247,7 +1247,7 @@ The event reference (!) is mainly used in scripts?
 
     # note that built-in kill is different from the external kill
     # http://man7.org/linux/man-pages/man2/kill.2.html
-    kill -s [sig] 0  # send sig to every process in the process group of the calling processh
+    kill -s [sig] 0  # send sig to every process in the process group of the calling process
     kill -s [sig] -1 # all processes except the kill process itself and init
     # If pid is less than -1, then sig is sent to every process in the process group whose ID is -pid.
     ```

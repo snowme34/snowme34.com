@@ -11,6 +11,8 @@ dsa.cs.tsinghua.edu.cn
 wiki.zthxxx.me
 https://huaji8.top/
 https://color.adobe.com/explore/
+https://www.cloudflare.com
+haveibeenpwned.com
 codepen.io
 codepad.org
 www.rikai.com

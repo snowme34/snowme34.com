@@ -25,12 +25,16 @@
           "path": "./cspell_dict_bash.txt"
       },
       {
+          "name": "ruby",
+          "path": "./cspell_dict_ruby.txt"
+      },
+      {
           "name": "snow",
           "path": "./cspell_dict_snow.txt"
       }
   ],
   "dictionaries": [
-      "bash", "snow",
+      "bash", "snow", "ruby",
       "en_US", "companies", "softwareTerms", "misc",
       "go", "python", "powershell", "html", "css", "cpp",
       "filetypes", "npm"],

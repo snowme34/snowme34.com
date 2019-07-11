@@ -150,13 +150,13 @@ p 'a string using '\
 p <<SOME_END.gsub(/\s+/," ").strip
 a string using
 HEREDOC syntax
-priting another str: #{s}
+printing another str: #{s}
 SOME_END
 
 p <<"SOME_END".gsub(/\s+/," ").strip
 a string using
 HEREDOC syntax
-priting another str: #{s}
+printing another str: #{s}
 SOME_END
 
 p <<`SOME_END`.gsub(/\s+/," ").strip
