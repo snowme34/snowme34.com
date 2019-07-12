@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 07/04/2019.*
+*Last update date: 07/11/2019.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -62,6 +62,7 @@ Note: still in progress.
       - [CS Reference Algorithms and Data Structures](#cs-reference-algorithms-and-data-structures)
       - [CS Reference Style](#cs-reference-style)
       - [CS Reference Developing Tools](#cs-reference-developing-tools)
+      - [CS Reference Web](#cs-reference-web)
       - [CS Reference Misc](#cs-reference-misc)
     - [Reference for Graphic Design](#reference-for-graphic-design)
     - [Reference for Mathematics](#reference-for-mathematics)
@@ -457,13 +458,15 @@ Use CSD for abbreviation.
 
 ### Reference for Computer Science and Information Technology
 
-Use CSR for abbreviation.
-
 #### CS Reference Linux
 
 * [LinuxMM - Wiki for Linux Memory Management](https://linux-mm.org/LinuxMM)
 
 * [rsaw's SELinux Cheat Sheet](https://people.redhat.com/rsawhill/selinux/)
+
+* [Online Linux Manpages](https://man.cx/)
+
+  * By the way, do you know you can type `man ascii` instead of searching for little ascii table pictures online?
 
 #### CS Reference Algorithms and Data Structures
 
@@ -521,21 +524,22 @@ For C/C++:
 
 * [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line)
 
-#### CS Reference Misc
+#### CS Reference Web
 
 * [List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
-
-* [Online Linux Manpages](https://man.cx/)
-
-  * By the way, do you know you can type `man ascii` instead of searching for little ascii table pictures online?
-
-* [The Unicode Standard, Version 11.0](https://www.unicode.org/charts/PDF/U2200.pdf)
 
 * [Http Statuses](https://httpstatuses.com/)
 
 * [Standards.REST](http://standards.rest/)
 
   * "A collection of standards and specifications, that help make fantastic HTTP/REST APIs. Don't reinvent the wheel"
+
+* [Cipherli.st - Strong Ciphers for Apache, nginx and Lighttpd](https://cipherli.st/)
+
+#### CS Reference Misc
+
+* [The Unicode Standard, Version 11.0](https://www.unicode.org/charts/PDF/U2200.pdf)
+
 
 ### Reference for Graphic Design
 
