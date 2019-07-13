@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 07/11/2019.*
+*Last Update: 07/13/2019.*
 
 This is a collection of general *nix commands.
 
@@ -1919,6 +1919,43 @@ This is same as
     bash script.sh
     ```
 
+3. Secure Shell
+
+    * -C compress
+        * "Compression is desirable on modem lines and other slow connections, but will only slow down things on fast networks"
+    * -f SSH go background before execution
+    * -n redirects stdin from /dev/null (disable stdin), ssh will go background, not work if password needed
+    * -N do not execute a remote command, useful for forwarding
+    * -T disbale pseudo-terminal allocation, useful for forwarding
+    * port forwarding
+        * [How does reverse SSH tunneling work?](https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work)
+        * local
+            * connections of SSH client forwarded via SSH server to destination server
+        * remote
+            * connections of SSH server forwarded via SSH client to destination server
+        * dynamic
+            * connections forwarded via SSH client and then SSH server to destination servers
+            * i.e. use SSH client as a SOCKS proxy server
+        * [An article from dev.to - SSH Tunneling - Local, Remote & Dynamic](https://dev.to/__namc/ssh-tunneling---local-remote--dynamic-34fa)
+
+    ```bash
+    ssh
+    ssh user@0.0.0.0 -p 22 # specify user, ip address, and port
+
+    # port forwarding
+    ## local
+    ## localhost:8080 will be forwarded to www.example.com:80
+    ssh -L 8080:www.example.com:80 -L 12345:example.com:80 user@<host-used-as-jump-server>
+    ## bind the 8080 to be accessible only from 127.0.0.1 (local)
+    ssh -L 127.0.0.1:8080:www.example.com:80 -L 12345:example.com:80 user@<host-used-as-jump-server>
+    ## remote
+    ## remote-SSH-server:5900 will be forwarded to localhost:5900
+    ssh -R 5900:localhost:5900 user@<remote-SSH-server>
+    ## dynamic
+    ## creates a SOCKS tunnel on 1080
+    ssh -D 1080 user@<remote-SSH-server>
+    ```
+
 ## Build and Install
 
 1. `make` ritual
@@ -1994,6 +2031,9 @@ See [What is the exact difference between a 'terminal', a 'shell', a 'tty' and a
   * the shells, can be used to message that shell
 * /dev/null
   * The magical trash bin, or black hole
+
+Also see [Linux Root Directory Structure](https://docs.snowme34.com/en/latest/reference/linux/linux-root-directory-structure.html),
+another page on this website.
 
 ## Uncanny Commands
 
