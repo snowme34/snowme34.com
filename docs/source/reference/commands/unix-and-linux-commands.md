@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 07/02/2019.*
+*Last Update: 07/11/2019.*
 
 This is a collection of general *nix commands.
 
@@ -563,6 +563,7 @@ Pay heed to the difference between `du` and `df`
     # archive a file
     tar -cvf [archive-file-name] [files-to-archive]
     tar -cvf a.tar a.b b.c
+    tar -chof # h: follow symlinks o: Compatibility
 
     # archive and compress
     tar -cvzf [archive-file-name] [files-to-archive-and-compress]
@@ -782,6 +783,22 @@ The event reference (!) is mainly used in scripts?
 
     ```bash
     watch -c -n 1 command
+    ```
+
+9. Copy stdin to multiple places
+
+    * -a --append append not overwrite
+    * -i --ignore-interrupts signals
+    * --output-error[=mode] change the error behavior, see [man page](https://www.gnu.org/software/coreutils/manual/html_node/tee-invocation.html#tee-invocation)
+
+    ```bash
+    tee
+
+    echo "some-huge-file" \
+      | tee some-huge-file.file | sha1sum > some-huge-file.sha1
+
+    tar -cvf - "a-file" \
+      | tee >(md5sum --tag) >(sha256sum --tag) > "a-file.tar"
     ```
 
 ## Filters and Text Manipulation
@@ -1038,11 +1055,18 @@ The event reference (!) is mainly used in scripts?
     userdel -r [user]            # RHEL-based
     ```
 
-9. Create group
+9. Manage group
 
     ```bash
     groupadd
     addgroup # a wrapper of groupadd
+
+    groupdel
+    delgroup # a wrapper of groupdel
+
+    newgrp [group]   # change current group ID
+    newgrp - [group] # with reinitialized environment
+    newgrp           # change to default group in /etc/passwd file
     ```
 
 10. Fingers
@@ -1388,10 +1412,13 @@ The event reference (!) is mainly used in scripts?
     sudo ip6tables -X
     ```
 
-5. IP and interfaces
+5. IP, interfaces, routes etc.
+
+    * check `man ip`
 
     ```bash
     ip
+    ip route
     ip link show
     ```
 
@@ -1414,6 +1441,7 @@ The event reference (!) is mainly used in scripts?
 7. Curl
 
     * [doc](https://curl.haxx.se/docs/httpscripting.html)
+    * [curl POST examples - Github Gist](https://gist.github.com/subfuzion/08c5d85437d5d4f00e58)
 
     ```bash
     curl --help
@@ -1425,6 +1453,7 @@ The event reference (!) is mainly used in scripts?
     # POST
     curl -d data=data [URL]
     curl --data data=data [URL]
+    curl -d '{"json":"value"}' -H "Content-Type: application/json" [URL]
     curl --data-urlencode [data] [URL] # auto encode url for POST
     curl --form upload=@[file_name] --form press=[some_value] [URL] # RFC1867-posting upload file
 
@@ -1586,6 +1615,25 @@ The event reference (!) is mainly used in scripts?
     ```
 
 ## Scripting
+
+Shell scripts need a shebang to be run directly, specifiying its "caller" program
+
+* the first line of scripts
+* the only line beginning with # that is not a comment
+* used to specify interpreter for common scripting languages like Python, Ruby
+* same as using the filename as a argument of that command
+
+```bash
+#!/usr/bin/env bash
+
+echo "this is a sample script file"
+```
+
+This is same as
+
+```bash
+/usr/bin/env bash [the-script-name]
+```
 
 1. Basic scripting
 
@@ -1864,8 +1912,8 @@ The event reference (!) is mainly used in scripts?
     ./script.sh
     # chmod u+x ./script.sh # give user permission to execute the file if you want to run the script as the line above
 
-    # I did not test the following about the execute permission
-    . script.sh # born shell?
+    # if error, check if current user has execute permission
+    . script.sh      # born shell?
     source script.sh # c shell?
     sh script.sh
     bash script.sh
@@ -2173,11 +2221,27 @@ Also config file available
 
 ### Debian
 
+Ubuntu is based on Debian
+
+* [What is the difference between apt and apt-get?](https://askubuntu.com/questions/445384/what-is-the-difference-between-apt-and-apt-get)
+
 * Install build essentials
 
   ```bash
   sudo apt install build-essential
   sudo aptitude install build-essential
+  ```
+
+* Unattended Upgrdes
+
+  * "keep the computer current with the latest security (and other) updates automatically"
+  * at least for the security updates
+  * not recommend auto-update all packages
+  * [UnattendedUpgrades - Debian Wiki](https://wiki.debian.org/UnattendedUpgrades)
+
+  ```bash
+  sudo apt-get install unattended-upgrades apt-listchanges
+  sudo editor /etc/apt/apt.conf.d/50unattended-upgrades
   ```
 
 * upgrade
@@ -2186,6 +2250,8 @@ Also config file available
 
   ```bash
   sudo apt-get dist-upgrade
+  # OR
+  sudo apt full-upgrade
   ```
 
 * Reconfig timezone
@@ -2203,7 +2269,7 @@ Also config file available
 * Add apt source
 
   ```bash
-  sudo vim /etc/apt/sources.list.d/newlist.list
+  sudo editor /etc/apt/sources.list.d/newlist.list
   ```
 
 * [VirtualBox - Debian Wiki](https://wiki.debian.org/VirtualBox)
