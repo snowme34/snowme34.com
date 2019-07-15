@@ -96,6 +96,14 @@ builtin kill
 /bin/kill
 ```
 
+Always read manual for the most authoritative help
+
+* [GNU Coreutils: Common options](https://www.gnu.org/software/coreutils/manual/html_node/Common-options.html#Common-options)
+
+```bash
+man bash
+```
+
 ## Basics
 
 1. Open current path using GUI file explorer
@@ -216,6 +224,34 @@ builtin kill
     ```bash
     alias "rm -rf"="echo 'rm? how dare you?'"
     \rm -rf ./*.class
+    ```
+
+10. Expansions
+
+    * [Shell Expansions (Bash Reference Manual)](https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html#Shell-Expansions)
+    * Magics about `$`: [Shell Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html#Shell-Parameter-Expansion)
+    * process substitution is to substitute a command with a filename
+        * process being substituted are run async
+        * "Process substitution is supported on systems that support named pipes (FIFOs) or the /dev/fd method of naming open files"
+        * [Process Substitution](https://www.tldp.org/LDP/abs/html/process-sub.html)
+
+    ```bash
+    mkdir -v ~/{old,new} # creates ~/old, ~/new
+    echo {1..10}
+
+    echo ~user # home directory of 'user'
+    echo ~+ # $PWD
+
+    echo $(( 1+1 )) # https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html
+
+    str=1234abcd
+    echo ${str:1:2} # substring
+    echo ${str: -1:2} # negative offset must have a space to avoid confusion with ${parameter:-word}
+
+    # process substitution
+    echo <(echo "bash love")
+    echo < <(echo "bash love")
+    echo "bash love" > >(cat)
     ```
 
 ## Keyboard Shortcuts
@@ -1577,7 +1613,7 @@ The event reference (!) is mainly used in scripts?
 
 [Parameter and Variable Index](https://www.gnu.org/software/bash/manual/html_node/Variable-Index.html)
 
-1. Get configs for systems
+1. Get env/configs for system
 
     ```bash
     printenv
