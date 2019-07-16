@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 07/13/2019.*
+*Last Update: 07/15/2019.*
 
 This is a collection of general *nix commands.
 
@@ -219,7 +219,7 @@ man bash
 9. Aliases
 
     * alias is just shortcuts or macros
-    * use \\ at the beginning of a command to avoid aliases
+    * use \\ at the beginning of a command to un-aliase
 
     ```bash
     alias "rm -rf"="echo 'rm? how dare you?'"
@@ -236,6 +236,8 @@ man bash
         * [Process Substitution](https://www.tldp.org/LDP/abs/html/process-sub.html)
 
     ```bash
+    echo $( date ) # substitute with the command output
+
     mkdir -v ~/{old,new} # creates ~/old, ~/new
     echo {1..10}
 
