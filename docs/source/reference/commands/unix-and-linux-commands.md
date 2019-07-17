@@ -230,6 +230,7 @@ man bash
 
     * [Shell Expansions (Bash Reference Manual)](https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html#Shell-Expansions)
     * Magics about `$`: [Shell Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html#Shell-Parameter-Expansion)
+    * [Filename Expansion](https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html)
     * process substitution is to substitute a command with a filename
         * process being substituted are run async
         * "Process substitution is supported on systems that support named pipes (FIFOs) or the /dev/fd method of naming open files"
@@ -237,6 +238,7 @@ man bash
 
     ```bash
     echo $( date ) # substitute with the command output
+                   # spawn a new process, that process write to stdout, current process reads from that stdout
 
     mkdir -v ~/{old,new} # creates ~/old, ~/new
     echo {1..10}
@@ -249,6 +251,24 @@ man bash
     str=1234abcd
     echo ${str:1:2} # substring
     echo ${str: -1:2} # negative offset must have a space to avoid confusion with ${parameter:-word}
+
+    # case conversion (pattern should be matching one char only)
+    str=aabbccdd
+    echo ${str^a}  # convert the first char, if matched with pattern, to upper case
+    echo ${str^^a} # convert all
+    str=AABBCCDD
+    echo ${str,a}  # lower case
+    echo ${str,,a}
+
+    set -- a b c d e f g 1 2 3 4 # set the positional parameters, $1 $2 etc.
+    array=(1 2 3 4 a b c d e f g)
+
+    echo ${#str} # length of string
+    echo ${#@}
+    echo ${#*} # length of positional parameters
+    echo ${#array[@]}
+    echo ${#array[*]} # length of array
+    # ... read more https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 
     # process substitution
     echo <(echo "bash love")
@@ -1689,7 +1709,7 @@ This is same as
 
     x=3
     echo $x
-    unset x=3
+    unset x # delete x
     echo $x
 
     mydir=`pwd`; echo $mydir
@@ -1807,20 +1827,48 @@ This is same as
     esac
     ```
 
-6. Strip variables
+6. Substring Operations
+
+    * Strip variables
+    * Replacement
 
     ```bash
-    statement="I Love Bash!"
-    echo "${statement#I love }" # strip from beginning
-    echo "${statement%Bash\!}" # strip from ending
-    echo "${statement%???}" # strip from ending
+    statement="Bashhhhhh? BashBaassshhh!"
+    echo "${statement#B*h}"   # shortest from beginning
+                              # hhhhh? BashBaassshhh!
+    echo "${statement##B*h}"  # longest  from beginning
+                              # !
+    echo "${statement%B*\!}"  # shortest from ending
+                              # Bashhhhhh? Bash
+    echo "${statement%%B*\!}" # longest  from ending
+                              # (empty string)
 
-    mydir=`pwd`
+    mydir=$(pwd)
     basename $mydir # only the last directory name
-    dirname $mydir # no `basename`
+    dirname $mydir  # no `basename`
+
+    # replacement
+    echo "${statement/hhh/HHH}"  # replace first occurrence
+                                 # BasHHHhhh? BashBaassshhh!
+    echo "${statement/#Bash/HHH}"  # replace front-end first occurrence
+    echo "${statement/%hhh\!/HHH}" # replace back-end first occurrence
+    echo "${statement//hhh/HHH}" # replace all occurrences
+                                 # BasHHHHHH? BashBaasssHHH!
+    echo "${statement//hhh/}"    # remove all occurrences (replace with empty string)
+                                 # Bas? BashBaasss!
     ```
 
-7. Shift parameters
+7. Positioinal parameters
+
+    * either passed as command line args, from function calls, or set
+    * accessed via $0, $1, ...
+        * $0 is the name of current script/function
+    * $# number of positional parameters or cmd line args
+    * "$*" must be quoted, all positional parameters as a single word
+    * "$@" should be quoted, all positional parameters as seperate words, each as a quoted string without interpretation or expansion
+      * [Internal Variables](https://www.tldp.org/LDP/abs/html/internalvariables.html#APPREF)
+    * use shift to move them, i.e. $1 will hold the value of $2, $2 will be $3 and so forth
+        * $1 will be lost, $0 will not change
 
     ```bash
     echo "$2"
@@ -1900,6 +1948,61 @@ This is same as
     ```bash
     help eval # read the usage help for your own shell
     eval echo -e $USER
+    ```
+
+10. array
+
+    * note that bash variables have no type
+        * strings
+    * [Arrays](https://www.tldp.org/LDP/abs/html/arrays.html)
+
+    ```bash
+    declare -a array # declare array as an array, not necessary in all cases
+
+    # print whole array
+    echo ${array[@]}
+    echo ${array[*]}
+    # difference is same as $@ vs $*
+
+    # normal variables can use array operators
+    str=123
+    echo ${#str[@]} # length is 1
+    echo ${str[0]} # will be 123
+
+    # literal init
+    array=( {0..3} AAA )
+    echo ${array[@]}
+    array[10]="This is the 10th elem of a sparse array"
+    echo ${array[@]}
+    echo ${!array[@]}
+
+    # another init
+    array=([1]=one [2]=two)
+    echo ${array[@]}
+
+    # read to array
+    read -a inputs
+
+    # can use variable as index
+    idx=1
+    echo ${array[idx]}
+
+    # same as ${array[0]}
+    echo ${array}
+
+    # for-each
+    for elem in "${inputs[@]}"
+    do
+        echo $elem
+    done
+
+    # can use stirng operations, e.g. substring removal (strip) and replacement etc.
+    echo ${array[@]#o*}
+    echo ${array}
+
+    # delete
+    unset array[0]
+    unset array
     ```
 
 ## Schedule
