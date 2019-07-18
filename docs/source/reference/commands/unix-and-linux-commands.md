@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 07/15/2019.*
+*Last Update: 07/16/2019.*
 
 This is a collection of general *nix commands.
 
