@@ -462,6 +462,8 @@ Use CSD for abbreviation.
 
 * [LinuxMM - Wiki for Linux Memory Management](https://linux-mm.org/LinuxMM)
 
+* [Linux Kernelnewbies](https://kernelnewbies.org)
+
 * [rsaw's SELinux Cheat Sheet](https://people.redhat.com/rsawhill/selinux/)
 
 * [Online Linux Manpages](https://man.cx/)
