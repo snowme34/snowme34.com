@@ -65,6 +65,21 @@ People are gradually switching to IPv6 from IPv4.
 
 [Read more about IP addresses](https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/back-issues/table-contents-12/ip-addresses.html)
 
+## Port
+
+A communication endpoint for networking
+
+A logical construct identifying process or network service for OS
+
+Port number: 16-bit unsigned integer
+
+* 0..1023      – system or well-known ports
+* 1024..49151  – user or registered ports
+* 49151..65535 – dynamic / private / ephemeral ports
+
+Combined with an IP address and the protocol,
+identifying the destination or origination of a message.
+
 ## MAC (Media Access Control)
 
 Used for communication within the same network.
