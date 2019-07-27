@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 07/16/2019.*
+*Last Update: 07/26/2019.*
 
 This is a collection of general *nix commands.
 
@@ -1680,6 +1680,7 @@ Shell scripts need a shebang to be run directly, specifiying its "caller" progra
 * the only line beginning with # that is not a comment
 * used to specify interpreter for common scripting languages like Python, Ruby
 * same as using the filename as a argument of that command
+* [Why is it better to use “#!/usr/bin/env NAME” instead of “#!/path/to/NAME” as my shebang? (Not always)](https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my)
 
 ```bash
 #!/usr/bin/env bash
