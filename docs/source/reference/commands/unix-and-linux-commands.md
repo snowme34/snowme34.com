@@ -1210,8 +1210,16 @@ The event reference (!) is mainly used in scripts?
     sestatus
     getenforce
     seinfo
-    setenforce 0 # turn off SELinux totally, bad behavior
     semanage
+    setenforce 0 # put SELinux in permissive mode (Not Recommended)
+                 #   SELinux policies will not take effects
+                 #   but will log
+                 #   and label newly created files
+                 # will reset after rebooting
+
+    # modify one of the following files to disable
+    /etc/grub.conf
+    /etc/selinux/config 
     ```
 
 4. Default permission when creating a new file
