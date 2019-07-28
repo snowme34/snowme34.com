@@ -197,6 +197,8 @@ git diff --name-status branch_a..branch_b
 # https://stackoverflow.com/questions/4099742/how-to-compare-files-from-two-different-branches
 git diff branch_a branch_b -- some.file
 git diff branch_a..branch_b -- some.file
+# print statistics
+git diff --numstat
 ```
 
 clean
