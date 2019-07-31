@@ -1010,8 +1010,6 @@ Just a few...
 
 * [Netflix](https://medium.com/netflix-techblog)
 
-* [Quora](https://engineering.quora.com/)
-
 * [Twitter](https://blog.twitter.com/official/en_us.html)
 
 * [Yelp](https://engineeringblog.yelp.com/)
