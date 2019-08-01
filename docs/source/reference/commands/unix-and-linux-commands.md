@@ -12,7 +12,7 @@ For commands of specific task (not found here), see the specific reference secti
 
 This is not a tutorial.
 
-See the table of contents and search for keyword.
+See the table of contents and search for keyword (e.g. troubleshoot).
 
 - [Unix and Linux Commands](#unix-and-linux-commands)
   - [How to Use](#how-to-use)
@@ -58,11 +58,9 @@ See the table of contents and search for keyword.
 
 ## Prologue
 
-As the most common operating systems in production environments, *nix systems are known for their command line interface (cli).
-
-For people working with "systems", even not professional DevOps, the familiarity with *nix cli still corresponds with the level of experiences in development.
-
 Things are ordered from general fundamentals to specific tips.
+
+Each category is a topic, a way to organize.
 
 ## Philosophies and Notes
 
@@ -409,8 +407,14 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
 
 1. Create blank file or update last-change time
 
+    * -r/--reference=FILE use another file's time as reference
+    * -a only change the access time
+    * -m only the modification time
+    * -c/--no-create do not create new file
+
     ```bash
-    touch
+    touch                          # create an empty file or update access and modification time
+    touch -t [[CC]YY]MMDDhhmm[.ss] # change both access and modification time to specified time
     ```
 
 2. See file type and char-set and other information
