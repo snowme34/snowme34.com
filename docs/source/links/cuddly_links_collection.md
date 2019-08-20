@@ -67,6 +67,7 @@ Note: still in progress.
     - [Reference for Graphic Design](#reference-for-graphic-design)
     - [Reference for Mathematics](#reference-for-mathematics)
     - [Reference for Philosophy](#reference-for-philosophy)
+    - [Reference for History](#reference-for-history)
     - [Reference for Privacy](#reference-for-privacy)
     - [Reference for ACGN](#reference-for-acgn)
     - [Reference for Data Science](#reference-for-data-science)
@@ -542,7 +543,6 @@ For C/C++:
 
 * [The Unicode Standard, Version 11.0](https://www.unicode.org/charts/PDF/U2200.pdf)
 
-
 ### Reference for Graphic Design
 
 I'm not a professional here, see the other collections listed later for more.
@@ -565,6 +565,14 @@ I'm not a professional here, see the other collections listed later for more.
 ### Reference for Philosophy
 
 * [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/index.html)
+
+### Reference for History
+
+* [古典籍総合データベース](http://www.wul.waseda.ac.jp/kotenseki/index.html)
+
+* [國學院大學 古事記学センターウェブサイト – 「古事記学」の推進拠点形成](http://kojiki.kokugakuin.ac.jp/)
+
+* [国立国会図書館デジタルコレクション](http://dl.ndl.go.jp/)
 
 ### Reference for Privacy
 
@@ -733,6 +741,16 @@ Others:
 * [World Cat](https://www.worldcat.org/)
 
   * Network of library contents.
+
+* [Google Scholar](https://scholar.google.com)
+
+* [CiNii Articles - National Institute of Informatics](https://ci.nii.ac.jp)
+
+* [J-STAGE トップ](https://www.jstage.jst.go.jp/browse/-char/ja)
+
+  * 「総合学術電子ジャーナルサイト「J-STAGE」－国内で発行された学術論文全文を読むことのできる、日本最大級の総合電子ジャーナルプラットフォームです。」
+
+* [中国知网](https://www.cnki.net)
 
 ### Tools for RSS
 
