@@ -665,7 +665,7 @@ Pay heed to the difference between `du` and `df`
     * If exists, more detailed than `help`
     * A detailed usage instruction
     * You can even look up C language libraries
-    * Types (from `man man`)
+    * Types (-s<TYPE_NUM>) (from `man man`)
         1. Executable programs or shell commands
         2. System calls (functions provided by the kernel)
         3. Library calls (functions within program libraries)
@@ -675,12 +675,15 @@ Pay heed to the difference between `du` and `df`
         7. Miscellaneous  (including  macro  packages  and  conventions),  e.g. man(7), groff(7)
         8. System administration commands (usually only for root)
         9. Kernel routines [Non standard]
+    * Ex: use `-s3` to check section 3 specifically
+      * otherwise will lookup in the pre-defined order: "1 n l 8 3 2 3posix 3pm 3perl 5 4 9 6 7"
+      * or change here: `/etc/manpath.config`
     * -k [key word]
       * search for all documentation with key word
 
     ```bash
     man ascii
-    man -s3 malloc # c function
+    man -s3 malloc # c function, i.e. the function within program lib
     man echo
     ```
 
