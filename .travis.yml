@@ -15,9 +15,9 @@ branches:
   # - ./node_modules/.bin/markdownlint --version
 script:
   ## check links
-  # - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results --white-list $(paste -d, -s travis_link_check_whitelist.txt) `find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -regex ".*\.\(md\|rst\)$"`
+  - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results --white-list $(paste -d, -s travis_link_check_whitelist.txt) `find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -regex ".*\.\(md\|rst\)$"`
   ## check spelling
-  # - find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -name "*.md" | grep -v  -f travis_spell_check_whitelist.txt | xargs ./node_modules/.bin/cspell -c cSpell.json
+  - find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -name "*.md" | grep -v  -f travis_spell_check_whitelist.txt | xargs ./node_modules/.bin/cspell -c cSpell.json
   # - ./node_modules/.bin/cspell docs/source/**/*.rst
   ## markdown lint 
   # - ./node_modules/.bin/markdownlint docs\source
