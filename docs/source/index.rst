@@ -90,6 +90,7 @@ The organization of this site is as following:
    reference/commands/git-commands
    reference/commands/vim-commands
    reference/commands/vagrant
+   reference/commands/k8s
 
 
 .. toctree::
