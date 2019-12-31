@@ -1,6 +1,6 @@
 # Unix and Linux Commands
 
-*Last Update: 07/26/2019.*
+*Last Update: 12/31/2019.*
 
 This is a collection of general *nix commands.
 
@@ -1790,6 +1790,7 @@ This is same as
         * `[` is the same as `test` and `]` is just a special parameter for it
         * `[[ ]]` is bash extension
     * [Is double square brackets [[ ]] preferable over single square brackets [ ] in Bash?](https://stackoverflow.com/questions/669452/is-double-square-brackets-preferable-over-single-square-brackets-in-ba)
+    * [Other Comparison Operators](https://www.tldp.org/LDP/abs/html/comparison-ops.html)
 
     ```bash
     [[ string1 = string2 ]] # True if strings are identical, note only ONE equal sign
