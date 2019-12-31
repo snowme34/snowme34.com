@@ -40,7 +40,7 @@ site:
     height: 40
     url: ../images/logo.png
   favicon: /favicon.png
-  board: Updated occasionally. <br/> Check out <a style="color:#2196f3" href="https://docs.snowme34.com" target="_blank">snowme34's Docsnt</a> for non-blog articles (with more content)
+  board: <br/> Check out <a style="color:#2196f3" href="https://docs.snowme34.com" target="_blank">snowme34's Docsnt</a> for non-blog articles (with more content)
   copyright: true # 底部版权信息
 
 # config
@@ -206,10 +206,11 @@ profile:
     C++: ★★★★☆
     Data Structures: ★★★★☆
     Docker: ★★★☆☆☆
+    Go: ★★☆☆☆
     JavaScript: ★★☆☆☆
     Java: ★★★☆☆
-    Machine Learning: ★☆☆☆☆
-    MySQL: ★☆☆☆☆
+    Machine Learning: ★★☆☆☆
+    MySQL: ★★★☆☆
     Python: ★★★☆☆
   languages:
     English: Working Proficiency
