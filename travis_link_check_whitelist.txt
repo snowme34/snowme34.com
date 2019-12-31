@@ -20,4 +20,4 @@ thinkexist.com
 https://jisho.org/ 
 https://www.usingenglish.com/
 dsa.cs.tsinghua.edu.cn
-http://web.ydu.edu.tw/~uchiyama/
+http://web.ydu.edu.tw/
