@@ -2,21 +2,21 @@ dist: trusty
 language: node_js
 node_js:
   - lts/*
+## explicitly asking for cache
 cache: npm
 branches:
+  ## build master branch only
   only:
-    - master # build master branch only
-install:
-  ## install cspell
-  # - npm install cspell
-  # - ./node_modules/.bin/cspell --version
+    - master 
+# install:
   ## install markdownlint
+  ## TODO: put to package.json if needed
   # - npm install markdownlint-cli
   # - ./node_modules/.bin/markdownlint --version
 script:
-  ## check link
+  ## check links
   # - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results --white-list $(paste -d, -s travis_link_check_whitelist.txt) `find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -regex ".*\.\(md\|rst\)$"`
-  ## check spell
+  ## check spelling
   # - find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -name "*.md" | grep -v  -f travis_spell_check_whitelist.txt | xargs ./node_modules/.bin/cspell -c cSpell.json
   # - ./node_modules/.bin/cspell docs/source/**/*.rst
   ## markdown lint 
@@ -26,8 +26,8 @@ script:
 deploy:
   provider: pages
   edge: true
-  # on:
-    # condition: -n "$(git diff --name-status HEAD~1...HEAD blog)"
+  on:
+    condition: -d blog/public
   local_dir: blog/public
   repo: snowme34/blog.snowme34.com
   github_token: $GITHUB_TOKEN
