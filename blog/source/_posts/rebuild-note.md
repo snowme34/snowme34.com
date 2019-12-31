@@ -127,7 +127,7 @@ Please read the official [Github tutorial](https://help.github.com/articles/usin
 
 1. add customized subdomain to correspondent Github page settings
 2. change CNAME record of DNS provider
-3. don't forget to add CNAME file to your hexo "source" folder or hexo will delete the CNAME config of Github Page. Or you could try to add the following line to the "deploy" of hexo config [link to document](https://hexo.io/docs/deployment.html#Rsync): (note the grammar of yaml)
+3. don't forget to add CNAME file to your hexo "source" folder or hexo will delete the CNAME config of Github Page. Or you could try to add the following line to the "deploy" of hexo config [link to document](https://hexo.io/docs/github-pages): (note the grammar of yaml)
 
     ```yaml
         delete: false

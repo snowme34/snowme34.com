@@ -10,6 +10,8 @@ install:
   ## install cspell
   - npm install cspell
   - ./node_modules/.bin/cspell --version
+  ## install hexo
+  - npm install hexo
   ## install markdownlint
   # - npm install markdownlint-cli
   # - ./node_modules/.bin/markdownlint --version
@@ -22,12 +24,12 @@ script:
   ## markdown lint 
   # - ./node_modules/.bin/markdownlint docs\source
   ## build hexo if changed
-  - test -z $(git diff --name-status HEAD~1...HEAD blog) && hexo --cwd blog generate
+  - test -n "$(git diff --name-status HEAD~1...HEAD blog)" && npx hexo --cwd blog generate
 deploy:
   provider: pages
   edge: true
   on:
-    condition: -z $(git diff --name-status HEAD~1...HEAD blog)
+    condition: -n "$(git diff --name-status HEAD~1...HEAD blog)"
   local_dir: blog/public
   repo: snowme34/blog.snowme34.com
   github_token: $GITHUB_TOKEN
