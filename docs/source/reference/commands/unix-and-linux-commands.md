@@ -86,6 +86,7 @@ Shell built-in vs external
 * some commands are only built-in in shell (`man builtins`)
 * some are only external (actually the majority)
 * others have both versions (e.g. `kill`)
+    * one reason: avoid creating new process
 
 ```bash
 help
@@ -384,6 +385,7 @@ For cursor movement, [here](https://clementc.github.io/blog/2018/01/25/moving_cl
     ls -lhaF
     ls -l
     ls --color=auto
+    ls -U # list without sort, in disk order
     ```
 
 2. Print current path
@@ -866,6 +868,12 @@ The event reference (!) is mainly used in scripts?
       | tee >(md5sum --tag) >(sha256sum --tag) > "a-file.tar"
     ```
 
+10. Print printable strings
+
+    ```bash
+    strings [some-file]
+    ```
+
 ## Filters and Text Manipulation
 
 1. Search for specific pattern
@@ -1095,6 +1103,7 @@ The event reference (!) is mainly used in scripts?
 
     ```bash
     id
+    id 1000 # display info about user whose id is 1000
     ```
 
 7. Who am I?
@@ -1312,8 +1321,10 @@ The event reference (!) is mainly used in scripts?
 
     * troubleshoot
     * `top` is very powerful
+    * Interesting post: [htop explained | peteris.rocks](https://peteris.rocks/blog/htop/)
 
     ```bash
+    pstree -a
     top
     htop
     slabtop
@@ -1431,6 +1442,15 @@ The event reference (!) is mainly used in scripts?
     iostat
     iostat 1 # per 1 sec
     iostat -x
+    ```
+
+17. Trace Syscalls
+
+    * troubleshoot
+
+    ```bash
+    strace [some-command]
+    strace -e [some-key-word] [some-command]
     ```
 
 ## Network
@@ -2200,6 +2220,14 @@ another page on this website.
 
     ```bash
     sleep [number]
+
+    # print loading... with more and more dots
+    echo -n "loading"
+    while [ '<some-status-checking-cmd> &> /dev/null; echo $?' -ne 0 ]
+    do
+      echo -n "."
+      sleep 2 # sleep for 2 seconds
+    done
     ```
 
 2. Output repeatedly until killed

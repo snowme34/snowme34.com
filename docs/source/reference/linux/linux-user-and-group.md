@@ -198,6 +198,13 @@ newgrp <groupname>
 
 ## Config Files
 
+`/etc/nsswitch.conf`
+
+Name Service Switch (NSS)
+
+* set where to store user/group information etc.
+* [Wiki](https://en.wikipedia.org/wiki/Name_Service_Switch)
+
 `/etc/passwd`
 
 Stores the user information. Each line is one user.

@@ -49,6 +49,10 @@ Note: still in progress.
       - [Machine Learning](#machine-learning)
     - [Human Languages](#human-languages)
       - [Japanese Language](#japanese-language)
+        - [Japanese Language Dictionary and Tools](#japanese-language-dictionary-and-tools)
+        - [Japanese Language Reference](#japanese-language-reference)
+        - [Japanese Language Kanji](#japanese-language-kanji)
+        - [Japanese Language Misc](#japanese-language-misc)
     - [Literature](#literature)
     - [Miscellaneous Informative Resources](#miscellaneous-informative-resources)
   - [Reference and Documentations](#reference-and-documentations)
@@ -157,6 +161,8 @@ C/C++:
 * [Recommended C Style and Coding Standards](https://www.doc.ic.ac.uk/lab/cplus/cstyle.html)
 
 * [Practical Modern C++ Teaser – Evolution of a Small Temperature Conversion Program](https://h-deb.clg.qc.ca/WG21/PracticalCpp/Temperature.html)
+
+* [Mixing C and C++ Code in the Same Program]((https://www.oracle.com/technical-resources/articles/it-infrastructure/mixing-c-and-cplusplus.html))
 
 Java:
 
@@ -339,15 +345,41 @@ Some competitions:
 
 #### Japanese Language
 
+##### Japanese Language Dictionary and Tools
+
 * [Jisho.org: Japanese Dictionary](https://jisho.org/)
 
-* [日本地図 特産品](http://sn1.e-kokoro.ne.jp/kyozai/print/se/P-126_nihonchizu/P-126_nihonchizu01.pdf)
+* [Online Japanese Accent Dictionary](http://www.gavo.t.u-tokyo.ac.jp/ojad/eng/pages/home)
 
-  * Specialties of Japan by location.
+* [Prosody Tutor Suzuki-kun](http://www.gavo.t.u-tokyo.ac.jp/ojad/eng/phrasing/index)
 
-* [Marugoto: Japanese language and culture](http://marugotoweb.jp/)
+  * Pitch analysis (same website as above, which contains a lot more useful things)
 
-  * A website for a textbook. Using flash.
+##### Japanese Language Reference
+
+* [読み方は？](https://yomikatawa.com/)
+
+  * How to read this? (input kanji and get hiragana)
+
+* [POPjisyo.com - Dictionary Translation Japanese/Chinese/Korean/Kanji/Hanzi](http://www.popjisyo.com/WebHint/Portal_e.aspx)
+
+* [Japanese Grammar Guide](http://www.guidetojapanese.org/learn/grammar)
+
+* [日语语法指南](https://res.wokanxing.info/jpgramma/)
+  
+  * (Simplified Chinese) Japanese Grammar Guide
+
+* [Japanese Online Self-Help Utility - JOSHU](https://laits.utexas.edu/japanese/joshu/index.php)
+
+  * By UT Austin Japanese Program.
+
+* [日本語教師のN1et](https://jn1et.com/)
+
+* [季語と歳時記 – きごさい歳時記](http://kigosai.sub.jp/)
+
+  * Lookup the Kigo (seasonal word) here!
+
+##### Japanese Language Kanji
 
 * [Kanji alive - A free study tool for reading and writing kanji](https://kanjialive.com/)
 
@@ -355,21 +387,27 @@ Some competitions:
 
 * [rikaikun - Chrome Extension](https://chrome.google.com/webstore/detail/rikaikun/jipdnfibhldikgcjhfnomkfpcebammhp/related?hl=en-US)
 
-* [POPjisyo.com - Dictionary Translation Japanese/Chinese/Korean/Kanji/Hanzi](http://www.popjisyo.com/WebHint/Portal_e.aspx)
+##### Japanese Language Misc
 
-* [Japanese Online Self-Help Utility - JOSHU](https://laits.utexas.edu/japanese/joshu/index.php)
+* [日本地図 特産品](http://sn1.e-kokoro.ne.jp/kyozai/print/se/P-126_nihonchizu/P-126_nihonchizu01.pdf)
 
-  * By UT Austin Japanese Program.
+  * Specialties of Japan by location.
+
+* [日本の伝統工芸品](http://tokyo.japanprize.com/product.html)
+
+  * Japanese Traditional crafts by location
+
+* [Marugoto: Japanese language and culture](http://marugotoweb.jp/)
+
+  * A website for a textbook. Using flash.
 
 * [うちやまかずや](http://web.ydu.edu.tw/~uchiyama/)
 
-  * I'm not sure, but it seems to be a website of Japanese department of Yu Da University.
+  * Not sure, but it seems to be a website of Japanese department of Yu Da University.
 
 * [日本語の例文](https://j-nihongo.com/)
 
   * Sample sentences categorized based on grammar points, with explanation for the grammar.
-
-* [Online Japanese Accent Dictionary](http://www.gavo.t.u-tokyo.ac.jp/ojad/eng/pages/home)
 
 * [Erin's Challenge! I can speak Japanese](https://www.erin.ne.jp/en/)
 
@@ -381,11 +419,7 @@ Some competitions:
 
   * Learn meanings of names of manga.
 
-* [日本語教師のN1et](https://jn1et.com/)
-
-* [読み方は？](https://yomikatawa.com/)
-
-  * How to read this?
+* [擬音語・擬態語　- 日本語を楽しもう！ - マンガを読もう　Index](https://www2.ninjal.ac.jp/Onomatope/manga.html)
 
 ### Literature
 
