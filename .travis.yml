@@ -22,7 +22,7 @@ script:
   ## markdown lint 
   # - ./node_modules/.bin/markdownlint docs\source
   ## build hexo if changed
-  - [ -z $(git diff --name-status HEAD~1...HEAD blog) ] && hexo --cwd blog generate
+  - test -z $(git diff --name-status HEAD~1...HEAD blog) && hexo --cwd blog generate
 deploy:
   provider: pages
   edge: true
@@ -30,7 +30,5 @@ deploy:
     condition: -z $(git diff --name-status HEAD~1...HEAD blog)
   local_dir: blog/public
   repo: snowme34/blog.snowme34.com
-  skip_cleanup: true
   github_token: $GITHUB_TOKEN
   fqdn: blog.snowme34.com
-  keep-history: true
