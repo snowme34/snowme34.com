@@ -21,20 +21,20 @@
   ],
   "dictionaryDefinitions": [
       {
-          "name": "bash",
-          "path": "./cspell_dict_bash.txt"
+          "name": "dict_names",
+          "path": "./cspell_dict_names.txt"
       },
       {
-          "name": "ruby",
-          "path": "./cspell_dict_ruby.txt"
+          "name": "dict_cmd",
+          "path": "./cspell_dict_cmd.txt"
       },
       {
-          "name": "snow",
-          "path": "./cspell_dict_snow.txt"
+          "name": "dict_misc",
+          "path": "./cspell_dict_misc.txt"
       }
   ],
   "dictionaries": [
-      "bash", "snow", "ruby",
+      "dict_names", "dict_cmd", "dict_misc",
       "en_US", "companies", "softwareTerms", "misc",
       "go", "python", "powershell", "html", "css", "cpp",
       "filetypes", "npm"],

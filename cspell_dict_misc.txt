@@ -1,31 +1,6 @@
 A B X
-Cloudflare
 cheatsheet
-vocaloid
-reddit
-mathjax
 hackathons
-
-MATLAB
-Verilog
-Scikit
-ICANN
-
-nginx
-virtualbox
-Keras
-Evernote
-Evernote's
-Coursera
-imgur
-bing
-zoho
-Thinkpad
-Batis
-Photoshop
-lastpass
-domcomp
-DSACPP
 
 RPUSH
 hget
@@ -100,17 +75,12 @@ Warshall
 Kruskal's
 Prim's
 
-Kaggle
-Sklearn
-
 jisho
 rikai
 rikaikun
 
 Livelock
 herlihy
-
-SQLZOO
 
 devops
 infradev
@@ -123,12 +93,7 @@ moto
 Vagrantfile
 hashicorp
 
-virtualbox
-
 rdoc
-
-LinuxMM
-rsaw's
 
 backtick
 backticks
@@ -138,4 +103,9 @@ mediumtext
 webhook
 
 mypackage
-godoc
+
+kigo
+
+mutex
+
+gsub

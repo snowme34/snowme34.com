@@ -12,7 +12,6 @@ bash
 bc
 bg
 bind
-break
 builtin
 bzip2
 
@@ -28,19 +27,14 @@ chown
 chroot
 chkconfig
 cksum
-clear
 cmp
 comm
-command
-continue
 cp
 cron
 crontab
 csplit
 curl
-cut
 
-date
 dc
 dd
 ddrescue
@@ -48,7 +42,6 @@ declare
 df
 diff
 diff3
-dig
 dir
 dircolors
 dirname
@@ -56,21 +49,16 @@ dirs
 dmesg
 du
 
-echo
 egrep
 eject
-enable
 env
 ethtool
 eval
 exec
 exit
 expect
-expand
-export
 expr
 
-false
 fdformat
 fdisk
 fg
@@ -78,13 +66,7 @@ fgrep
 file
 find
 fmt
-fold
-for
-format
-free
 fsck
-ftp
-function
 fuser
 
 gawk
@@ -93,42 +75,26 @@ grep
 groupadd
 groupdel
 groupmod
-groups
 gzip
 
 hash
-head
-help
-history
 hostname
 htop
 
 iconv
-id
-if
 ifconfig
 ifdown
 ifup
-import
-install
 iostat
 ip
 
-jobs
 join
 
-kill
 killall
 
-less
-let
-link
 ln
-local
-locate
 logname
 logout
-look
 lpc
 lpr
 lprint
@@ -141,7 +107,6 @@ ls
 lsof
 lspci
 
-make
 man
 mkdir
 mkfifo
@@ -149,8 +114,6 @@ mkfile
 mkisofs
 mknod
 mktemp
-more
-most
 mount
 mtools
 mtr
@@ -159,7 +122,6 @@ mmv
 
 nc
 netstat
-nice
 nl
 nohup
 notify-se
@@ -185,7 +147,6 @@ pushd
 pv
 pwd
 
-quota
 quotachec
 
 ram
@@ -204,22 +165,14 @@ rm
 rmdir
 rsync
 
-screen
 scp
 sdiff
 sed
-select
 seq
-set
 sftp
-shift
 shopt
 shutdown
-sleep
 slocate
-sort
-source
-split
 ss
 ssh
 stat
@@ -227,26 +180,16 @@ strace
 su
 sudo
 sum
-suspend
 sync
 
-tail
 tar
 tee
-test
-time
 timeout
-times
-touch
-top
 tput
 tracerout
-trap
 tr
-true
 tsort
 tty
-type
 
 ulimit
 umask
@@ -516,7 +459,6 @@ varchar
 mysqldump
 
 ret
-mutex
 
 baseband
 unicast
@@ -563,8 +505,6 @@ Rickard
 
 untracked
 
-cloudflare
-
 DISTINCTROW
 DUMPFILE
 
@@ -581,10 +521,11 @@ iftop
 iptraf
 
 deluser
-RHEL
 iomem
 FSSTND
 btmp
 lastb
 
 numstat
+
+godoc
