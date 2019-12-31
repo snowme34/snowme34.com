@@ -10,12 +10,17 @@ categories:
 tags: ["Trick", "Tutorial"]
 ---
 
+**Update (12/30/2019)**: This was originally written on 09/25/2018 and was for *WSL 1*.
+At the time of writing this line, the setup for my WSL 1 still works (with win10 1909).
+
+---------------------------------------
+
 This is a short tutorial about how to use WSL(Windows Subsystem for Linux) to schedule cron jobs,
 with a specific example of backing up Evernote's database, to show how versatile this method is
 and potential benefits. In this example, the strategy is optimized for large files that have frequent
 small changes regarding I/O writes.
 
-[Jump directly to procedure](#procedure)
+[Jump directly to procedure](#Procedure)
 
 ## Motivation
 
@@ -118,7 +123,7 @@ manually adding backups for longer period, Like a full backup for each half year
 The last step is to make sure the cron daemon runs in background when Windows boots.
 It can be achieved by making bash.exe/wsl.exe a service and so on.
 
-The solution I chose was to create a shortcut containing a start command in the `shell:startup` folder.
+The solution **I chose** was to create a shortcut containing a start command in the `shell:startup` folder.
 Feel free to have your own choices and search around.
 
 First, make sure the start command can be run without root privilege, unless you want to

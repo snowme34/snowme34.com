@@ -1,19 +1,36 @@
 dist: trusty
-language: minimal
+language: node_js
+node_js:
+  - lts/*
+cache: npm
 branches:
-  except:
-  - legacy
-  - experimental
+  only:
+    - master # build master branch only
 install:
-  - rm -rf ./node_modules
-  - nvm install node
-  - npm --version
+  ## install cspell
   - npm install cspell
   - ./node_modules/.bin/cspell --version
+  ## install markdownlint
   # - npm install markdownlint-cli
   # - ./node_modules/.bin/markdownlint --version
 script:
+  ## check link
   - docker run -ti --rm -v $PWD:/mnt:ro dkhamsing/awesome_bot --allow-dupe --allow-redirect --skip-save-results --white-list $(paste -d, -s travis_link_check_whitelist.txt) `find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -regex ".*\.\(md\|rst\)$"`
+  ## check spell
   - find . -not -path "**/node_modules/*" -not -path "./blog/themes/symphony/*" -not -path "./blog/scaffolds/*" -name "*.md" | grep -v  -f travis_spell_check_whitelist.txt | xargs ./node_modules/.bin/cspell -c cSpell.json
   # - ./node_modules/.bin/cspell docs/source/**/*.rst
+  ## markdown lint 
   # - ./node_modules/.bin/markdownlint docs\source
+  ## build hexo if changed
+  - [ -z $(git diff --name-status HEAD~1...HEAD blog) ] && hexo --cwd blog generate
+deploy:
+  provider: pages
+  edge: true
+  on:
+    condition: -z $(git diff --name-status HEAD~1...HEAD blog)
+  local_dir: blog/public
+  repo: snowme34/blog.snowme34.com
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  fqdn: blog.snowme34.com
+  keep-history: true

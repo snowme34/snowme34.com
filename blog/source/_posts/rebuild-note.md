@@ -9,9 +9,11 @@ tags: [Web-hosting, Tutorial]
 sidebar: toc
 ---
 
+**Update (12/30/2019)**: This was written on 03/24/2018. Some content may be not updated or not relevant anymore.
+
 # Background Story
 
-This is a sad story. It has been a while since my last website (a [WordPress](https://wordpress.com/) run on VPS) "vanished". I doubt it was due to misconfiguration of Debian's crontab I used to auto refresh the ssl certificate or something like that. I think I will post something like the Nginx config of it later on my blog.
+It was a sad story. It has been a while since my last website (a [WordPress](https://wordpress.com/) run on VPS) "vanished". I doubt it was due to misconfiguration of Debian's crontab I used to auto refresh the ssl certificate or something like that. I think I will post something like the Nginx config of it later on my blog.
 
 Ever since then have I had little time or energy to rebuild it, or more precisely, to maintain it. It is very tempting to use the WordPress again since it is so easy to make it run and so popular and so easy to find plugins. But the thing is, running on a VPS means it depends on some unstable services. When the VPS provider reboots the server, it is sometimes required to manually reboot Nginx service (or reload ssl keys refreshed by the bot of [Let’s Encrypt](https://letsencrypt.org/). Their bot was still beta at that time). And it is also very hard to maintain due to the cost of the VPS itself and other problems too.
 
