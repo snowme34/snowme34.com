@@ -1,3 +1,4 @@
+# note: right now hexo will not build if checks fail, might not be expected behavior
 dist: trusty
 language: node_js
 node_js:
