@@ -527,5 +527,21 @@ btmp
 lastb
 
 numstat
+pstree
 
 godoc
+
+Baassshhh
+Baasss
+MMDDhhmm
+
+delgroup
+listchanges
+manpath
+
+kubectl
+minikube
+kubernetes
+kube
+Autoscale
+Coreutils

@@ -218,7 +218,7 @@ man bash
 9. Aliases
 
     * alias is just shortcuts or macros
-    * use \\ at the beginning of a command to un-aliase
+    * use \\ at the beginning of a command to un-alias
 
     ```bash
     alias "rm -rf"="echo 'rm? how dare you?'"
@@ -1709,7 +1709,7 @@ The event reference (!) is mainly used in scripts?
 
 ## Scripting
 
-Shell scripts need a shebang to be run directly, specifiying its "caller" program
+Shell scripts need a shebang to be run directly, specifying its "caller" program
 
 * the first line of scripts
 * the only line beginning with # that is not a comment
@@ -1894,14 +1894,14 @@ This is same as
                                  # Bas? BashBaasss!
     ```
 
-7. Positioinal parameters
+7. Positional parameters
 
     * either passed as command line args, from function calls, or set
     * accessed via $0, $1, ...
         * $0 is the name of current script/function
     * $# number of positional parameters or cmd line args
     * "$*" must be quoted, all positional parameters as a single word
-    * "$@" should be quoted, all positional parameters as seperate words, each as a quoted string without interpretation or expansion
+    * "$@" should be quoted, all positional parameters as separated words, each as a quoted string without interpretation or expansion
       * [Internal Variables](https://www.tldp.org/LDP/abs/html/internalvariables.html#APPREF)
     * use shift to move them, i.e. $1 will hold the value of $2, $2 will be $3 and so forth
         * $1 will be lost, $0 will not change
@@ -2103,7 +2103,7 @@ This is same as
     * -f SSH go background before execution
     * -n redirects stdin from /dev/null (disable stdin), ssh will go background, not work if password needed
     * -N do not execute a remote command, useful for forwarding
-    * -T disbale pseudo-terminal allocation, useful for forwarding
+    * -T disable pseudo-terminal allocation, useful for forwarding
     * port forwarding
         * [How does reverse SSH tunneling work?](https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work)
         * local
@@ -2457,7 +2457,7 @@ Ubuntu is based on Debian
   sudo aptitude install build-essential
   ```
 
-* Unattended Upgrdes
+* Unattended Upgrades
 
   * "keep the computer current with the latest security (and other) updates automatically"
   * at least for the security updates

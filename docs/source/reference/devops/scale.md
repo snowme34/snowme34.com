@@ -17,9 +17,7 @@ Keep scalability in mind when designing, developing, and deploying.
 
 ## Scale Cube
 
-[The Scale Cube | AKF Partners](https://akfpartners.com/growth-blog/scale-cube)
-
-![](https://upload.wikimedia.org/wikipedia/commons/8/82/AKF_Scale_Cube.gif)
+Go to [The Scale Cube | AKF Partners](https://akfpartners.com/growth-blog/scale-cube) for the picture
 
 * x-axis: duplication, such as application code and database
   * easiest to achieve, just make copies

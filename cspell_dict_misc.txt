@@ -109,3 +109,5 @@ kigo
 mutex
 
 gsub
+
+FIFOs

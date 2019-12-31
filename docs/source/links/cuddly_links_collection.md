@@ -549,7 +549,9 @@ For C/C++:
 
 * [GNU Assembler](https://sourceware.org/binutils/docs/as/index.html#SEC_Contents)
 
-* [Vi Cheat Sheet](http://www.lagmonster.org/docs/vi.html)
+* [Vi Commands](http://guegue.net/VimCommands)
+
+  * has more links
 
 * [GNU Emacs manual](https://www.gnu.org/software/emacs/manual/emacs.html)
 
@@ -1001,8 +1003,6 @@ Others:
 * [earth](https://earth.nullschool.net/)
 
   * A visualization of global weather
-
-* [platelets](https://platelets.fun/)
 
 Cyber Security Maps
 

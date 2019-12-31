@@ -30,12 +30,6 @@ A personal reference hosted on readthedoc.
 
 [Docsnt](https://docs.snowme34.com/en/latest/)
 
-## Wiki
-
-A MediaWiki page, hosted on Digital Ocean.
-
-[wikisnt](https://wiki.snowme34.com/index.php/Main_Page)
-
 ## Contact
 
 A simple and stupid contact page. HTML and CSS only.

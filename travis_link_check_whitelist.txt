@@ -1,13 +1,14 @@
 localhost
-example.com
-cpp.sh
 travis-ci
+
+example.com
+
+cpp.sh
 www.gnu.org
 xlinux.nist.gov
 https://www.unicode.org/charts/PDF/
 waifu2x.udp.jp
 www.pixivision.net
-dsa.cs.tsinghua.edu.cn
 wiki.zthxxx.me
 https://huaji8.top/
 https://color.adobe.com/explore/
@@ -18,4 +19,9 @@ codepad.org
 www.rikai.com
 5ch.net
 thinkexist.com
+
 https://jisho.org/ 
+https://www.usingenglish.com/
+
+dsa.cs.tsinghua.edu.cn
+http://web.ydu.edu.tw/~uchiyama/
