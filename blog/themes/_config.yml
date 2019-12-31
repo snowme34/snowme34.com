@@ -1,3 +1,10 @@
+######################
+##
+## NOTE: travis ci will copy the file in the parent directory
+##       make sure to update that copy!!!
+##
+#######################
+
 # menu
 menu:
   Home: .

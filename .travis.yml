@@ -22,7 +22,7 @@ script:
   ## markdown lint 
   # - ./node_modules/.bin/markdownlint docs\source
   ## hexo
-  - ./hexo-build-if-updated.sh
+  - test -n "$(git diff --name-status HEAD~1...HEAD blog)" && cp blog\themes\_config.yml blog\themes\symphony\ && npx hexo --cwd blog generate
 deploy:
   provider: pages
   edge: true
