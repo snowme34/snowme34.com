@@ -531,8 +531,6 @@ pstree
 
 godoc
 
-Baassshhh
-Baasss
 MMDDhhmm
 
 delgroup
@@ -545,3 +543,5 @@ kubernetes
 kube
 Autoscale
 Coreutils
+
+chof
