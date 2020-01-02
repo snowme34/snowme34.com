@@ -1,5 +1,6 @@
 localhost
 travis-ci
+github.com
 example.com
 cpp.sh
 www.gnu.org
