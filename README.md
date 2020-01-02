@@ -1,6 +1,6 @@
 # snowme34.com
 
-Spelling and broken links check: [![Build Status](https://travis-ci.org/snowme34/snowme34.com.svg?branch=master)](https://travis-ci.org/snowme34/snowme34.com)
+Spelling and broken links check: [![Build Status](https://api.travis-ci.com/snowme34/snowme34.com.svg?branch=master)](https://travis-ci.org/snowme34/snowme34.com)
 
 Build of Docsnt: [![Documentation Status](https://readthedocs.org/projects/docsnt34/badge/?version=latest)](https://docs.snowme34.com/en/latest/?badge=latest)
 
