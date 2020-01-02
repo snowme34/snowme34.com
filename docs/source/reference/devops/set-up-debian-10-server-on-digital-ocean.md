@@ -377,7 +377,7 @@ See other [page](https://docs.snowme34.com/en/latest/reference/devops/debian-fir
 * The following rules will **NOT** apply to everyone and every situation, they are just personal naive preference
 * [Debian encourages](https://wiki.debian.org/nftables) people to use **nftables**
   * if you feel the same, follow [their guide](https://wiki.debian.org/nftables) to setup nftables and jump to next section
-  * but beware that **not all the applications play well with nft yet**
+  * but beware that **not all the applications play well with nft yet**, for example docker might not like it
 * and don't run both firewalls at the same time (choose one; use iptables for the purpose of compatibility)
 
 #### iptables
@@ -525,13 +525,8 @@ table inet filter {
         #log prefix "[nftables] Input Drop: " flags all counter drop
     }
     chain forward {
+        # drop everything (if not a router)
         type filter hook forward priority 0; policy drop;
-
-        ct state established,related accept
-        ct state invalid drop
-
-        tcp dport { http, https } ct state { established,new } accept
-        udp dport { http, https } ct state { established,new } accept
 
         # uncomment to enable log
         #log prefix "[nftables] Forward Drop: " flags all counter drop
@@ -651,7 +646,7 @@ sudo curl -L https://raw.githubusercontent.com/docker/compose/1.25.0/contrib/com
 . /etc/bash_completion
 ```
 
-### kubectl
+### kubectl (optional)
 
 * [install kubectl on linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux)
 

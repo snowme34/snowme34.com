@@ -6,11 +6,9 @@ A **short** summary of how to config a basic Debian firewall.
 
 Also try to not run `iptables` and `nftbales` at the same time, "[could lead to unexpected results](https://wiki.nftables.org/wiki-nftables/index.php/Moving_from_iptables_to_nftables)"
 
-See my other [page](https://docs.snowme34.com/en/latest/reference/devops/set-up-debian-server-on-digital-ocean.html) for a complete Debian VPS set up guide.
-
 ## `iptables`
 
-Read the man page if you have time:
+Always begin with reading the man page
 
 ```bash
 man iptables # https://linux.die.net/man/8/iptables
@@ -29,13 +27,24 @@ Add rules:
 * the configurations applies immediately, and it's very common for people to block their own access to the server here
 
 ```bash
-# accept loopback, established connections, SSH
+# accept loopback
 sudo iptables -A INPUT -i lo -j ACCEPT
-sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT # change to your ssh port
 
-# accept ping (feel free to reject or set a limit)
-sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+# accept established and related
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+# drop invalid
+sudo iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+
+# accept ssh (change port if different)
+sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+
+# accept useful ICMP (echo reply, destination unreachable, echo request, time exceeded)
+# feel free to reject or set a limit for ping (icmp type 8)
+sudo iptables -A INPUT -p icmp --icmp-type 0  -m conntrack --ctstate NEW -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type 3  -m conntrack --ctstate NEW -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type 8  -m conntrack --ctstate NEW -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type 11 -m conntrack --ctstate NEW -j ACCEPT
 
 # accept timestamp request
 sudo iptables -A INPUT -p icmp -m conntrack --ctstate NEW --icmp-type 13 -j ACCEPT
@@ -44,7 +53,7 @@ sudo iptables -A INPUT -p icmp -m conntrack --ctstate NEW --icmp-type 13 -j ACCE
 sudo iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 sudo iptables -A INPUT -p udp -m multiport --destination-ports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
-# something not necessary
+# below is optional
 
 # 192.168.1.0/24
 #sudo iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
@@ -67,18 +76,17 @@ sudo iptables -A INPUT -p udp -m multiport --destination-ports 80,443 -m conntra
 #sudo iptables -A INPUT -d 224.0.0.0/4 -j DROP
 #sudo iptables -A INPUT -s 127.0.0.0/8 ! -i lo -j DROP (?)
 
-# drop invalid and all other input
-sudo iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+# drop all other INPUT (dangerous line)
 sudo iptables -P INPUT DROP
 
-# log forward with limit
-sudo iptables -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "[iptables] FORWARD Denied: " --log-level 7
-
-## customize
+## customize here
 #sudo iptables -A INPUT -p tcp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 #sudo iptables -A INPUT -p udp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
-# drop forward
+# allow all output
+sudo iptables -A OUTPUT -j ACCEPT
+
+# drop forward (if not router)
 sudo iptables -P FORWARD DROP
 
 # other common ports
@@ -103,26 +111,32 @@ sudo iptables -P FORWARD DROP
 For `ip6tables` (IPv6):
 
 ```bash
-# accept loopback, established, SSH, ping connections
+# accept loopback
 sudo ip6tables -A INPUT -i lo -j ACCEPT
+
+# accept established and related
 sudo ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo ip6tables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT # change to your ssh port
-sudo ip6tables -A INPUT -p ipv6-icmp --icmpv6-type 128 -j ACCEPT
+
+# drop invalid
+sudo ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
+
+# accept ssh (change port if different)
+sudo ip6tables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+
+# accept all ICMP
+sudo ip6tables -A INPUT -p icmpv6 -j ACCEPT
 
 # http (inessential)
 sudo ip6tables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 sudo ip6tables -A INPUT -p udp -m multiport --destination-ports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
-# drop input
-sudo ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
+# drop other INPUT
 sudo ip6tables -P INPUT DROP
 
-# log forward with limit
-sudo ip6tables -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "[ip6tables] FORWARD Denied: " --log-level 7
+# allow all output
+sudo iptables -A OUTPUT -j ACCEPT
 
-## add some other customization here
-
-# drop forward
+# drop FORWARD (if not router)
 sudo ip6tables -P FORWARD DROP
 ```
 
@@ -133,7 +147,7 @@ sudo apt install iptables-persistent # if not installed yet
 # sudo dpkg-reconfigure iptables-persistent # if already installed
 ```
 
-Notice for `docker` users: you might need to add additional "FORWARD" policies for `docker`.
+Notice for `docker` users: you might need to add additional "FORWARD" policies for `docker` (but it generally takes care of itself).
 
 Reset/Clear the rules:
 
@@ -174,15 +188,18 @@ sudo apt install iptables-persistent # if not installed yet
 6. [How To Choose an Effective Firewall Policy to Secure your Servers | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-choose-an-effective-firewall-policy-to-secure-your-servers)
 7. [Basic iptables template for ordinary servers (both IPv4 and IPv6)](https://gist.github.com/jirutka/3742890)
 
-### Few Words about iptables
-
-If you have a large number of IPs to manage, try `ipset` ([ipset - ArchWiki](https://wiki.archlinux.org/index.php/Ipset))
-
-If you still prefer some well-known websites, [here]( https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands#service-ssh) is one.
+If you have a large number of IPs to manage, take a look at `ipset` ([ipset - ArchWiki](https://wiki.archlinux.org/index.php/Ipset))
 
 ## `nftables`
 
-Read the man page if you have time:
+Install: [nftable - Debian Wiki](https://wiki.debian.org/nftables#nftables_in_Debian_the_easy_way)
+
+```bash
+aptitude install nftables
+systemctl enable nftables.service
+```
+
+Always begin with the man page
 
 ```bash
 man nft # https://www.netfilter.org/projects/nftables/manpage.html
@@ -196,8 +213,7 @@ nft list ruleset
 
 The config file (`/etc/nftables.conf`):
 
-* I directly edited the conf file. Feel free to use `nft` command
-* But it *seems* that you will need to figure out how to make those rules persist
+* directly edit this file to make changes persistent
 
 ```conf
 #!/usr/sbin/nft -f
@@ -208,46 +224,34 @@ table inet filter {
     chain input {
         type filter hook input priority 0; policy drop;
 
-        iifname lo accept
-
-        tcp dport 22 ct state new accept # change to your own ssh port
+        # established/related
         ct state established,related accept
 
-        # no ping floods:
-        ip protocol icmp icmp type echo-request limit rate over 10/second burst 4 packets drop
-        ip6 nexthdr icmpv6 icmpv6 type echo-request limit rate over 10/second burst 4 packets drop
-
-        # ICMP & IGMP
-        ip6 nexthdr icmpv6 icmpv6 type { echo-request, destination-unreachable, packet-too-big, time-exceeded, parameter-problem, mld-listener-query, mld-listener-report, mld-listener-reduction, nd-router-solicit, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert, nd-neighbor-solicit, nd-neighbor-advert, mld-listener-report } accept
-        ip protocol icmp icmp type { echo-request, destination-unreachable, router-solicitation, router-advertisement, time-exceeded, parameter-problem } accept
-        ip protocol igmp accept
-
-        # avoid brute force on ssh, and your ssh port here
-        tcp dport 22 ct state new limit rate 15/minute accept # change to your own ssh port
-
-        # http server
-        tcp dport { http, https} ct state established,new accept
-        udp dport { http, https} ct state established,new accept
-
-        # some ports you like
-        #tcp dport { xxx, yyy} ct state established,new accept
-        #udp dport { xxx, yyy} ct state established,new accept
-
+        # invalid
         ct state invalid drop
 
-        # uncomment to enable log, choose one
-        #log flags all counter drop
+        # loopback
+        iifname lo accept
+
+        # ssh
+        tcp dport 22 ct state new accept # change to your ssh port
+
+        # accept all icmp
+        ip protocol icmp accept
+        ip6 nexthdr ipv6-icmp accept
+
+        # http(s)
+        tcp dport {http, https} accept
+        udp dport {http, https} accept
+
+        # uncomment to enable logging
         #log prefix "[nftables] Input Denied: " flags all counter drop
     }
     chain forward {
+        # drop everything (if not a router)
         type filter hook forward priority 0; policy drop;
-        tcp dport { http, https } ct state { established,new } accept
-        udp dport { http, https } ct state { established,new } accept
-        # for dockers
-        # dockers have plenty of networks, so it may be required to change accordingly
-        iifname eth0 oifname docker0 ct state { established,new,related } accept
-        oifname eth0 ct state { established,new,related } accept
-        # uncomment to enable log
+
+        # uncomment to enable logging
         #log prefix "[nftables] Forward Denied: " flags all counter drop
     }
     chain output {
@@ -256,8 +260,7 @@ table inet filter {
 }
 ```
 
-Few words about `counter`:
-After set a `counter` in the rule, you can see the number of packages that this rule applied to by list this rule.
+About `counter`: After set a `counter` in the rule, you can see the number of packages that this rule applied to by list this rule.
 
 Load the config file:
 
@@ -277,6 +280,7 @@ sudo systemctl status nftables
 Delete rules by table or all rules:
 
 * will not delete the content in the config file
+* config file will still be loaded in the boot
 
 ```bash
 nft flush table <some-table>
@@ -288,7 +292,7 @@ Add corresponding rules based on the content of the log:
 
 ```bash
 sudo tail /var/log/syslog -n 500 | grep nftables # sample command to read the log
-# edit the config...
+# then fix the issues accordingly
 ```
 
 Notice for `docker` users: you might need to add additional "forward" policies for `docker`.
