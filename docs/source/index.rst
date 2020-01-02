@@ -99,6 +99,7 @@ The organization of this site is as following:
    :name: sec-reference-devops
 
    reference/devops/set-up-debian-server-on-digital-ocean
+   reference/devops/set-up-debian-10-server-on-digital-ocean
    reference/devops/debian-firewall-nftables-and-iptables
    reference/devops/bind-dns-server-setup
    reference/devops/scale

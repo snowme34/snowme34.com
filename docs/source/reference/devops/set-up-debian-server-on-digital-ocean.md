@@ -1,5 +1,7 @@
 # Set Up Debian 9.5 Server on Digital Ocean
 
+[**Newer version here**](https://docs.snowme34.com/en/latest/reference/devops/set-up-debian-10-server-on-digital-ocean.html)
+
 ## Preparation
 
 Generate a ssh key file using the tool you like on your platform and upload to digital
