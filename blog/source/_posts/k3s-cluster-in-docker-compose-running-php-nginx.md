@@ -262,7 +262,7 @@ dhparam.pem # openssl dhparam -out ./dhparam.pem 4096
 
 For security reasons, my own SSL certificates will not be included here.
 
-* because I use Cloudflase, my cluster uses [Cloudflare Origin CA certificates](https://support.cloudflare.com/hc/en-us/articles/115000479507-Managing-Cloudflare-Origin-CA-certificates)
+* because I use Cloudflare, my cluster uses [Cloudflare Origin CA certificates](https://support.cloudflare.com/hc/en-us/articles/115000479507-Managing-Cloudflare-Origin-CA-certificates)
 * Also it does not require complex verification, renewal steps etc.
 * If not suitable, might consider [a cert manager](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes#step-4-%E2%80%94-installing-and-configuring-cert-manager) (linked article uses ingress)
 
@@ -288,7 +288,7 @@ ssl_certificate_key /etc/nginx/ssl-key/private.pem;
 ssl-params.conf
 
 * [cipherli.st](https://cipherli.st/)
-* [String SSL Secutiry On Nginx](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html)
+* [String SSL Security On Nginx](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html)
 * [Security/Server Side TLS - MozillaWiki](https://wiki.mozilla.org/Security/Server_Side_TLS)
 * also if you are using Cloudflare like I do, end-users may see changed SSL headers etc.
   * since clients are talking to Cloudflare, not the host machine directly in general cases
@@ -493,7 +493,7 @@ Inside the yaml:
 
 * it exposes port 9000 via ClusterIP (default networking for service) for php-fpm
 * php:7-fpm image is used
-* the php code directory mounted eariler, `/var/www`, is mounted as a `hostPath` volume
+* the php code directory mounted earlier, `/var/www`, is mounted as a `hostPath` volume
   * generally **not** something desired in production
   * A possibly related [link](https://stackoverflow.com/questions/46738296/multiple-kubernetes-pods-sharing-the-same-host-path-pvc-will-duplicate-output) and [another](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md).
   * might consider a kubernetes init container to set up the code etc.
