@@ -369,6 +369,7 @@ sudo aptitude update
 ### Configure Firewall (iptables/nftables)
 
 * Don't forget **replace the ssh port** with your own one
+* at this moment (01/04/2020), using `nftable` directly may have significant compatibility issues, like [this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#ensure-iptables-tooling-does-not-use-the-nftables-backend)
 
 Using front-end wrappers also works (but not needed for straightforward rule sets like the following)
 
@@ -655,6 +656,13 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
+
+# bash completion (optional)
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+source <(kubectl completion bash) # load it for current shell
+
+# add my own kubeconfig file
+echo "KUBECONFIG=/PATH/TO/MY/KUBECONFIG/" >> ~/.bashrc
 ```
 
 ## Reference
