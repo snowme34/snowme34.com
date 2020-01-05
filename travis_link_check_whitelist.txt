@@ -22,3 +22,6 @@ https://jisho.org/
 https://www.usingenglish.com/
 dsa.cs.tsinghua.edu.cn
 web.ydu.edu.tw
+https://k3s-server:6443
+http://host-ip
+https://some.host

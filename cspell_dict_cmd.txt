@@ -545,3 +545,7 @@ Autoscale
 Coreutils
 
 chof
+
+tmpfs
+kubeconfig
+Kubeadm
