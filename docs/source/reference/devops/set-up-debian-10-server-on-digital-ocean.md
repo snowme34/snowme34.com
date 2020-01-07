@@ -193,7 +193,7 @@ Edit `~/.vimrc`
 
 ```bash
 # add color scheme etc.
-# Example: wget https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
+# Example: wget -P ~/.vim/colors/ https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 
 # change vimrc
 vim .vimrc

@@ -1,10 +1,12 @@
 # Docker Commands
 
-*Last Update: 12/12/2018.*
+*Last Update: 1/5/2019.*
 
 * [Docker Docs Get Started](https://docs.docker.com/get-started)
 
 * [Official Docker Commandline Reference](https://docs.docker.com/engine/reference/commandline/docker/)
+
+* [Dockerfile Best Practices](http://crosbymichael.com/dockerfile-best-practices.html)
 
 ## Install
 

@@ -159,8 +159,8 @@ volumes:
 Let's create a script to run it:
 
 ```bash
-touch /docker/bin/k3s-up.sh
-chmod u+x /docker/bin/k3s-up.sh
+touch /docker/bin/k3s-up
+chmod u+x /docker/bin/k3s-up
 ```
 
 Inside the up script:
@@ -184,8 +184,8 @@ Now we just need to run this script
 * it creates 1 agent by default, can change it by providing command line argument
 
 ```bash
-k3s-up.sh    # spawn 1 agents
-#k3s-up.sh 3 # spawn 3 agents
+k3s-up    # spawn 1 agents
+#k3s-up 3 # spawn 3 agents
 ```
 
 Due to extreme memory constrain, let's begin with 1 agent
@@ -243,6 +243,8 @@ mkdir /docker/kube/config-nginx-snippets # re-useable snippets
 ```
 
 Let's go through each config file
+
+* [check this out](https://www.digitalocean.com/community/tools/nginx) for nginx config
 
 ## SSL Key
 
@@ -644,8 +646,8 @@ Now we have both the configs and the Kubernetes resources files ready.
 Just a short script will do all the setup
 
 ```bash
-touch /docker/bin/k3s-setup.sh
-chmod u+x /docker/bin/k3s-setup.sh
+touch /docker/bin/k3s-setup
+chmod u+x /docker/bin/k3s-setup
 ```
 
 Inside the setup script
@@ -673,7 +675,7 @@ kubectl apply -f /docker/kube/objects
 Run the script
 
 ```bash
-k3s-setup.sh
+k3s-setup
 ```
 
 # Result
@@ -690,8 +692,8 @@ If encounter errors in the previous steps, or need a graceful shutdown,
 here is a nothing-left-behind clean up script.
 
 ```bash
-touch /docker/bin/k3s-down.sh
-chmod u+x /docker/bin/k3s-down.sh
+touch /docker/bin/k3s-down
+chmod u+x /docker/bin/k3s-down
 ```
 
 Inside the down script:
@@ -725,6 +727,7 @@ And it's fun to run a fully-functional Kubernetes on the cutest VPS!
   * currently cleaning everything up
   * might use `docker-compose stop`, but ideally only the master data is needed
   * potentially related: [How to make a full backup of  k3s server's data? · Issue #927 · rancher/k3s](https://github.com/rancher/k3s/issues/927)
+* use secerets
 
 # Reference
 

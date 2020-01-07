@@ -1608,10 +1608,12 @@ The event reference (!) is mainly used in scripts?
     * directly download a link
     * q: quite
     * O: output, `-` for stdout
+    * P: prefix directory (will create sub-directory if non-exist)
 
     ```bash
     wget 127.0.0.1/file.txt
     wget -qO- 127.0.0.1
+    wget -P ~/download/new-directory 127.0.0.1/files.txt
     ```
 
 9. Actual Networking Traffic

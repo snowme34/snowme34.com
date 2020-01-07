@@ -452,6 +452,7 @@ A little messy. Some history and other text included. Apologize.
 ### Miscellaneous Informative Resources
 
 * [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html)
+* [CS 007: PERSONAL FINANCE FOR ENGINEERS](https://cs007.blog/)
 
 ## Reference and Documentations
 
