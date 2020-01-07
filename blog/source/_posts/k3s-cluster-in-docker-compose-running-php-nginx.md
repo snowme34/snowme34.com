@@ -12,9 +12,9 @@ comments: true
 
 Run a K3s cluster in docker-compose with PHP + Nginx on 1 Gb, 1 vCPU server.
 
-If anything goes wrong, read documents; check if the versions match (things are changing every day)
+If anything goes wrong: read documents; check if the versions match (things are changing every day)
 
-At the end of this page includes a list of things used as reference when writing.
+At the end of this page includes a list of links used as reference when writing.
 
 # Table of Content
 
@@ -36,7 +36,7 @@ At the end of this page includes a list of things used as reference when writing
 - [Stop and Clean up](#stop-and-clean-up)
 - [Conclusion and Thoughts](#conclusion-and-thoughts)
 - [Future Works](#future-works)
-- [Reference](#reference)
+  - [Reference](#reference)
 
 # Environment
 
@@ -51,8 +51,7 @@ At the end of this page includes a list of things used as reference when writing
 * docker-compose
 * a domain if wish to use https (and certificates)
 
-Try this to set up but
-it's better/more stable/more compatible to use `iptables` at this moment (01/04/2020):
+Try this to set up but it's more stable to use `iptables` at this moment (01/04/2020):
 
 [Set Up Debian 10 Server on Digital Ocean](https://docs.snowme34.com/en/latest/reference/devops/set-up-debian-10-server-on-digital-ocean.html)
 
@@ -115,7 +114,7 @@ Modifications:
 # to run define K3S_TOKEN, K3S_VERSION is optional, eg:
 #   K3S_TOKEN=${RANDOM}${RANDOM}${RANDOM} docker-compose up
 
-version: '3' 
+version: '3'
 services:
 
   k3s-server:
@@ -244,29 +243,30 @@ mkdir /docker/kube/config-nginx-snippets # re-useable snippets
 
 Let's go through each config file
 
-* [check this out](https://www.digitalocean.com/community/tools/nginx) for nginx config
+* [main reference](https://www.digitalocean.com/community/tools/nginx) for nginx config
 
 ## SSL Key
 
-(If not using https, skip this step)
+(skip if using http)
 
 Files in `/docker/kube/config-nginx-key`:
 
 ```bash
 # SSL certificates
-origin.pem
-private.pem
+cert.pem
+cert.key
 
 # Diffie-Hellman parameters
+# used by Nginx
 # https://wiki.openssl.org/index.php/Diffie-Hellman_parameters
 dhparam.pem # openssl dhparam -out ./dhparam.pem 4096
 ```
 
 For security reasons, my own SSL certificates will not be included here.
 
-* because I use Cloudflare, my cluster uses [Cloudflare Origin CA certificates](https://support.cloudflare.com/hc/en-us/articles/115000479507-Managing-Cloudflare-Origin-CA-certificates)
+* Because I use Cloudflare, my cluster uses [Cloudflare Origin CA certificates](https://support.cloudflare.com/hc/en-us/articles/115000479507-Managing-Cloudflare-Origin-CA-certificates)
 * Also it does not require complex verification, renewal steps etc.
-* If not suitable, might consider [a cert manager](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes#step-4-%E2%80%94-installing-and-configuring-cert-manager) (linked article uses ingress)
+* If not suitable, might consider [a cert manager](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes#step-4-%E2%80%94-installing-and-configuring-cert-manager) (linked article uses ingress). That is beyond of the scope of this article
 
 ## Nginx Snippets
 
@@ -275,7 +275,7 @@ Files in `/docker/kube/config-nginx-snippets`:
 ```bash
 ssl-some.host.conf
 ssl-params.conf
-restrictions.conf
+security.conf
 ```
 
 ssl-some.host.conf
@@ -283,8 +283,8 @@ ssl-some.host.conf
 * just telling nginx which certificates to use
 
 ```conf
-ssl_certificate     /etc/nginx/ssl-key/origin.pem;
-ssl_certificate_key /etc/nginx/ssl-key/private.pem;
+ssl_certificate     /etc/nginx/ssl-key/cert.pem;
+ssl_certificate_key /etc/nginx/ssl-key/cert.key;
 ```
 
 ssl-params.conf
@@ -292,103 +292,59 @@ ssl-params.conf
 * [cipherli.st](https://cipherli.st/)
 * [String SSL Security On Nginx](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html)
 * [Security/Server Side TLS - MozillaWiki](https://wiki.mozilla.org/Security/Server_Side_TLS)
-* also if you are using Cloudflare like I do, end-users may see changed SSL headers etc.
+* also if you are using Cloudflare like I do, end-users may see different headers etc.
   * since clients are talking to Cloudflare, not the host machine directly in general cases
 
 ```conf
-# reference:
-## https://cipherli.st/
-## https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-## https://github.com/h5bp/server-configs-nginx
-## other online search results
-
-# disable old or less secure protocols such as SSL3.0
-ssl_protocols TLSv1.2 TLSv1.3; # v1.3 Requires nginx >= 1.13.0 else use TLSv1.2
-
-# ciphers chosen for forward secrecy and compatibility
-# http://blog.ivanristic.com/2013/08/configuring-apache-nginx-and-openssl-for-forward-secrecy.html
-# https://github.com/h5bp/server-configs-nginx/blob/master/h5bp/ssl/policy_intermediate.conf
-# https://wiki.mozilla.org/Security/Server_Side_TLS
-# might need to change case-by-case
-ssl_ciphers "TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:EECDH+CHACHA20:EECDH+AES;";
-
-# enables server-side protection from BEAST attacks
-# http://blog.ivanristic.com/2013/09/is-beast-still-a-threat.html
-# **not** sure if still good choice
-ssl_prefer_server_ciphers on;
-
-# enable session resumption to improve https performance
-# http://vincent.bernat.im/en/blog/2011-ssl-session-reuse-rfc5077.html
+# SSL
+ssl_session_timeout 1d;
 ssl_session_cache shared:SSL:10m;
-ssl_session_timeout 24h;
-
-# https://github.com/mozilla/server-side-tls/issues/135
 ssl_session_tickets off;
 
-# HSTS (HTTP Strict Transport Security)
-# tell browsers to connect exclusively using https, cache the certificates; do so including sub-domains
-add_header Strict-Transport-Security "max-age=63072000; includeSubDomains";
-
-# enable ocsp stapling
-# (mechanism by which a site can convey certificate revocation information to visitors in a privacy-preserving, scalable manner)
-# http://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/
-ssl_stapling on;
-ssl_stapling_verify on;
-resolver
-  1.1.1.1 1.0.0.1 [2606:4700:4700::1111] [2606:4700:4700::1001]
-  8.8.8.8 8.8.4.4 [2001:4860:4860::8888] [2001:4860:4860::8844]
-  valid=300s;
-resolver_timeout 5s;
-
 # Diffie-Hellman parameter for DHE ciphersuites
-# **requires manual generating pem file**
 ssl_dhparam /etc/nginx/ssl-key/dhparam.pem;
 
-# optional since nginx has good enough defaults
-# https://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_ecdh_curve
-#ssl_ecdh_curve secp384r1;
+# Mozilla Intermediate configuration
+ssl_protocols TLSv1.2 TLSv1.3;
+ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+
+# OCSP Stapling
+ssl_stapling on;
+ssl_stapling_verify on;
+resolver 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 valid=60s;
+resolver_timeout 2s;
 ```
 
-restrictions.conf
+security.conf
 
 ```conf
-# reference
-## https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#passing-uncontrolled-requests-to-php
-## http://nginx.org/en/docs/http/ngx_http_core_module.html#location
+# security headers
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header X-XSS-Protection "1; mode=block" always;
+add_header X-Content-Type-Options "nosniff" always;
+add_header Referrer-Policy "no-referrer-when-downgrade" always;
+add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
-# Global restrictions configuration file
-# Designed to be included in any server {} block.
+# . files
+location ~ /\.(?!well-known) {
+	deny all;
+}
 
+## misc
+## not for security but included here for simplicity
+
+# favicon.ico
 location = /favicon.ico {
-    log_not_found off;
-    access_log off;
+	log_not_found off;
+	access_log off;
 }
 
+# robots.txt
 location = /robots.txt {
-    allow all;
-    log_not_found off;
-    access_log off;
+	log_not_found off;
+	access_log off;
 }
-
-# Deny all attempts to access hidden files such as .htaccess, .htpasswd, .DS_Store (Mac).
-# Keep logging the requests to parse later (or to pass to firewall utilities such as fail2ban)
-location ~ /\. {
-    deny all;
-}
-
-# some security
-
-# MIME type sniffing
-add_header X-Content-Type-Options nosniff;
-
-# tells IE to enable some filter
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
-add_header X-XSS-Protection "1; mode=block";
-
-# whether or not browsers are allowed to render pages in frame/iframe
-# might **need updates**
-add_header X-Frame-Options DENY;
-# add_header X-Frame-Options some-good-origins;
 ```
 
 ## Nginx Site
@@ -397,7 +353,7 @@ add_header X-Frame-Options DENY;
 /docker/kube/config-nginx-sites/php.conf
 ```
 
-Inspired by:
+Heavily inspired by:
 
 * [PHP FastCGI Example](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/)
 * [How To Deploy a PHP Application with Kubernetes on Ubuntu 18.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-18-04#step-5-%E2%80%94-creating-the-nginx-deployment)
@@ -439,16 +395,17 @@ server {
 
   root /var/www;
   index  index.html  index.php;
-  server_name some.host; # change to your own host name
 
-  include /etc/nginx/snippets/restrictions.conf;
+  ### change to your own host name ###
+  server_name some.host;
+
+  include /etc/nginx/snippets/security.conf;
 
   location ~ [^/]\.php(/|$) {
     fastcgi_split_path_info ^(.+?\.php)(/.*)$;
     if (!-f $document_root$fastcgi_script_name) {
         return 404;
     }
-    # Mitigate https://httpoxy.org/ vulnerabilities
     fastcgi_param HTTP_PROXY "";
     fastcgi_pass kube-php:9000;
     fastcgi_index index.php;
@@ -499,7 +456,6 @@ Inside the yaml:
   * generally **not** something desired in production
   * A possibly related [link](https://stackoverflow.com/questions/46738296/multiple-kubernetes-pods-sharing-the-same-host-path-pvc-will-duplicate-output) and [another](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md).
   * might consider a kubernetes init container to set up the code etc.
-
 
 ```yaml
 apiVersion: v1
