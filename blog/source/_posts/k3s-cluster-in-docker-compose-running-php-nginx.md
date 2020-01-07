@@ -36,7 +36,7 @@ At the end of this page includes a list of links used as reference when writing.
 - [Stop and Clean up](#stop-and-clean-up)
 - [Conclusion and Thoughts](#conclusion-and-thoughts)
 - [Future Works](#future-works)
-  - [Reference](#reference)
+- [Reference](#reference)
 
 # Environment
 
@@ -641,6 +641,8 @@ The whole server might suffer from a short period of thrashing after starting ev
 Assume all firewall, certificates and so forth all set up, go to `http://host-ip` or `https://some.host` (depend on your choice).
 
 The PHP application will show up.
+
+Each access to my host leads to around 40K [context switches](https://en.wikipedia.org/wiki/Context_switch).
 
 # Stop and Clean up
 
