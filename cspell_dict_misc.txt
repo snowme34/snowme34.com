@@ -171,6 +171,9 @@ ecdh
 secp
 htpasswd
 nosniff
+ECDHE
+ECDSA
+SAMEORIGIN
 
 configmap
 
