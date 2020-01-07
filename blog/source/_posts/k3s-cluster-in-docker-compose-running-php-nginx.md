@@ -727,7 +727,7 @@ And it's fun to run a fully-functional Kubernetes on the cutest VPS!
   * currently cleaning everything up
   * might use `docker-compose stop`, but ideally only the master data is needed
   * potentially related: [How to make a full backup of  k3s server's data? · Issue #927 · rancher/k3s](https://github.com/rancher/k3s/issues/927)
-* use secerets
+* use secrets
 
 # Reference
 
