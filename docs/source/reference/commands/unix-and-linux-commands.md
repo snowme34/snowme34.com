@@ -2504,6 +2504,13 @@ Ubuntu is based on Debian
 
 ## Miscellaneous
 
+![Linux Observability Tools](http://www.brendangregg.com/Perf/linux_observability_tools.png)
+
+* [Linux Performance](http://www.brendangregg.com/linuxperf.html)
+
+  * troubleshoot
+  * has the prominent chart above
+
 * Trick to run redirect using sudo
 
   ```bash
