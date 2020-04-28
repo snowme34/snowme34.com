@@ -405,9 +405,10 @@ fmt.Println("The value:", m["Answer"])
 delete(m, "Answer")
 fmt.Println("The value:", m["Answer"])
 
+// check if map contains element "Answer"
 //v, ok = m["Answer"] // if already declared
 v, ok := m["Answer"]
-fmt.Println("The value:", v, "Present?", ok)
+fmt.Println("The value:", v, "Value in map?", ok)
 ```
 
 ## function values
@@ -924,32 +925,32 @@ v := <-ch  // Assign value received from ch to v
 > This allows goroutines to synchronize without explicit locks or condition variables.
 
 ```go
-  s := []int{7, 2, 8, -9, 4, 0}
+s := []int{7, 2, 8, -9, 4, 0}
 
-	c := make(chan int)
-	go sum(s[len(s)/2:], c)
-	go sum(s[:len(s)/2], c)
-	x, y := <-c, <-c
+c := make(chan int)
+go sum(s[len(s)/2:], c)
+go sum(s[:len(s)/2], c)
+x, y := <-c, <-c
 
-	go squareSum(s[len(s)/2:], c)
-	go squareSum(s[:len(s)/2], c)
-  a,b := <-c, <-c
-  
-  fmt.Println(x, y, x+y)
-	fmt.Println(a, b, a+b)
+go squareSum(s[len(s)/2:], c)
+go squareSum(s[:len(s)/2], c)
+a,b := <-c, <-c
+ 
+fmt.Println(x, y, x+y)
+fmt.Println(a, b, a+b)
 ```
 
 ```go
-	go sum(s[len(s)/2:], c)
-	go sum(s[:len(s)/2], c)
-	go squareSum(s[len(s)/2:], c)
-  go squareSum(s[:len(s)/2], c)
-  // will mess up
-	x, y := <-c, <-c
-  a,b := <-c, <-c
-  
-  fmt.Println(x, y, x+y)
-	fmt.Println(a, b, a+b)
+go sum(s[len(s)/2:], c)
+go sum(s[:len(s)/2], c)
+go squareSum(s[len(s)/2:], c)
+go squareSum(s[:len(s)/2], c)
+// will mess up
+x, y := <-c, <-c
+a,b := <-c, <-c
+ 
+fmt.Println(x, y, x+y)
+fmt.Println(a, b, a+b)
 ```
 
 Channels can be buffered
@@ -1386,4 +1387,29 @@ go mod init github.com/name/package
 go run
 
 godoc -http=localhost:6060
+```
+
+## Misc
+
+### Sort Package
+
+```go
+sort.Strings(someStringSlice)
+
+sort.Slice(someSlice, func(i, j int) bool {
+		return someLessFunction(someSlice[i], someSlice[j])
+	})
+
+// lower bound and upper bound for x
+// https://groups.google.com/forum/#!topic/golang-codereviews/Nx8ocVvIqbE
+var someSlice []int
+var x int
+// someSlice is sorted in ascending order
+lowerBoundAscending := sort.Search(len(someSlice), func(i int) bool { return a[i] >= x })
+// someSlice is sorted in descending order
+lowerBoundDescending := sort.Search(len(someSlice), func(i int) bool { return a[i] < x }) - 1
+// someSlice is sorted in ascending order
+upperBoundAscending := sort.Search(len(someSlice), func(i int) bool { return a[i] > x })
+// someSlice is sorted in descending order
+upperBoundDescending := sort.Search(len(someSlice), func(i int) bool { return a[i] <= x }) - 1
 ```
