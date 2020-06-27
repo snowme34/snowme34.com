@@ -1,6 +1,6 @@
 # Cuddly Links Collection
 
-*Last update date: 07/11/2019.*
+*Last update date: 06/27/2020.*
 
 My collection of web sites. Mostly CS stuff, some humanity ones.
 
@@ -506,6 +506,8 @@ Use CSD for abbreviation.
 
   * By the way, do you know you can type `man ascii` instead of searching for little ascii table pictures online?
 
+* [kernel - Linux source code](https://elixir.bootlin.com/linux/latest/source/kernel)(Elixir)
+
 #### CS Reference Algorithms and Data Structures
 
 * [Dictionary of Algorithms and Data Structures](https://xlinux.nist.gov/dads/)
@@ -579,6 +581,7 @@ For C/C++:
 #### CS Reference Misc
 
 * [The Unicode Standard, Version 11.0](https://www.unicode.org/charts/PDF/U2200.pdf)
+* [Regular Expressions cheat sheet](http://web.mit.edu/hackl/www/lab/turkshop/slides/regex-cheatsheet.pdf)
 
 ### Reference for Graphic Design
 
