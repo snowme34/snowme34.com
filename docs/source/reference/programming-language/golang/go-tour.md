@@ -1,7 +1,7 @@
 # Go Tour
 
-Heavily based on [A Tour of Go](https://tour.golang.org/)
-with some codes of mine for the practice problems.
+Major part based on [A Tour of Go](https://tour.golang.org/)
+with some of my practice problem solutions.
 
 [Effective Go](https://golang.org/doc/effective_go.html)
 
@@ -282,6 +282,8 @@ b := []byte{'g', 'o', 'l', 'a', 'n', 'g'}
 // b[1:4] == []byte{'o', 'l', 'a'}, sharing the same storage as b
 ```
 
+* see [SliceTricks](https://github.com/golang/go/wiki/SliceTricks) for more
+
 ### Growing slices (the copy and append functions)
 
 To double the capacity of a slice:
@@ -365,7 +367,7 @@ for _, value := range pow {
 ## Maps
 
 ```go
-m = make(map[string]Vertex)
+m := make(map[string]Vertex)
 m["Bell Labs"] = Vertex{
     40.68433, -74.39967,
 }
@@ -605,6 +607,96 @@ func main() {
   emp = "39"
 
   fmt.Printf("(%v, %T)\n", emp, emp)
+}
+```
+
+### Embedded Interface
+
+Interface can include other interfaces
+
+```go
+// ReadWriter is the interface that combines the Reader and Writer interfaces.
+type MyReadWriter interface {
+    Reader
+		Writer
+		SomeRandomFunction() int
+}
+```
+
+## Anonymous Fields
+
+Go has no notion of explicit "Inheritance"
+but this programming mechanism is somewhat achieved
+via "promoted" anonymous fields.
+
+* anonymous fields: type name is its field name
+* promoted anonymous field: the first anonymous field, whose methods can be directly invoked
+
+```go
+package main
+
+import "fmt"
+
+type Tiny struct {
+    value string
+}
+
+func (t* Tiny) Set(v string) {
+	t.value = v
+}
+
+func (t Tiny) Get() string {
+	return t.value
+}
+
+type Huge struct {
+	Tiny     // a promoted anonymous field
+	error    // an anonymous field
+	s string // a non-anonymous field
+}
+
+func main() {
+	// proposal: spec: direct reference to embedded fields in struct literals
+	// https://github.com/golang/go/issues/9859
+	// but can access directly after initialization
+	h := Huge{Tiny: Tiny{value: "init"}, error: nil, s: "a"}
+
+	fmt.Println(h.Get()) // "init"
+	fmt.Println(h.error) // nil
+	fmt.Println(h.s)     // "a"
+
+	h.Set("Set")
+	fmt.Println(h.Get()) // "Set"
+
+	h.value = ".value"
+	fmt.Println(h.Get()) // ".value"
+}
+```
+
+This way, can treat `Huge` as a struct inheriting the `Tiny` struct.
+
+* same logic for anonymous interface field
+
+```go
+// from "sort" pkg
+
+type Interface interface {
+    Len() int
+    Less(i, j int) bool
+    Swap(i, j int)
+}
+
+type reverse struct {
+    Interface
+}
+```
+
+And those "promoted" methods can be overridden
+
+```go
+// Less returns the opposite of the embedded implementation's Less method.
+func (r reverse) Less(i, j int) bool {
+    return r.Interface.Less(j, i)
 }
 ```
 
@@ -982,10 +1074,10 @@ func main() {
 }
 ```
 
-## Range and Close
+### Range and Close
 
 To indicate ending of sending, senders can `close` a channel. Receivers can test it if closed
-but should never close it on themselves.
+but should never close it on themselves. (and thus `close` can be used as a broadcast)
 
 ```go
 v, ok := <-ch // ok is false if no more values and channel is closed
@@ -1034,7 +1126,7 @@ func main() {
 > Closing is only necessary when the receiver must be told there are
 > no more values coming, such as to terminate a range loop.
 
-## Select
+### Select
 
 Let a goroutine be able to wait for multiple communications (including "default").
 
@@ -1413,3 +1505,160 @@ upperBoundAscending := sort.Search(len(someSlice), func(i int) bool { return a[i
 // someSlice is sorted in descending order
 upperBoundDescending := sort.Search(len(someSlice), func(i int) bool { return a[i] <= x }) - 1
 ```
+
+## Common Errors
+
+### Function Literals Capture Loop Variables
+
+`for i, v := range` and `go` routine
+
+```go
+// spawn len(a) number of go routines
+// and calling function f on each of them
+for _, v := range a {
+	go func() {
+		f(v)
+	}()
+}
+```
+
+* the variable `v` is captured by reference
+* it's the same variable for all spawned go routines
+* therefore depends on the scheduling policy
+  * `v` will be changed in the for loop
+  * the go routine will happily use the changed value
+  * not the value in its iteration
+* solution: do not capture loop variable, pass by argument
+
+```go
+for _, v := range a {
+	go func(arg int) {
+		f(arg)
+	}(v)
+}
+```
+
+### map panic
+
+```go
+m = make(map[int]int)
+for i := 0; i < 1024; i++ {
+	go func(key int){
+		// concurrent read, safe if no writing
+		_ = m[key]
+
+		// concurrent write,
+		// panic if multiple routines writing (or both writing and reading)
+		// at the same time,
+		// even if writing to different keys.
+		m[key] = 1
+	}(i)
+}
+// Note: after the for loop, the go routines may be still running
+// use chan or sync.WaitGroup to sync
+```
+
+* concurrent writes to the built-in map type will cause panic
+* solution:
+  * use sync.Mutex to sync writes or read/writes
+  * use sync.Map if the map is read heavy, example below
+
+```go
+var map sync.Map
+
+func read(key string) string {
+	v, ok := map.Load(key)
+
+	if !ok {
+		// key not in map
+		...
+	}
+
+	return v.(string)
+}
+
+func write(key, value string) {
+	map.Store(key, value)
+}
+
+// guarantee all callers have the same return value for key
+func atomicWrite(key, newValue string) string {
+	valueWritten, loaded := map.LoadOrStore(key, newValue)
+
+	if loaded {
+		// loaded the value for key that is written by another go routine
+		// newValue is **NOT*** written
+		...
+	}
+
+	return valueWritten.(string)
+}
+```
+
+### End of Slice
+
+```go
+end := a[len(a)-1]
+```
+
+* a might be a empty slice
+* cannot access index `-1`
+
+### Channel Blocks
+
+Not familiar with channels, people are tendentious to block unintentionally
+
+```go
+func writeChan(c chan bool) {
+	c <- true
+}
+
+func main() {
+	writeChan(nil)
+}
+```
+
+* either channel is written and not read, or channel is nil
+* then the blocking write will block forever, deadlock
+* solution: if blocking is not intended or channel is from unreliable place, use non-blocking write
+
+```go
+// will attempt to write to c
+// not blocking
+func writeChan(c chan bool) {
+	select {
+		case c <- true:
+		default:
+	}
+}
+```
+
+### Memory Leak When Operating on Slices
+
+With garbage collection, memory leak is yet possible
+
+* see [SliceTricks](https://github.com/golang/go/wiki/SliceTricks)
+
+```go
+/* leaking */
+// delete sli[i] (3 ways)
+sli = append(sli[:i], sli[i+1:]..)
+sli = sli[:i+copy(sli[i:], sli[i+1:])]
+
+/* non-leaking */
+copy(sli[i:], sli[i+1:])
+sli[len(sli)-1] = nil // or the zero value
+sli = sli[:len(sli)-1]
+
+// can change (i+1) to (j) to delete multiple elements
+// and use a for loop to set zero value
+```
+
+## Read More
+
+Not covered in this page
+
+* [go101](https://github.com/go101/go101/wiki)
+* [Go Talks 2013: 12 Best Practices](https://talks.golang.org/2013/bestpractices.slide)
+  * mentioned goroutine leak (caller forgot some goroutines are still blocked by some channel) and other cool stuff
+* [Go Talks 2012: 10 things you (probably) don't know about Go](https://talks.golang.org/2012/10things.slide)
