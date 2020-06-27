@@ -1,6 +1,6 @@
 # Git Commands
 
-*Last Update: 07/11/2019.*
+*Last Update: 06/27/2020.*
 
 ## From Github Git Cheat Sheet
 
@@ -116,6 +116,13 @@ git config --global core.autocrlf input
 git config --global core.safecrlf true
 ```
 
+fetch
+
+```bash
+# fetch a PR and create a read-only branch
+git fetch origin pull/<pull request ID>/head:<some new branch name to create>
+```
+
 log
 
 ```bash
@@ -148,6 +155,14 @@ git checkout v0~1
 edit
 
 ```bash
+# amend the last commit message
+git commit --amend
+## cleanup the whitespace (not the default lines beginning with '#')
+## in the commit messages, i.e. keep '#' in commit messages
+git commit --cleanup=whitespace
+## https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-scissors
+git commit --cleanup=scissors
+
 # discard unstaged changes
 ## make changes to a.b
 ## start to undo
@@ -222,6 +237,15 @@ git clean -fdx # remove ignored and non-ignored files and directory
 ```bash
 git rebase -i
 git cherry-pick [commit_hash]
+```
+
+credential
+
+```bash
+# NOT SAFE: store the password/token in **unencrypted** text files
+# ~/.git-credentials
+# "https://user:pass@example.com"
+git config credential.helper store
 ```
 
 ## Miscellaneous
