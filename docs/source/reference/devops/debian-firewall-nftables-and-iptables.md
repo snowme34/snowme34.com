@@ -2,9 +2,11 @@
 
 A **short** summary of how to config a basic Debian firewall.
 
-[Debian encourages](https://wiki.debian.org/nftables) people to use nftables.
+[Debian encourages](https://wiki.debian.org/nftables) people to use nftables, but right now it's not well supported.
 
-Also try to not run `iptables` and `nftbales` at the same time, "[could lead to unexpected results](https://wiki.nftables.org/wiki-nftables/index.php/Moving_from_iptables_to_nftables)"
+Also try to not run `iptables` and `nftables` at the same time, "[could lead to unexpected results](https://wiki.nftables.org/wiki-nftables/index.php/Moving_from_iptables_to_nftables)"
+
+Update: this page is receiving higher traffic than I expected. Due to the immature nature of the topics discussed and the superficialness of the discussion, the content is highly recommended only as a quick handy non-professional reference.
 
 ## `iptables`
 
@@ -76,12 +78,12 @@ sudo iptables -A INPUT -p udp -m multiport --destination-ports 80,443 -m conntra
 #sudo iptables -A INPUT -d 224.0.0.0/4 -j DROP
 #sudo iptables -A INPUT -s 127.0.0.0/8 ! -i lo -j DROP (?)
 
-# drop all other INPUT (dangerous line)
+# drop all other INPUT (dangerous line, takes effect immediately)
 sudo iptables -P INPUT DROP
 
-## customize here
-#sudo iptables -A INPUT -p tcp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-#sudo iptables -A INPUT -p udp -m multiport --dports xxx,yyy -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+## add your customization ports p1 and p2
+#sudo iptables -A INPUT -p tcp -m multiport --dports <p1>,<p2> -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+#sudo iptables -A INPUT -p udp -m multiport --dports <p1>,<p2> -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
 # allow all output
 sudo iptables -A OUTPUT -j ACCEPT
@@ -192,10 +194,10 @@ If you have a large number of IPs to manage, take a look at `ipset` ([ipset - Ar
 
 ## `nftables`
 
-Install: [nftable - Debian Wiki](https://wiki.debian.org/nftables#nftables_in_Debian_the_easy_way)
+Install: [nftables - Debian Wiki](https://wiki.debian.org/nftables#nftables_in_Debian_the_easy_way)
 
 ```bash
-aptitude install nftables
+apt-get install nftables
 systemctl enable nftables.service
 ```
 
@@ -287,7 +289,7 @@ nft flush table <some-table>
 nft flush ruleset
 ```
 
-If nftable is blocking some services, enable the log.
+If nftables is blocking some services, enable the log.
 Add corresponding rules based on the content of the log:
 
 ```bash
