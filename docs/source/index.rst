@@ -158,6 +158,7 @@ The organization of this site is as following:
 
    natural-languages/nihongo/Japanese-Give-and-Receive
    natural-languages/nihongo/Japanese-Verb-Forms-Short-Summary
+   natural-languages/nihongo/Japanese-te-Form-Helper-Auxiliary-Verbs
 
 
 .. toctree::
