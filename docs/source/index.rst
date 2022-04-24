@@ -63,8 +63,6 @@ The organization of this site is as following:
    :name: sec-algorithms-and-data-structures
 
    algorithms-and-data-structures/red-black-tree/red-black-tree
-   algorithms-and-data-structures/binary-tree/binary-tree-traversal
-   algorithms-and-data-structures/graph/basic-graph-algorithms
 
 
 .. toctree::
@@ -149,16 +147,6 @@ The organization of this site is as following:
    reference/network/osi-model
    reference/network/osi-model-1
    reference/network/osi-model-2
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Natural Languages - Japanese
-   :name: sec-natural-lang-jp
-
-   natural-languages/nihongo/Japanese-Give-and-Receive
-   natural-languages/nihongo/Japanese-Verb-Forms-Short-Summary
-   natural-languages/nihongo/Japanese-te-Form-Helper-Auxiliary-Verbs
 
 
 .. toctree::
