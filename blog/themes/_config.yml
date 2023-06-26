@@ -165,7 +165,7 @@ postCount:
 
 # Plugins
 plugins:
-  google_analytics: UA-125850394-1 # enter the tracking ID for your Google Analytics
+  google_analytics: # enter the tracking ID for your Google Analytics
   google_site_verification:  # enter Google site verification code
   baidu_analytics: # enter Baidu Analytics hash key
   tencent_analytics:
@@ -216,13 +216,6 @@ profile:
     English: Working Proficiency
     Chinese: Native Speaker
     Japanese: Elementary Proficiency
-  # My Personal Links
-  links:
-    # Github: https://github.com/Ruffianjiang
-    # Blog: http://www.cnblogs.com/lossingdawn/
-    # 微博: http://weibo.com/cofess
-    # 花瓣: http://huaban.com/cofess
-    # Behance: https://www.behance.net/cofess
   # My Personal Labels
   labels:
     - Algorithm
@@ -233,29 +226,10 @@ profile:
   # My Personal Works
   # works:
     # name:
-      # link: http://www.cnblogs.com/lossingdawn/
+      # link: 
       # date: 2016
   # My Personal Projects
   # projects:
-    # Ruffianjiang/hexo-theme-pure: https://github.com/Ruffianjiang/hexo-theme-pure
-
-# hexo-neat
-neat_enable: true
-neat_html:
-  enable: true
-  exclude:
-neat_css:
-  enable: true
-  exclude:
-    - '*.min.css'
-neat_js:
-  enable: true
-  mangle: true
-  output:
-  compress:
-  exclude:
-    - '*.min.js'
-
 
 translate_title:
   translate_way: google    #google | baidu | youdao
